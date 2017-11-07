@@ -4,16 +4,19 @@
     <nav class="navbar is-primary">
       <div class="navbar-brand">
         <a class="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+          <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework
+          based on Flexbox" width="112" height="28">
         </a>
 
-        <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+        <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma"
+        target="_blank">
           <span class="icon" style="color: #333;">
             <i class="fa fa-lg fa-github"></i>
           </span>
         </a>
 
-        <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+        <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms"
+        target="_blank">
           <span class="icon" style="color: #55acee;">
             <i class="fa fa-lg fa-twitter"></i>
           </span>
@@ -52,7 +55,8 @@
                 Elements
               </a>
 
-              <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
+              <a class="navbar-item is-active" href="https://bulma.io/documentation/components
+              /breadcrumb/">
                 Components
               </a>
 
@@ -64,7 +68,8 @@
                   </p>
 
                   <small>
-                    <a class="bd-view-all-versions" href="https://versions.bulma.io/">View all versions</a>
+                    <a class="bd-view-all-versions" href="https://versions.bulma.io/">
+                    View all versions</a>
                   </small>
 
                 </div>
@@ -172,12 +177,14 @@
         </div>
 
         <div class="navbar-end">
-          <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
+          <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma"
+          target="_blank">
             <span class="icon" style="color: #333;">
               <i class="fa fa-lg fa-github"></i>
             </span>
           </a>
-          <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/jgthms" target="_blank">
+          <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/jgthms"
+          target="_blank">
             <span class="icon" style="color: #55acee;">
               <i class="fa fa-lg fa-twitter"></i>
             </span>

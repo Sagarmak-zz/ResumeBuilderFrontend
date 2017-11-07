@@ -4,6 +4,9 @@ import Login from '@/container/Login'
 import Home from '@/container/Home'
 import Landing from '@/container/Home/Landing';
 import Dashboard from '@/container/Home/Dashboard';
+import Sidebar from '@/components/Sidebar';
+import ResumeTemplate1 from '@/resume-templates/ResumeTemplate1';
+import ResumeTemplate2 from '@/resume-templates/ResumeTemplate2';
 
 Vue.use(Router)
 
@@ -28,6 +31,21 @@ export default new Router({
           path: '/dashboard',
           name: 'Dashboard',
           component: Dashboard
+        },
+        {
+          path: '/sidebar',
+          name: 'Sidebar',
+          component: Sidebar
+        },
+        {
+          path: '/resumetemplate1',
+          name: 'ResumeTemplate1',
+          component: ResumeTemplate1
+        },
+        {
+          path: '/resumetemplate2',
+          name: 'ResumeTemplate2',
+          component: ResumeTemplate2
         },
       ]
     },
