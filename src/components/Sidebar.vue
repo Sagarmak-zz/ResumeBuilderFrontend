@@ -339,7 +339,7 @@ import { Collapse, Item as CollapseItem } from 'vue-bulma-collapse'
 export default {
   name: 'sidebar',
 
-  //props: ['resume'],
+  props: ['resume'],
 
   components: {
     Collapse,
@@ -397,76 +397,78 @@ export default {
 
   },
 
-  data() {
-      return {
-        resume: {
+  // data() {
+  //     return {
+  //       resume: {
 
-          info: {
-            name: 'Local Dummy',
-            email: 'dummy@email.com',
-            dob: '1/1/1995',
-            address: '123/1, Gandhinagar'
-          },
+  //         info: {
+  //           name: 'Local Dummy',
+  //           email: 'dummy@email.com',
+  //           dob: '1/1/1995',
+  //           address: '123/1, Gandhinagar'
+  //         },
 
-          degree: [
-            {
-              name: 'MSc IT',
-              institute: 'DAIICT',
-              year: '2018',
-              score: '8.0'
-            }
-          ],
+  //         degree: [
+  //           {
+  //             name: 'MSc IT',
+  //             institute: 'DAIICT',
+  //             year: '2018',
+  //             score: '8.0'
+  //           }
+  //         ],
 
-          skill: {
-              expertise: 'Web Developement',
-              programming_languages: 'Javascript',
-              tools: 'Postman',
-              technical_electives: 'Cloud'
-          },
+  //         skill: {
+  //             expertise: 'Web Developement',
+  //             programming_languages: 'Javascript',
+  //             tools: 'Postman',
+  //             technical_electives: 'Cloud'
+  //         },
 
-          internship: [
-            {
-              name: 'Road Inspector',
-              description: 'Cross platform application',
-              start: '1/7/2017',
-              end: '1/9/2017',
-              team_size: '5',
-              guide: 'Lavguru'
-            }
-          ],
+  //         internship: [
+  //           {
+  //             name: 'Road Inspector',
+  //             description: 'Cross platform application',
+  //             start: '1/7/2017',
+  //             end: '1/9/2017',
+  //             team_size: '5',
+  //             guide: 'Lavguru'
+  //           }
+  //         ],
 
-          project: [
-            {
-              name: 'Road Inspector',
-              description: 'Cross platform application',
-              start: '1/7/2017',
-              end: '1/9/2017',
-              team_size: '5',
-              guide: 'Lavguru'
-            }
-          ],
+  //         project: [
+  //           {
+  //             name: 'Road Inspector',
+  //             description: 'Cross platform application',
+  //             start: '1/7/2017',
+  //             end: '1/9/2017',
+  //             team_size: '5',
+  //             guide: 'Lavguru'
+  //           }
+  //         ],
 
-          position: [
-            {
-              name: 'Proect Leader'
-            }
-          ],
+  //         position: [
+  //           {
+  //             name: 'Proect Leader'
+  //           }
+  //         ],
 
-          award: [
-            {
-              name: 'Nope'
-            }
-          ],
+  //         award: [
+  //           {
+  //             name: 'Nope'
+  //           }
+  //         ],
 
-          hobby: [
-            {
-              name: 'TV Series'
-            }
-          ]
-    	},
+  //         hobby: [
+  //           {
+  //             name: 'TV Series'
+  //           }
+  //         ]
+  //   	},
 
-		}
-	}
+	// 	}
+	// }
+
+
 }
 
 </script>

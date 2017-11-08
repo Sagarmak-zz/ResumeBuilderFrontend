@@ -6,8 +6,6 @@ import Landing from '@/container/Home/Landing';
 import Dashboard from '@/container/Home/Dashboard';
 import Sidebar from '@/components/Sidebar';
 import ResumeTemplate1 from '@/resume-templates/ResumeTemplate1';
-import ResumeTemplate2 from '@/resume-templates/ResumeTemplate2';
-import ResumeTemplate3 from '@/resume-templates/ResumeTemplate3';
 
 Vue.use(Router)
 
@@ -42,16 +40,6 @@ export default new Router({
           path: '/resumetemplate1',
           name: 'ResumeTemplate1',
           component: ResumeTemplate1
-        },
-        {
-          path: '/resumetemplate2',
-          name: 'ResumeTemplate2',
-          component: ResumeTemplate2
-        },
-        {
-          path: '/resumetemplate3',
-          name: 'ResumeTemplate3',
-          component: ResumeTemplate3
         },
       ]
     },

@@ -1,13 +1,11 @@
 <template lang="html">
     <div class="resume-render-wrapper">
         <div class="resume-template">
-
             <table class="main">
                 <tr>
                     <td class="w-20">
                         <!-- <img src="../assets/daiict-logo.jpg"> -->
                     </td>
-
                     <td class="intro w-80">
                         <h1>{{ resume.info.name }}</h1>
                         <p>
@@ -15,21 +13,18 @@
                         </p>
                         <p>
                             <span class="w-60 inline-block">
-                                <b>Email:</b> {{ resume.info.email }}
-                            </span>
+                                    <b>Email:</b> {{ resume.info.email }}
+                                </span>
                             <span class="w-40 text-right">
-                                <b>DOB:</b> {{ resume.info.dob }}
-                            </span>
+                                    <b>DOB:</b> {{ resume.info.dob }}
+                                </span>
                         </p>
                         <p>
                             <b>Address:</b> {{ resume.info.address }}
                         </p>
                     </td>
-
                 </tr>
-
             </table>
-
             <table class="w-100 section" v-if="true">
                 <tr>
                     <td colspan="4" class="section-header">
@@ -42,7 +37,6 @@
                     <th colspan="1">Year</th>
                     <th colspan="1">CPI/Aggregate</th>
                 </tr>
-
                 <tr v-for="item in resume.degree">
                     <td>
                         <b>{{ item.name }}</b>
@@ -58,7 +52,6 @@
                     </td>
                 </tr>
             </table>
-
             <table class="w-100 section">
                 <tr>
                     <td colspan="2" class="section-header">
@@ -68,7 +61,7 @@
                 <tr v-if="true">
                     <td class="w-30">
                         <b>Expertise Area/Area(s) of
-                            Interest</b>
+                                Interest</b>
                     </td>
                     <td class="w-70">
                         {{ resume.skill.expertise }}
@@ -85,7 +78,7 @@
                 <tr v-if="true">
                     <td class="w-30">
                         <b>Tools and
-                            Technologies</b>
+                                Technologies</b>
                     </td>
                     <td class="w-70">
                         {{ resume.skill.tools }}
@@ -101,14 +94,12 @@
                 </tr>
             </table>
             <div class="page-break"></div>
-
             <table class="w-100 section" v-if="true">
                 <tr>
                     <td colspan="3" class="section-header">
                         <h3>PROFESSIONAL EXPERIENCE/INTERNSHIPS</h3>
                     </td>
                 </tr>
-
                 <tr v-for="item in resume.internship">
                     <td class="w-80" valign="top">
                         <p>
@@ -127,14 +118,12 @@
                     </td>
                 </tr>
             </table>
-
             <table class="w-100 section" v-if="true">
                 <tr>
                     <td colspan="2" class="section-header">
                         <h3>PROJECTS</h3>
                     </td>
                 </tr>
-
                 <tr v-for="item in resume.project">
                     <td class="w-80" valign="top">
                         <p>
@@ -153,7 +142,6 @@
                     </td>
                 </tr>
             </table>
-
             <table class="w-100 section" v-if="true">
                 <tr>
                     <td colspan="2" class="section-header">
@@ -170,7 +158,6 @@
                     </td>
                 </tr>
             </table>
-
             <table class="w-100 section" v-if="true">
                 <tr>
                     <td colspan="2" class="section-header">
@@ -187,7 +174,6 @@
                     </td>
                 </tr>
             </table>
-
             <table class="w-100 section" v-if="true">
                 <tr>
                     <td colspan="2" class="section-header">
@@ -210,211 +196,111 @@
 
 
 <script>
-export default {
-  name: 'resume-template1',
-
-  //props: ['resume'],
-
-  data() {
-      return {
-        resume: {
-
-          info: {
-            name: 'Local Dummy',
-            email: 'dummy@email.com',
-            dob: '1/1/1995',
-            address: '123/1, Gandhinagar'
-          },
-
-          degree: [
-            {
-              name: 'MSc IT',
-              institute: 'DAIICT',
-              year: '2018',
-              score: '8.0'
-            }
-          ],
-
-          skill: {
-              expertise: 'Web Developement',
-              programming_languages: 'Javascript',
-              tools: 'Postman',
-              technical_electives: 'Cloud'
-          },
-
-          internship: [
-            {
-              name: 'Road Inspector',
-              description: 'Cross platform application',
-              start: '1/7/2017',
-              end: '1/9/2017',
-              team_size: '5',
-              guide: 'Lavguru'
-            }
-          ],
-
-          project: [
-            {
-              name: 'Road Inspector',
-              description: 'Cross platform application',
-              start: '1/7/2017',
-              end: '1/9/2017',
-              team_size: '5',
-              guide: 'Lavguru'
-            }
-          ],
-
-          position: [
-            {
-              name: 'Proect Leader'
-            }
-          ],
-
-          award: [
-            {
-              name: 'Nope'
-            }
-          ],
-
-          hobby: [
-            {
-              name: 'TV Series'
-            }
-          ]
-    	},
-
-		}
-	}
-
-}
+    export default {
+        name: 'resume-template1',
+        props: ['resume'],
+    }
 </script>
 
 
 <style lang="scss">
-
-.resume-render-wrapper {
-
-  position: fixed;
-  top: 70px;
-  bottom: 0;
-  overflow-y: scroll;
-  display: inline;
-
-  * {
-    font-size: 14px;
-    padding: 0;
-    margin: 0;
-  }
-
-  .resume-template {
-    font-family: "Calibri", sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-    background: #fff;
-    padding: 30px;
-  }
-
-  .main img {
-    height: 150px;
-    width: 150px;
-  }
-
-  .text-right {
-    text-align: right;
-  }
-
-  .inline-block {
-    display: inline-block;
-  }
-
-  table {
-    padding: 15px;
-    width: 100%;
-  }
-
-  .page-break {
-    page-break-after: always;
-  }
-
-  .w-10 {
-    width: 10%;
-  }
-
-  .w-20 {
-    width: 20%;
-  }
-
-  .w-30 {
-    width: 30%;
-  }
-
-  .w-40 {
-    width: 40%;
-  }
-
-  .w-50 {
-    width: 50%;
-  }
-
-  .w-60 {
-    width: 60%;
-  }
-
-  .w-70 {
-    width: 70%;
-  }
-
-  .w-80 {
-    width: 80%;
-  }
-
-  .w-90 {
-    width: 90%;
-  }
-
-  .w-100 {
-    width: 100%;
-  }
-
-  .intro {
-    padding: 0 20px;
-  }
-
-  .intro h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .intro p {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-
-  .section-header {
-    border-bottom: solid 3px #666666;
-    margin-bottom: 20px;
-  }
-
-  .section {
-    margin-top: 20px;
-  }
-
-  .section th {
-    text-align: left;
-    padding: 10px;
-  }
-
-  .section td {
-    padding: 10px;
-  }
-
-  .list li {
-    list-style-type: disc;
-    margin-bottom: 10px;
-  }
-}
-
+    .resume-render-wrapper {
+        position: fixed;
+        top: 70px;
+        bottom: 0;
+        max-width: 60%;
+        overflow-y: scroll;
+        display: inline;
+        * {
+            font-size: 14px;
+             padding: 0;
+            margin: 0;
+        }
+        .resume-template {
+            font-family: "Calibri", sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+            background: #fff;
+            padding: 20px;
+        }
+        .main img {
+            height: 150px;
+            width: 150px;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .inline-block {
+            display: inline-block;
+        }
+        table {
+            padding: 15px;
+            width: 100%;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+        .w-10 {
+            width: 10%;
+        }
+        .w-20 {
+            width: 20%;
+        }
+        .w-30 {
+            width: 30%;
+        }
+        .w-40 {
+            width: 40%;
+        }
+        .w-50 {
+            width: 50%;
+        }
+        .w-60 {
+            width: 60%;
+        }
+        .w-70 {
+            width: 70%;
+        }
+        .w-80 {
+            width: 80%;
+        }
+        .w-90 {
+            width: 90%;
+        }
+        .w-100 {
+            width: 100%;
+        }
+        .intro {
+            padding: 0 20px;
+        }
+        .intro h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .intro p {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .section-header {
+            border-bottom: solid 3px #666666;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .section th {
+            text-align: left;
+            padding: 10px;
+        }
+        .section td {
+            padding: 10px;
+        }
+        .list li {
+            list-style-type: disc;
+            margin-bottom: 10px;
+        }
+    }
 </style>
