@@ -16,7 +16,7 @@
             <div class="column is-half card" v-for="i in 6" :key="i">
               <div class="card-content">
                 <figure class="image is-square">
-                  <img src="../resume1.png">
+                  <img src="../resume/resume1.png">
                 </figure>
               </div>
               <footer class="card-footer">
