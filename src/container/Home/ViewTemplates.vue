@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="view-templates-page">
 
-    <div class="box">
+    <div class="">
       <span class="title is-2"> Choose your Template...</span>
       <div class="columns is-multiline">
         <div class="column is-half">
@@ -90,7 +90,7 @@
         </div>
       </div>
     </div>
-    <div class="box">
+    <div class="">
       <span class="title is-2"> Choose your Template...</span>
       <div class="columns is-multiline">
         <div class="column is-one-third" v-for="i in 5" :key="5">
@@ -137,15 +137,16 @@ export default {
   .box {
     padding: 0;
     padding-top: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     .title {
       padding-left: 1rem;
     }
   }
   .columns {
-    padding: 1rem;
+    padding-top: 1rem;
     margin-bottom: 2rem;
+  }
+  .card {
+    box-shadow: 2px 3px 15px #fff;;
   }
   .card-content {
     padding: .5rem;

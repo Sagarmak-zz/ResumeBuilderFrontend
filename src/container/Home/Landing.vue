@@ -77,7 +77,7 @@ export default {
 <style lang="scss">
 .landing {
 
-  margin: 1rem;
+  // margin: 1rem;
 
   .add-button {
     box-shadow: none;

@@ -32,5 +32,10 @@ export default {
 </script>
 
 <style lang="scss">
-.home {}
+.home {
+  .container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
 </style>
