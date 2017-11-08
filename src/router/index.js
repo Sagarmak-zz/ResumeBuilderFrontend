@@ -47,8 +47,9 @@ let router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  // console.log('Router.beforeEach', to);
-  if(to.matched.some(record => record.meta.requiresAuth)) {
+  if(to.matched.some(record => record.meta.requiresAuth))
+  {
+    // console.log('Login', to);
     if(!Auth.isAuthenticated()) {
       next({
         name: 'Login'
@@ -58,16 +59,20 @@ router.beforeEach((to, from, next) => {
       next();  // make sure to always call next()!
     }
   }
-  // else if (to.matched.some(record => record.meta.requiresAuth)) {
-  //   if(Auth.isAuthenticated()) {
-  //     next({
-  //       name: 'Landing'
-  //     })
-  //   }
-  //   else {
-  //     next();  // make sure to always call next()!
-  //   }
-  // }
+  else if (to.matched.some(record => {
+    // console.log(record);
+    return !record.meta.requiresAuth
+  }))
+  {
+    if(Auth.isAuthenticated()) {
+      next({
+        name: 'Landing'
+      })
+    }
+    else {
+      next();  // make sure to always call next()!
+    }
+  }
   else {
     next();  // make sure to always call next()!
   }

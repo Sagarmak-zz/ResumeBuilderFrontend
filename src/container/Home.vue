@@ -10,15 +10,27 @@
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar';
-  export default {
-    name: 'navbar',
-    components: {
-      Navbar
+import Navbar from '@/components/Navbar';
+import Auth from '@/packages/auth/Auth';
+export default {
+  name: 'navbar',
+  created() {
+    this.$bus.$on('logout', () => {
+      Auth.destroyToken();
+      this.redirect();
+    })
+  },
+  methods: {
+    redirect() {
+      this.$router.push({ name: 'Login' });
     }
-  }
+  },
+  components: {
+    Navbar
+  },
+}
 </script>
 
 <style lang="scss">
-  .home {}
+.home {}
 </style>

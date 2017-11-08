@@ -185,7 +185,7 @@
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
-                <a class="button">
+                <a class="button" @click="logout()">
                   <span class="icon">
                     <i class="fa fa-download"></i>
                   </span>
@@ -203,6 +203,13 @@
 
 <script>
 export default {
+  name: 'navbar',
+
+  methods: {
+    logout() {
+      this.$bus.$emit('logout');
+    }
+  }
 }
 </script>
 
