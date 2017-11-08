@@ -3,7 +3,7 @@ import App from './App'
 import router from './router'
 
 import 'bulma/css/bulma.css';
-
+Vue.prototype.$bus = new Vue();
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

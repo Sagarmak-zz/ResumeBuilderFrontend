@@ -38,12 +38,13 @@
 
       <div class="column is-one-third flex-apply">
         <div class="card add-button">
-          <a class="button is-large">
+          <a class="button is-large" @click="showViewtemplate = true">
             <span class="icon is-large">
               <i class="fa fa-2x fa-plus-circle"></i>
             </span>
             <span class="add title is-2">Add</span>
           </a>
+          <ViewTemplates v-if="showViewtemplate" @close="showViewtemplate = false"></ViewTemplates>
         </div>
       </div>
 
@@ -53,8 +54,23 @@
 </template>
 
 <script>
+import ViewTemplates from '@/components/ViewTemplates';
 export default {
-
+  name: 'landing',
+  created() {
+    // this.$bus.$on('close', () => {
+    //   this.showViewtemplate = false;
+    //   console.log('called');
+    // })
+  },
+  data() {
+    return {
+      showViewtemplate: false,
+    }
+  },
+  components: {
+    ViewTemplates
+  }
 }
 </script>
 
@@ -67,10 +83,9 @@ export default {
     box-shadow: none;
   }
 
-  .button {
+  .button.is-large {
     padding: 5rem;
     border: solid 2px #ddd;
-
   }
 
   .flex-apply {
