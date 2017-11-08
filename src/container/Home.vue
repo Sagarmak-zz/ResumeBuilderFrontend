@@ -17,7 +17,7 @@ import Navbar from '@/components/Navbar';
 
 export default {
 
-  name: 'navbar',
+  name: 'home',
 
   components: {
     Navbar

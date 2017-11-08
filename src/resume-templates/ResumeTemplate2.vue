@@ -1,11 +1,12 @@
 <template lang="html">
 
+<div>
     <div class="resume-render-wrapper">
-      <div class="resume-template">
-	    <div class="wrapper">
+
+    <div class="wrapper">
 
         <div class="header">
-            <h1>{{resume.info.name}}</h1>
+            <h1>Emma Burton</h1>
             <p>
                 Software Developer
             </p>
@@ -15,17 +16,18 @@
         <table class="section-intro">
             <tr>
                 <td><b>Full Name</b></td>
-                <td>{{resume.info.name}}</td>
-                <td><b>DOB</b></td>
-                <td>{{resume.info.dob}}</td>
+                <td>Emma Grace Burton</td>
+                <td><b>DOB </b></td>
+                <td>20/10/1990</td>
             </tr>
 
             <tr>
                 <td><b>Address</b></td>
-                <td>{{resume.info.address}}</td>
+                <td>1234, Avallenado St.</td>
                 <td><b>Email</b></td>
-                <td>{{resume.info.email}}</td>
+                <td>Eliserawnsleye@gmail.com</td>
             </tr>
+
             <tr>
                 <td><b>Website</b></td>
                 <td>www.eliserawnsleye.com</td>
@@ -38,19 +40,34 @@
         <table>
             <div class="head-down-border-left"></div>
             <div class="head-down-border-right"></div>
-
             <tr>
                 <td class="td">
-                    <b><p class="section-header">WORK EXPERIENCE</p></b>
+                    <b><p class="section-header">WORK EXPERIENCE></p></b>
                 </td>
                 <td>
                     <table class="margin">
                         <tr>
-                            <th>resume.internship.start-resume.internship.e</th>
+                            <th>11/2012-Present</th>
                             <td>
-                                <b><p>resume.internship.name</p></b>
-                                <p>resume.internship.guide</p>
-                                <p>resume.internship.description</p>
+                                <b><p>Heylex Manufacturing Corporation</p></b>
+                                <p>Project Intern</p>
+                                <p>Developed simulation models for the company's product line</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>02/2012-10/2012</th>
+                            <td>
+                                <b><p>Holden University of Applied Science</p></b>
+                                <p>Graduate Research Assistant</p>
+                                <p>Assisted a professor in preparing materials for a course in quality process and improvement</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>05/2011-01/2012</th>
+                            <td>
+                                <b><p>Vertex Microsystems</p></b>
+                                <p>Engineering Trainee</p>
+                                <p>Assisted a professor in preparing materials for a course in quality process and improvement</p>
                             </td>
                         </tr>
                     </table>
@@ -69,11 +86,19 @@
                <td>
                    <table class="margin">
                        <tr>
-                            <th>project.start-project.end</th>
+                            <th>11/2012-Present</th>
                             <td>
-                                <b><p>project.name</p></b>
-                                <p>Guide : project.guide</p>
-                                <p>project.description</p>
+                                <b><p>Heylex Manufacturing Corporation</p></b>
+                                <p>Guide : <span>Professor X. Y</span></p>
+                                <p>Developed simulation models for the company's product line</p>
+                            </td>
+                        </tr>
+                        <tr>
+                        <th>01/2007-01/2012</th>
+                            <td>
+                                <b><p>Holden University of Applied Science</p></b>
+                                <p>Guide : <span>Professor X. Y</span></p>
+                                <p>Assisted a professor in preparing materials for a course in quality process and improvement</p>
                             </td>
                         </tr>
                    </table>
@@ -92,11 +117,27 @@
                <td>
                    <table class="margin">
                        <tr>
-                            <th>degree.year</th>
+                            <th>11/2012-Present</th>
                             <td>
-                                <b><p>degree.name</p></b>
-                                <p>degree.institute</p>
-                                <p>CGPA - degree.score</p>
+                                <b><p>Product Design Certification</p></b>
+                                <p>Industrial Design and Marketing Institute of both</p>
+                                <p>CGPA - 3.78</p>
+                            </td>
+                        </tr>
+                        <tr>
+                        <th>01/2007-01/2012</th>
+                            <td>
+                                <b><p>Bachelor of Science in Marketing</p></b>
+                                <p>Holden University of Applied Science</p>
+                                <p>CGPA - 3.78</p>
+                            </td>
+                        </tr>
+                        <tr>
+                        <th>01/2007-01/2012</th>
+                            <td>
+                                <b><p>Bachelor of Science in Marketing</p></b>
+                                <p>Holden University of Applied Science</p>
+                                <p>CGPA - 3.78</p>
                             </td>
                         </tr>
                    </table>
@@ -131,10 +172,10 @@
         </table>
 
         <div class="footer"></div>
-    </div>
-    </div>
-    </div>
 
+        </div>
+    </div>
+</div>
 
 </template>
 
@@ -217,31 +258,31 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 
-.resume-template{
-    padding: 20px;
-    position: fixed;
-    top: 90px;
-    bottom: 0;
-    overflow-y: scroll;
-    display: inline;
+.resume-render-wrapper {
+
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  overflow-y: scroll;
+  display: inline;
 }
 
-*{
+* {
+    font-size: 14px;
     padding: 0;
     margin: 0;
+  }
+
+.wrapper {
+    font-family: "Calibri", sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    background: #fff;
+    padding: 30px;
 }
 
-body {
-    font-family: "Calibri";
-    font-stretch: condensed;
-    font-size: 16px;
-    line-height: 1.5;
-    background-color: white;
-    margin:20px;
-    padding:20px;
-}
 
 .header{
         font-family: "ISOCTEUR";
@@ -253,17 +294,16 @@ body {
         text-align: center;
 }
 
-.header h1{
-    font-size: 36px;
-}
 .header p{
     font-size: 18px;
 }
+
 .footer{
         background-color:#A7ADFD;
         height:70%;
         padding:40px;
 }
+
 h1{
     font-size: 52px;
 }
@@ -291,9 +331,9 @@ td{
 .head-down-border-left{
     border-bottom: solid 3px;
     border-color: #A7ADFD;
-    //margin-left: 70px;
+    margin-left: 70px;
     border-radius: 1px;
-    //max-width: 12%;
+    max-width: 12%;
 }
 .head-down-border-right{
     border-bottom: solid 3px;
@@ -301,11 +341,6 @@ td{
     margin-left: 270px;
     border-radius: 1px;
     max-width: 70%;
-}
-
-.wrapper {
-    margin: auto;
-    background-color:white;
 }
 
 .section-header{

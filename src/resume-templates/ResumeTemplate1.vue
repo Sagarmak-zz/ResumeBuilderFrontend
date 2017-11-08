@@ -211,7 +211,7 @@
 
 <script>
 export default {
-  name: 'resume-template',
+  name: 'resume-template1',
 
   //props: ['resume'],
 
@@ -293,13 +293,12 @@ export default {
 <style lang="scss">
 
 .resume-render-wrapper {
-  padding: 20px;
+
   position: fixed;
-  top: 55px;
+  top: 70px;
   bottom: 0;
   overflow-y: scroll;
   display: inline;
-
 
   * {
     font-size: 14px;
@@ -312,7 +311,7 @@ export default {
     font-size: 12px;
     line-height: 1.5;
     background: #fff;
-    padding: 40px;
+    padding: 30px;
   }
 
   .main img {
