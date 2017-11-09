@@ -63,6 +63,13 @@ export default {
     }
   },
 
+  created() {
+    // window.axios.get('https://jsonplaceholder.typicode.com/posts')
+    // .then((response) => {
+    //   console.log(response.data);
+    // })
+  },
+
   methods: {
     redirect() {
       this.$router.push({ name: 'Landing' });

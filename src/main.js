@@ -8,6 +8,26 @@ Vue.use(Auth);
 Vue.prototype.$bus = new Vue();
 Vue.prototype.$Auth = new Vue();
 Vue.config.productionTip = false
+import axios from 'axios';
+import Config from './config';
+
+// Make Auth methods available globally
+Object.defineProperties(Vue.prototype, {
+  $auth: {
+    get() {
+      return Auth;
+    }
+  }
+});
+
+
+// Make Axios globally available
+window.axios = axios.create({
+  baseURL: Config.get('apiUrl'),
+  params: {
+    token: Config.get('token')
+  }
+});
 
 /* eslint-disable no-new */
 new Vue({

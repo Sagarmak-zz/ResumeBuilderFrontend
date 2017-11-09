@@ -11,12 +11,11 @@
 
 <script>
 import Navbar from '@/components/Navbar';
-import Auth from '@/packages/auth/Auth';
 export default {
   name: 'navbar',
   created() {
     this.$bus.$on('logout', () => {
-      Auth.destroyToken();
+      this.$auth.destroyToken();
       this.redirect();
     })
   },
