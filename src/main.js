@@ -20,15 +20,6 @@ Object.defineProperties(Vue.prototype, {
   }
 });
 
-
-// Make Axios globally available
-window.axios = axios.create({
-  baseURL: Config.get('apiUrl'),
-  params: {
-    token: Config.get('token')
-  }
-});
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
