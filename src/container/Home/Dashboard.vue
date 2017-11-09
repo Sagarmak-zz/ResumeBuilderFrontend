@@ -9,7 +9,7 @@
           <resume-template1 :resume="resume"></resume-template1>
         </div> -->
         <div class="column is-8">
-          <resume-template2></resume-template2>
+          <resume-template3></resume-template3>
         </div>
       </div>
     </div>
@@ -20,13 +20,15 @@
   import Sidebar from "@/components/Sidebar";
   import ResumeTemplate1 from "@/resume-templates/ResumeTemplate1";
   import ResumeTemplate2 from "@/resume-templates/ResumeTemplate2";
+  import ResumeTemplate3 from "@/resume-templates/ResumeTemplate3";
 
   export default {
     name: "home",
     components: {
       Sidebar,
       ResumeTemplate1,
-      ResumeTemplate2
+      ResumeTemplate2,
+      ResumeTemplate3
     },
     data() {
       return {

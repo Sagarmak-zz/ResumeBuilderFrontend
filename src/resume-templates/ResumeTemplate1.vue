@@ -13,11 +13,11 @@
                         </p>
                         <p>
                             <span class="w-60 inline-block">
-                                    <b>Email:</b> {{ resume.info.email }}
-                                </span>
+                                        <b>Email:</b> {{ resume.info.email }}
+                                    </span>
                             <span class="w-40 text-right">
-                                    <b>DOB:</b> {{ resume.info.dob }}
-                                </span>
+                                        <b>DOB:</b> {{ resume.info.dob }}
+                                    </span>
                         </p>
                         <p>
                             <b>Address:</b> {{ resume.info.address }}
@@ -61,7 +61,7 @@
                 <tr v-if="true">
                     <td class="w-30">
                         <b>Expertise Area/Area(s) of
-                                Interest</b>
+                                    Interest</b>
                     </td>
                     <td class="w-70">
                         {{ resume.skill.expertise }}
@@ -78,7 +78,7 @@
                 <tr v-if="true">
                     <td class="w-30">
                         <b>Tools and
-                                Technologies</b>
+                                    Technologies</b>
                     </td>
                     <td class="w-70">
                         {{ resume.skill.tools }}
@@ -212,97 +212,95 @@
         overflow-y: scroll;
         display: inline;
     }
-
-        * {
-            font-size: 14px;
-            padding: 0;
-            margin: 0;
-        }
-        .resume-template {
-            font-family: "Calibri", sans-serif;
-            font-size: 12px;
-            line-height: 1.5;
-            background: #fff;
-            padding: 20px;
-        }
-        .main img {
-            height: 150px;
-            width: 150px;
-        }
-        .text-right {
-            text-align: right;
-        }
-        .inline-block {
-            display: inline-block;
-        }
-        table {
-            padding: 15px;
-            width: 100%;
-        }
-        .page-break {
-            page-break-after: always;
-        }
-        .w-10 {
-            width: 10%;
-        }
-        .w-20 {
-            width: 20%;
-        }
-        .w-30 {
-            width: 30%;
-        }
-        .w-40 {
-            width: 40%;
-        }
-        .w-50 {
-            width: 50%;
-        }
-        .w-60 {
-            width: 60%;
-        }
-        .w-70 {
-            width: 70%;
-        }
-        .w-80 {
-            width: 80%;
-        }
-        .w-90 {
-            width: 90%;
-        }
-        .w-100 {
-            width: 100%;
-        }
-        .intro {
-            padding: 0 20px;
-        }
-        .intro h1 {
-            font-size: 2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .intro p {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-        .section-header {
-            border-bottom: solid 3px #666666;
-            margin-bottom: 20px;
-        }
-        .section {
-            margin-top: 20px;
-        }
-        .section th {
-            text-align: left;
-            padding: 10px;
-        }
-        .section td {
-            padding: 10px;
-        }
-        .list li {
-            list-style-type: disc;
-            margin-bottom: 10px;
-        }
-
+    * {
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+    }
+    .resume-template {
+        font-family: "Calibri", sans-serif;
+        font-size: 12px;
+        line-height: 1.5;
+        background: #fff;
+        padding: 20px;
+    }
+    .main img {
+        height: 150px;
+        width: 150px;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .inline-block {
+        display: inline-block;
+    }
+    table {
+        padding: 15px;
+        width: 100%;
+    }
+    .page-break {
+        page-break-after: always;
+    }
+    .w-10 {
+        width: 10%;
+    }
+    .w-20 {
+        width: 20%;
+    }
+    .w-30 {
+        width: 30%;
+    }
+    .w-40 {
+        width: 40%;
+    }
+    .w-50 {
+        width: 50%;
+    }
+    .w-60 {
+        width: 60%;
+    }
+    .w-70 {
+        width: 70%;
+    }
+    .w-80 {
+        width: 80%;
+    }
+    .w-90 {
+        width: 90%;
+    }
+    .w-100 {
+        width: 100%;
+    }
+    .intro {
+        padding: 0 20px;
+    }
+    .intro h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .intro p {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .section-header {
+        border-bottom: solid 3px #666666;
+        margin-bottom: 20px;
+    }
+    .section {
+        margin-top: 20px;
+    }
+    .section th {
+        text-align: left;
+        padding: 10px;
+    }
+    .section td {
+        padding: 10px;
+    }
+    .list li {
+        list-style-type: disc;
+        margin-bottom: 10px;
+    }
 </style>

@@ -33,16 +33,17 @@
         </table>
 
         <!-- work experience -->
+        <div class="head-down-border-left"></div>
+        <div class="head-down-border-right"></div>
+
         <table>
-            <div class="head-down-border-left"></div>
-            <div class="head-down-border-right"></div>
             <tr>
                 <td class="td">
                     <b><p class="section-header">WORK EXPERIENCE</p></b>
                 </td>
                 <td>
                     <table class="margin">
-                        <tr v-for="item in resume.internship">
+                        <tr v-for="(item,i) in resume.internship" :key="i">
                             <th>{{ item.start }}-{{ item.end }}</th>
                             <td>
                                 <b><p>{{ item.name }}</p></b>
@@ -56,16 +57,17 @@
         </table>
 
         <!-- Projects -->
+        <div class="head-down-border-left"></div>
+        <div class="head-down-border-right"></div>
+
         <table>
-            <div class="head-down-border-left"></div>
-            <div class="head-down-border-right"></div>
            <tr>
                <td class="td">
                    <b><p class="section-header">PROJECTS</p></b>
                </td>
                <td>
                    <table class="margin">
-                       <tr v-for="item in resume.project">
+                       <tr v-for="(item,i) in resume.project" :key="i">
                             <th>{{ item.start }}-{{ item.end }}</th>
                             <td>
                                 <b><p>{{ item.name }}</p></b>
@@ -79,16 +81,17 @@
         </table>
 
         <!-- Education -->
+        <div class="head-down-border-left"></div>
+        <div class="head-down-border-right"></div>
+
         <table>
-            <div class="head-down-border-left"></div>
-            <div class="head-down-border-right"></div>
            <tr>
                <td class="td">
                    <b><p class="section-header">EDUCATION</p></b>
                </td>
                <td>
                    <table class="margin">
-                       <tr v-for="item in resume.degree">
+                       <tr v-for="(item,i) in resume.degree" :key="i">
                             <th>{{ item.year }}</th>
                             <td>
                                 <b><p>{{ item.name }}</p></b>
@@ -102,9 +105,10 @@
         </table>
 
         <!-- Skills -->
+        <div class="head-down-border-left"></div>
+        <div class="head-down-border-right"></div>
+
         <table>
-            <div class="head-down-border-left"></div>
-            <div class="head-down-border-right"></div>
             <tr>
                 <th class="section-header">Skills</th>
                 <th></th>
@@ -201,12 +205,12 @@ export default {
 }
 
 .wrapper {
-            font-family: "Calibri", sans-serif;
-            font-size: 12px;
-            line-height: 1.5;
-            background: #fff;
-            padding: 20px;
-        }
+        font-family: "Calibri", sans-serif;
+        font-size: 12px;
+        line-height: 1.5;
+        background: #fff;
+        padding: 20px;
+}
 
 * {
     padding: 0;
@@ -236,11 +240,13 @@ body {
 .header p{
     font-size: 18px;
 }
+
 .footer{
         background-color:#A7ADFD;
         height:70%;
         padding:40px;
 }
+
  h1{
     font-size: 52px;
 }
@@ -252,12 +258,14 @@ table{
     text-align: left;
     align-self: center;
 }
+
 th{
     vertical-align: top;
     width: 10%;
     padding-right: 60px;
     text-transform: uppercase;
 }
+
 td{
     vertical-align: top;
     padding-top: 0px;
@@ -288,10 +296,10 @@ td{
 .section-header{
     font-family:"ISOCTEUR";
     font-size: 18px;
-
 }
+
 .section-intro{
-        font-size: 18px;
+    font-size: 18px;
 }
 
 .section-intro td{
