@@ -203,7 +203,7 @@
 </script>
 
 
-<style lang="scss">
+<style scoped lang="scss">
     .resume-render-wrapper {
         position: fixed;
         top: 70px;
@@ -211,9 +211,11 @@
         max-width: 60%;
         overflow-y: scroll;
         display: inline;
+    }
+
         * {
             font-size: 14px;
-             padding: 0;
+            padding: 0;
             margin: 0;
         }
         .resume-template {
@@ -302,5 +304,5 @@
             list-style-type: disc;
             margin-bottom: 10px;
         }
-    }
+
 </style>

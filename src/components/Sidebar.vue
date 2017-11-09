@@ -70,7 +70,7 @@
 									</div>
 								</div>
 
-								<a class="button is-danger" @click="removeDegree()">
+								<a class="button is-danger" @click="removeDegree(i)">
 										<span class="icon">
 											<i class="fa fa-minus-circle"></i>
 										</span>
@@ -168,7 +168,7 @@
 									</div>
 								</div>
 
-								<a class="button is-danger" @click="removeInternship()">
+								<a class="button is-danger" @click="removeInternship(i)">
 										<span class="icon">
 											<i class="fa fa-minus-circle"></i>
 										</span>
@@ -232,7 +232,7 @@
 										placeholder="Text input" v-model="resume.project[i].team_size">
 									</div>
 								</div>
-								<a class="button is-danger" @click="removeProject()">
+								<a class="button is-danger" @click="removeProject(i)">
 										<span class="icon">
 											<i class="fa fa-minus-circle"></i>
 										</span>

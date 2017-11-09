@@ -5,8 +5,11 @@
         <div class="column is-4">
           <sidebar :resume="resume"></sidebar>
         </div>
-        <div class="column is-8">
+        <!-- <div class="column is-8">
           <resume-template1 :resume="resume"></resume-template1>
+        </div> -->
+        <div class="column is-8">
+          <resume-template2></resume-template2>
         </div>
       </div>
     </div>
@@ -16,11 +19,14 @@
 <script>
   import Sidebar from "@/components/Sidebar";
   import ResumeTemplate1 from "@/resume-templates/ResumeTemplate1";
+  import ResumeTemplate2 from "@/resume-templates/ResumeTemplate2";
+
   export default {
     name: "home",
     components: {
       Sidebar,
       ResumeTemplate1,
+      ResumeTemplate2
     },
     data() {
       return {
