@@ -5,8 +5,9 @@
         <div class="column is-4">
           <Sidebar :resume="resume"></Sidebar>
         </div>
-        <div class="column">
-
+        <div class="column resume-template1">
+          <Resume></Resume>
+          <!-- <ResumeTemplate :resume="resume"></ResumeTemplate> -->
         </div>
       </div>
     </div>
@@ -15,6 +16,8 @@
 
 <script>
 import Sidebar from '@/components/Sidebar';
+import Resume from '@/components/Resume1';
+import ResumeTemplate from '@/components/ResumeTemplate1';
 export default {
   name: 'dashboard',
   data() {
@@ -68,7 +71,9 @@ export default {
   },
 
   components: {
-    Sidebar
+    Sidebar,
+    Resume,
+    ResumeTemplate
   }
 
 }
@@ -80,5 +85,13 @@ export default {
   .box {
 
   }
+
+
+  .resume-template1 {
+      // background-color: white;
+      margin-top: .7rem;
+      border: solid 1px #ddd;
+  }
+
 }
 </style>

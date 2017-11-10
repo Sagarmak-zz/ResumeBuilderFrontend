@@ -81,8 +81,9 @@ export default {
 <style lang="scss">
 .login {
 
-  min-height: 100%;
-  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+  // min-height: 100%;
+  // background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+  background-image: linear-gradient(260deg, #2376ae 0%, #ffffff 100%);
 
   .container {
     padding: 1em;
