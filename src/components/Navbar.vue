@@ -4,7 +4,7 @@
     <nav class="navbar is-primary">
 
       <div class="navbar-brand">
-        <a class="navbar-item">
+        <a class="navbar-item" @click="redirect()">
           <span class="title">ResumeBuilder</span>
         </a>
 
@@ -45,6 +45,9 @@ export default {
   methods: {
     logout() {
       this.$bus.$emit('logout');
+    },
+    redirect() {
+      this.$router.push({ name: 'Landing' });
     }
   }
 }

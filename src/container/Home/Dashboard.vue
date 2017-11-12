@@ -6,8 +6,9 @@
           <Sidebar :resume="resume"></Sidebar>
         </div>
         <div class="column resume-template1">
-          <Resume></Resume>
+          <!-- <Resume></Resume> -->
           <!-- <ResumeTemplate :resume="resume"></ResumeTemplate> -->
+          <!-- <Resume2></Resume2> -->
         </div>
       </div>
     </div>
@@ -18,6 +19,7 @@
 import Sidebar from '@/components/Sidebar';
 import Resume from '@/components/Resume1';
 import ResumeTemplate from '@/components/ResumeTemplate1';
+import Resume2 from '@/components/Resume2';
 export default {
   name: 'dashboard',
   data() {
@@ -73,7 +75,8 @@ export default {
   components: {
     Sidebar,
     Resume,
-    ResumeTemplate
+    ResumeTemplate,
+    Resume2
   }
 
 }
@@ -82,15 +85,11 @@ export default {
 <style lang="scss">
 .dashboard {
 
-  .box {
-
-  }
-
-
   .resume-template1 {
       // background-color: white;
       margin-top: .7rem;
       border: solid 1px #ddd;
+      min-height: 85vh;
   }
 
 }
