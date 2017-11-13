@@ -1,5 +1,5 @@
 <template lang="html">
-	<div class="resume2">
+	<div class="resume3">
 
 		<div class="mainDetails">
 
@@ -102,12 +102,12 @@
 
 <script>
 export default {
-	name: 'resume2'
+	name: 'resume3'
 }
 </script>
 
 <style lang="scss">
-.resume2 {
+.resume3 {
 
 	article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
 		display:block;

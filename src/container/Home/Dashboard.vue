@@ -7,8 +7,9 @@
         </div>
         <div class="column resume-template1">
           <!-- <Resume1 :resume="resume"></Resume1> -->
-          <!-- <Resume2></Resume2> -->
+          <!-- <Resume2></Resume2>s -->
           <!-- <Resume3></Resume3> -->
+          <!-- <Resume4></Resume4> -->
         </div>
       </div>
     </div>
@@ -20,6 +21,7 @@ import Sidebar from '@/components/Sidebar';
 import Resume1 from '@/components/Resume1';
 import Resume2 from '@/components/Resume2';
 import Resume3 from '@/components/Resume3';
+import Resume4 from '@/components/Resume4';
 export default {
   name: 'dashboard',
   data() {
@@ -76,7 +78,8 @@ export default {
     Sidebar,
     Resume1,
     Resume2,
-    Resume3
+    Resume3,
+    Resume4
   }
 
 }

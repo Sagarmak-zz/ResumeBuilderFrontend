@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="resume1">
+  <div class="resume2">
     <article>
 
       <header>
@@ -76,12 +76,12 @@
 
   <script>
   export default {
-    name: 'resume1',
+    name: 'resume2',
   }
   </script>
 
   <style lang="scss">
-  .resume1 {
+  .resume2 {
 
     @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
 

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="resume-render-wrapper">
-    <div class="resume-template">
+    <div class="resume1">
       <table class="main">
         <tr>
           <!-- <td class="w-20">
@@ -197,7 +197,7 @@
 
   <script>
   export default {
-    name: 'resume-template1',
+    name: 'resume1',
     props: ['resume'],
   }
   </script>
