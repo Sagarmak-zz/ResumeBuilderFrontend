@@ -64,7 +64,7 @@
                                     Interest</b>
                     </td>
                     <td class="w-70">
-                        {{ resume.skill.expertise }}
+                        {{ resume.skill[0].expertise }}
                     </td>
                 </tr>
                 <tr v-if="true">
@@ -72,7 +72,7 @@
                         <b>Programming Language(s)</b>
                     </td>
                     <td class="w-70">
-                        {{ resume.skill.programming_languages }}
+                        {{ resume.skill[0].programming_languages }}
                     </td>
                 </tr>
                 <tr v-if="true">
@@ -81,7 +81,7 @@
                                     Technologies</b>
                     </td>
                     <td class="w-70">
-                        {{ resume.skill.tools }}
+                        {{ resume.skill[0].tools }}
                     </td>
                 </tr>
                 <tr v-if="true">
@@ -89,7 +89,7 @@
                         <b>Technical Electives</b>
                     </td>
                     <td class="w-70">
-                        {{ resume.skill.technical_electives }}
+                        {{ resume.skill[0].technical_electives }}
                     </td>
                 </tr>
             </table>

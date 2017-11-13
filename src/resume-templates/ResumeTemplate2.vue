@@ -1,319 +1,243 @@
 <template>
-<div class="resume-render-wrapper ">
-  <div class="wrapper">
+        <article>
 
-        <div class="header">
-            <h1>Emma Burton</h1>
-            <p>
-                Software Developer
-            </p>
-        </div>
+                  <header>
+                    <!-- force flexbox to keep name on a single line -->
+                    <h1>{{ resume.info.name }}</h1>
+                    <p>resume.info.profession</p>
+                    <p>resume.info.phone</p>
+                    <p>{{ resume.info.dob }}</p>
+                    <p>{{ resume.info.email }}</p>
+                    <p>{{ resume.info.address }}</p>
 
-        <!-- intro -->
-        <table class="section-intro">
-            <tr>
-                <td><b>Full Name</b></td>
-                <td>{{ resume.info.name }}</td>
-                <td><b>DOB</b></td>
-                <td>{{ resume.info.dob }}</td>
-            </tr>
+                  </header>
 
-            <tr>
-                <td><b>Address</b></td>
-                <td>{{ resume.info.address }}.</td>
-                <td><b>Email</b></td>
-                <td>{{ resume.info.email }}</td>
-            </tr>
-            <tr>
-                <td><b>Website</b></td>
-                <td>resume.info.website</td>
-                <td><b>Phone</b></td>
-                <td>resume.info.phone</td>
-            </tr>
-        </table>
+                  <div class="one-col">
 
-        <!-- work experience -->
-        <div class="head-down-border-left"></div>
-        <div class="head-down-border-right"></div>
+                    <section>
+                      <h2>EXPERIENCE</h2>
 
-        <table>
-            <tr>
-                <td class="td">
-                    <b><p class="section-header">WORK EXPERIENCE</p></b>
-                </td>
-                <td>
-                    <table class="margin">
-                        <tr v-for="(item,i) in resume.internship" :key="i">
-                            <th>{{ item.start }}-{{ item.end }}</th>
-                            <td>
-                                <b><p>{{ item.name }}</p></b>
-                                <p> item.position </p>
-                                <p>{{ item.description }}</p>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+                      <ul v-for="(item,i) in resume.internship" :key="i">
+                        <h3><strong>{{ item.name }}</strong>{{ item.start }} - {{ item.end }}</h3>
+                        <li>{{ item.description }}</li>
+                      </ul>
 
-        <!-- Projects -->
-        <div class="head-down-border-left"></div>
-        <div class="head-down-border-right"></div>
+                    </section>
 
-        <table>
-           <tr>
-               <td class="td">
-                   <b><p class="section-header">PROJECTS</p></b>
-               </td>
-               <td>
-                   <table class="margin">
-                       <tr v-for="(item,i) in resume.project" :key="i">
-                            <th>{{ item.start }}-{{ item.end }}</th>
-                            <td>
-                                <b><p>{{ item.name }}</p></b>
-                                <p>Guide : <span>{{ item.guide }}</span></p>
-                                <p>{{ item.description }}</p>
-                            </td>
-                        </tr>
-                   </table>
-               </td>
-           </tr>
-        </table>
+                    <section>
+                      <h2>POSITION OF RESPONSIBILITY</h2>
 
-        <!-- Education -->
-        <div class="head-down-border-left"></div>
-        <div class="head-down-border-right"></div>
+                      <ul v-for="(item,i) in resume.position" :key="i">
+                        <h3><strong>{{ item.name }}</strong></h3>
+                      </ul>
 
-        <table>
-           <tr>
-               <td class="td">
-                   <b><p class="section-header">EDUCATION</p></b>
-               </td>
-               <td>
-                   <table class="margin">
-                       <tr v-for="(item,i) in resume.degree" :key="i">
-                            <th>{{ item.year }}</th>
-                            <td>
-                                <b><p>{{ item.name }}</p></b>
-                                <p>{{ item.institute }}</p>
-                                <p>CGPA - {{ item.score }}</p>
-                            </td>
-                        </tr>
-                   </table>
-               </td>
-           </tr>
-        </table>
+                    </section>
 
-        <!-- Skills -->
-        <div class="head-down-border-left"></div>
-        <div class="head-down-border-right"></div>
+                    <section>
+                      <h2>ACHIEVEMENTS</h2>
 
-        <table>
-            <tr>
-                <th class="section-header">Skills</th>
-                <th></th>
-                <td>
-                    <ul>
-                        <li>Accounting</li>
-                        <li>Brand Management</li>
-                        <li>Quality Improvement</li>
-                        <li>Computer Software</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>Data Consolidation</li>
-                        <li>Research</li>
-                        <li>Statistics Interpretation</li>
-                        <li>Costing</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+                      <ul v-for="(item,i) in resume.award" :key="i">
+                        <h3><strong>{{ item.name }}</strong></h3>
+                      </ul>
 
-        <div class="footer"></div>
-    </div>
-</div>
+                    </section>
+
+                    <div class="two-col">
+                      <section>
+                        <h2>EDUCATION</h2>
+
+                        <ol v-for="(item,i) in resume.degree" :key="i">
+                          <li> {{ item.name }} <strong> {{ item.institute }} </strong></li>
+                        </ol>
+
+                      </section>
+
+                      <section>
+                        <h2>SKILLS</h2>
+
+                        <ul>
+                          <li>Accomplished storyteller</li>
+                          <li>Excellent writing ability</li>
+                          <li>Works well with people</li>
+                          <li>Moderate abolitionist</li>
+                          <li>Only US president to own a patent, Only US president to own a patent Only US president to own a patent</li>
+                        </ul>
+
+                      </section>
+                    </div>
+                  </div>
+        </article>
+</html>
 </template>
 
 <script>
-export default {
-  name: 'resume-template2',
-
-  data() {
-      return {
-        resume: {
-          info: {
-            name: "Local Dummy",
-            email: "dummy@email.com",
-            dob: "1/1/1995",
-            address: "123/1, Gandhinagar"
-          },
-          degree: [{
-            name: "MSc IT",
-            institute: "DAIICT",
-            year: "2018",
-            score: "8.0"
-          }],
-          skill: {
-            expertise: "Web Developement",
-            programming_languages: "Javascript",
-            tools: "Postman",
-            technical_electives: "Cloud"
-          },
-          internship: [{
-            name: "Road Inspector",
-            description: "Cross platform application",
-            start: "1/7/2017",
-            end: "1/9/2017",
-            team_size: "5",
-            guide: "Lavguru"
-          }],
-          project: [{
-            name: "Road Inspector",
-            description: "Cross platform application",
-            start: "1/7/2017",
-            end: "1/9/2017",
-            team_size: "5",
-            guide: "Lavguru"
-          }],
-          position: [{
-            name: "Project Leader"
-          }],
-          award: [{
-            name: "Nope"
-          }],
-          hobby: [{
-            name: "TV Series"
-          }]
-        }
-      };
+    export default {
+        name: 'resume-template2',
+        props: ['resume'],
     }
-};
-
 </script>
 
 
 <style scoped>
-.resume-render-wrapper {
-        position: fixed;
-        top: 70px;
-        bottom: 0;
-        max-width: 60%;
-        overflow-y: scroll;
-        display: inline;
-}
 
-.wrapper {
-        font-family: "Calibri", sans-serif;
-        font-size: 12px;
-        line-height: 1.5;
-        background: #fff;
-        padding: 20px;
-}
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
 
 * {
-    padding: 0;
+  box-model: border-box;
+}
+
+
+/* simple use of flex-box to create layout from <div> "grouping" tags. The key is to remember that your CSS layout solution has everything to do with the decisions you make in the HTML  */
+
+article, .two-col {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+article {
+  padding: 5%;
+}
+
+header {
+  flex: 1;
+  padding: 0 3%;
+  border-right: 1px solid silver;
+  margin-right: 3%;
+}
+
+.one-col {
+  flex: 4;
+}
+
+.two-col section {
+flex: 1;
+}
+
+
+/* example layout mediaquery */
+@media only screen and (max-width: 768px) {
+  article,
+  .two-col {
+    flex-direction: column;
+  }
+  header {
+    border-right: none;
     margin: 0;
+    padding: 0;
+  }
 }
 
-body {
-    font-family: "Calibri";
-    font-stretch: condensed;
-    font-size: 16px;
-    line-height: 1.5;
-    background-color: white;
-    margin:20px;
-    padding:20px;
+
+/**********
+CSS Type & Design - "The simple stuff"
+************/
+
+h1,h2,h3 {
+  font-family: 'Raleway';
+  margin-top: 10px;
+  font-weight: 300;
 }
 
-.header{
-        font-family: "ISOCTEUR";
-        background-color: #A7ADFD;
-        text-transform: uppercase;
-        color:black;
-        height:200%;
-        padding:40px;
-        text-align: center;
+h1 {
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
-.header p{
-    font-size: 18px;
+h2 {
+  font-size: .9em;
+  letter-spacing: .5em;
+  font-weight: 600;
+  padding: 5px 10px;
+  color: #cdcdcd;
+  background-color: #ededed;
 }
 
-.footer{
-        background-color:#A7ADFD;
-        height:70%;
-        padding:40px;
+h3 {
+  padding-right: .5em;
+  font-weight: 600;
+  font-size: .8em;
+  /*  flexbox is handy here too  */
+  display: flex;
+  justify-content: space-between;
+  align-items: center
 }
 
- h1{
-    font-size: 52px;
+h3 strong {
+  font-size: 1.5em
 }
 
-table{
-    border-collapse: collapse;
-    margin-left: 80px;
-    margin-top: 50px;
-    text-align: left;
-    align-self: center;
+p,li {
+  font-family: Georgia;
 }
 
-th{
-    vertical-align: top;
-    width: 10%;
-    padding-right: 60px;
-    text-transform: uppercase;
+p {
+
 }
 
-td{
-    vertical-align: top;
-    padding-top: 0px;
-    padding-bottom: 25px;
-    text-align: left;
+
+ol,ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: .85em;
+  line-height: 1.5;
 }
 
-.head-down-border-left{
-    border-bottom: solid 3px;
-    border-color: #A7ADFD;
-    margin-left: 70px;
-    border-radius: 1px;
-    max-width: 12%;
-}
-.head-down-border-right{
-    border-bottom: solid 3px;
-    border-color: #A7ADFD;
-    margin-left: 270px;
-    border-radius: 1px;
-    max-width: 70%;
+li {
+  margin-bottom: 1em;
 }
 
-.wrapper {
-    margin: auto;
-    background-color:white;
+.two-col section:first-child h2 {
+  margin-right: 2%;
 }
 
-.section-header{
-    font-family:"ISOCTEUR";
-    font-size: 18px;
+.two-col ol strong {
+  display: block;
 }
 
-.section-intro{
-    font-size: 18px;
+
+/* example iPhone type design tweaking for single columns */
+
+@media only screen and (max-width: 768px) {
+  /* A fun CSS hack to convert list of skills to comma separated paragraph.   */
+  .two-col ul li {display: inline;}
+  .two-col ul li:after {content: ","}
+  .two-col ul li:last-child:after {content: "."}
+
+
+  .two-col ol li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .2em;
+  }
+
+  .two-col li {
+    font-size: .85em;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+  }
+  h3 {
+    display: block;
+    text-align: center;
+  }
+  h3 strong {
+    display: block;
+    margin-top: .5em;
+  }
+
+  h2 {
+    background-color: transparent;
+    color: silver;
+    font-weight: 300;
+    font-size: 2em;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 0;
+  }
 }
 
-.section-intro td{
-    text-align: left;
-    width:210px;
-    padding-left: 2%;
-}
-
-.margin{
-    margin-top: -15px;
-    margin-bottom: -30px;
-}
-
-.td{
-    width: 110px;
-}
 </style>

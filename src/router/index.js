@@ -4,8 +4,8 @@ import Login from '@/container/Login'
 import Home from '@/container/Home'
 import Landing from '@/container/Home/Landing';
 import Dashboard from '@/container/Home/Dashboard';
+import Page404 from '@/container/Page404';
 import Sidebar from '@/components/Sidebar';
-import ResumeTemplate1 from '@/resume-templates/ResumeTemplate1';
 
 Vue.use(Router)
 
@@ -36,12 +36,12 @@ export default new Router({
           name: 'Sidebar',
           component: Sidebar
         },
-        {
-          path: '/resumetemplate1',
-          name: 'ResumeTemplate1',
-          component: ResumeTemplate1
-        },
       ]
+    },
+    {
+      path: '/page404',
+      name: 'Page404',
+      component: Page404
     },
   ]
 })

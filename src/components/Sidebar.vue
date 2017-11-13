@@ -93,28 +93,28 @@
 									<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill.expertise">
+										placeholder="Text input" v-model="resume.skill[0].expertise">
 									</div>
 								</div>
 														<div class="field">
 									<label class="label">PROGRAMMING LANGUAGE(S)</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill.programming_languages">
+										placeholder="Text input" v-model="resume.skill[0].programming_languages">
 									</div>
 								</div>
 														<div class="field">
 									<label class="label">TOOLS AND TECHNOLOGIES</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill.tools">
+										placeholder="Text input" v-model="resume.skill[0].tools">
 									</div>
 								</div>
 														<div class="field">
 									<label class="label">TECHNICAL ELECTIVES</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill.technical_electives">
+										placeholder="Text input" v-model="resume.skill[0].technical_electives">
 									</div>
 								</div>
 
