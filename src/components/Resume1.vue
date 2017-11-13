@@ -1,283 +1,306 @@
 <template lang="html">
-  <div class="resume1">
-    <article>
-
-      <header>
-        <!-- force flexbox to keep name on a single line -->
-        <h1>Abe&nbsp;Lincoln</h1>
-        <p>
-          1441 Monument Avenue<br/> Springfield, IL 62702<br/>
-          <a href="tel:1-217-782-2717">217.782.2717</a>
-          <a href="http://www.alplm.org">website</a>
-          <a href="http://www.alplm.org">website</a>
-
-        </p>
-      </header>
-
-      <div class="one-col">
-        <section>
-          <h2>EXPERIENCE</h2>
-
-          <h3><strong>16th U.S. PRESIDENT</strong> Washington, DC 1861-1865</h3>
-          <ul>
-            <p>Served as the first Republican Party president and built the Republican Party into a powerful national organization.
-              Defended and preserved the unity of the United States by defeating the secessionist Confederacy in the Civil War, and instituted a formal Reconstruction Plan to reunite the nation after the war.
-              Supervised all aspects of the war effort and selected top generals (including Ulysses S. Grant) to lead military campaigns.
-              Issued the Emancipation Proclamation in 1863, freeing slaves within the Confederacy. Endorsed the 13th Amendment to the Constitution, which totally abolished slavery.
-              Delivered the Gettysburg Address, the most famous speech in American history.</p>
-              <li>Signed landmark legislation, including the National Banking Act, legislation that protected American industry, and a bill that chartered the first transcontinental railroad.</li>
-              <li>Supported the Federal Homestead Law (1862), which allowed poor people in the east to acquire land in the west.</li>
-            </ul>
-
-            <h3><strong>ILLINOIS STATE REPRESENTATIVE</strong> Vandalia - Springfield, IL 1834-1842</h3>
-            <ul>
-              <li>Led the Long Nine group of seven legislators and two senators in moving the state capital from Vandalia to Springfield.</li>
-              <li>Helped pass a bill to build better roads and construct a system of canals and railroads making Illinois a more progressive and accessible state.
-              </li>
-            </ul>
-
-            <h3><strong>ATTORNEY AT LAW</strong> Vandalia - Springfield, IL 1836-1861</h3>
-            <ul>
-              <li>Prepared cases for federal courts, the Illinois Supreme Court and the state’s Eighth Judicial Circuit. Admitted to practice in United States Circuit Court in 1839.</li>
-              <li>Joined the Republican Party in 1856 and gained national attention by challenging Stephen A. Douglas to a series of debates in 1858.</li>
-            </ul>
-
-            <h3><strong>POSTMASTER</strong> New Salem, IL 1833-1836</h3>
-            <ul>
-              <li>Worked diligently to serve and please customers.</li>
-              <li>Routinely walked several miles to deliver mail when I know that someone is waiting for an important letter.</li>
-            </ul>
-          </section>
-
-          <div class="two-col">
-            <section>
-              <h2>EDUCATION</h2>
-              <ol>
-                <li>Honorary Doctor of Laws <strong>Princeton University <em>1864</em></strong></li>
-                <li>Honorary Degree <strong>Columbia <em>1861</em></strong></li>
-                <li>Knox College's First Honorary Doctorate <strong>Knox College <em>1860</em></strong></li>
-              </ol>
-            </section>
-            <section>
-              <h2>SKILLS</h2>
-              <ul>
-                <li>Accomplished storyteller</li>
-                <li>Excellent writing ability</li>
-                <li>Works well with people</li>
-                <li>Moderate abolitionist</li>
-                <li>Only US president to own a patent, granted in 1849 for device to lift boats over shoals</li>
+  <div class="resume-render-wrapper">
+    <div class="resume-template">
+      <table class="main">
+        <tr>
+          <!-- <td class="w-20">
+          <img src="../assets/daiict-logo.jpg">
+        </td> -->
+        <td class="intro w-80">
+          <h1>{{ resume.info.name }}</h1>
+          <p>
+            <b>Dhirubhai Ambani Institute of Information and Communication Technology</b>
+          </p>
+          <p>
+            <span class="w-60 inline-block">
+              <b>Email:</b> {{ resume.info.email }}
+            </span>
+            <span class="w-40 text-right">
+              <b>DOB:</b> {{ resume.info.dob }}
+            </span>
+          </p>
+          <p>
+            <b>Address:</b> {{ resume.info.address }}
+          </p>
+        </td>
+      </tr>
+    </table>
+    <table class="w-100 section" v-if="true">
+      <tr>
+        <td colspan="4" class="section-header">
+          <h3>EDUCATION</h3>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="1">Degree</th>
+        <th colspan="1">University/Institute</th>
+        <th colspan="1">Year</th>
+        <th colspan="1">CPI/Aggregate</th>
+      </tr>
+      <tr v-for="item in resume.degree">
+        <td>
+          <b>{{ item.name }}</b>
+        </td>
+        <td>
+          {{ item.institute }}
+        </td>
+        <td>
+          {{ item.year }}
+        </td>
+        <td>
+          {{ item.score }}
+        </td>
+      </tr>
+    </table>
+    <table class="w-100 section">
+      <tr>
+        <td colspan="2" class="section-header">
+          <h3>SKILLS</h3>
+        </td>
+      </tr>
+      <tr v-if="true">
+        <td class="w-30">
+          <b>Expertise Area/Area(s) of
+            Interest</b>
+          </td>
+          <td class="w-70">
+            {{ resume.skill.expertise }}
+          </td>
+        </tr>
+        <tr v-if="true">
+          <td class="w-30">
+            <b>Programming Language(s)</b>
+          </td>
+          <td class="w-70">
+            {{ resume.skill.programming_languages }}
+          </td>
+        </tr>
+        <tr v-if="true">
+          <td class="w-30">
+            <b>Tools and
+              Technologies</b>
+            </td>
+            <td class="w-70">
+              {{ resume.skill.tools }}
+            </td>
+          </tr>
+          <tr v-if="true">
+            <td class="w-30">
+              <b>Technical Electives</b>
+            </td>
+            <td class="w-70">
+              {{ resume.skill.technical_electives }}
+            </td>
+          </tr>
+        </table>
+        <!-- <div class="page-break"></div> -->
+        <table class="w-100 section" v-if="true">
+          <tr>
+            <td colspan="3" class="section-header">
+              <h3>PROFESSIONAL EXPERIENCE/INTERNSHIPS</h3>
+            </td>
+          </tr>
+          <tr v-for="item in resume.internship">
+            <td class="w-80" valign="top">
+              <p>
+                <b>{{ item.name }}</b>
+              </p>
+              <p>
+                {{ item.description }}
+                <p v-if="true">
+                  <i>Guide: {{ item.guide }}</i>
+                </p>
+              </p>
+            </td>
+            <td class="w-20" valign="top">
+              <p>({{ item.start }} - {{ item.end }})</p>
+              <p v-show="true">Team Size - {{ item.team_size }}</p>
+            </td>
+          </tr>
+        </table>
+        <table class="w-100 section" v-if="true">
+          <tr>
+            <td colspan="2" class="section-header">
+              <h3>PROJECTS</h3>
+            </td>
+          </tr>
+          <tr v-for="item in resume.project">
+            <td class="w-80" valign="top">
+              <p>
+                <b>{{ item.name }}</b>
+              </p>
+              <p>
+                {{ item.description }}
+                <p v-if="true">
+                  <i>Guide: {{ item.guide }}</i>
+                </p>
+              </p>
+            </td>
+            <td class="w-20" valign="top">
+              <p>({{ item.start }} - {{ item.end }})</p>
+              <p v-show="true">Team Size - {{ item.team_size }}</p>
+            </td>
+          </tr>
+        </table>
+        <table class="w-100 section" v-if="true">
+          <tr>
+            <td colspan="2" class="section-header">
+              <h3>POSITION OF RESPONSIBILITY</h3>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              <ul class="list">
+                <li v-for="item in resume.position">
+                  {{ item.name }}
+                </li>
               </ul>
-            </section>
-          </div>
-        </div>
-      </article>
+            </td>
+          </tr>
+        </table>
+        <table class="w-100 section" v-if="true">
+          <tr>
+            <td colspan="2" class="section-header">
+              <h3>AWARDS AND ACHIEVEMENTS</h3>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              <ul class="list">
+                <li v-for="item in resume.award">
+                  {{ item.name }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <table class="w-100 section" v-if="true">
+          <tr>
+            <td colspan="2" class="section-header">
+              <h3>INTERESTS AND HOBBIES</h3>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              <ul class="list">
+                <li v-for="item in resume.hobby">
+                  {{ item.name }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </template>
 
+
   <script>
   export default {
-    name: 'resume1',
+    name: 'resume-template1',
+    props: ['resume'],
   }
   </script>
 
+
   <style lang="scss">
-  .resume1 {
-
-    @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
-
+  .resume-render-wrapper {
+    // position: relative;
+    top: 70px;
+    bottom: 0;
+    max-width: 60%;
+    overflow-y: scroll;
+    display: inline;
     * {
-      box-model: border-box;
-    }
-
-    article {
-      background-color: white;  
-    }
-
-
-    /* simple use of flex-box to create layout from <div> "grouping" tags. The key is to remember that your CSS layout solution has everything to do with the decisions you make in the HTML  */
-    article,
-    .two-col {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    article {
-      padding: 5%;
-    }
-
-    header {
-      padding: 0 3%;
-      border-right: 1px solid silver;
-      margin-right: 3%;
-    }
-
-    .two-col section {
-      flex: 1;
-      /*better than declaring width if you require equal columns*/
-    }
-
-
-    /* example layout mediaquery */
-    @media only screen and (max-width: 768px) {
-      article,
-      .two-col {
-        flex-direction: column;
-      }
-      header {
-        border-right: none;
-        margin: 0;
-        padding: 0;
-      }
-    }
-
-
-    /**********
-    CSS Type & Design - "The simple stuff"
-    ************/
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Raleway';
-      margin-top: 0;
-      font-weight: 300;
-    }
-
-    h1 {
-      font-weight: 300;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      font-size: .9em;
-      letter-spacing: .5em;
-      font-weight: 600;
-      padding: 5px 10px;
-      color: #cdcdcd;
-      background-color: #ededed;
-    }
-
-    h3 {
-      padding-right: .5em;
-      font-weight: 600;
-      font-size: .8em;
-      /*  flexbox is handy here too  */
-      display: flex;
-      justify-content: space-between;
-      align-items: center
-    }
-
-    h3 strong {
-      font-size: 1.5em
-    }
-
-    p,
-    li {
-      font-family: Georgia;
-    }
-
-    p {
-      text-align: center;
-    }
-
-    a {
-      font-family: 'Raleway';
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      /* links can be made into decorative buttons*/
-      display: block;
-      text-decoration: none;
-      background-color: #333;
-      color: white;
-      margin: 50px 0;
-      padding: 20px 0;
-      box-shadow: inset 0 0 0 4px white, 0 0 0 1px gray;
-      transition: all .5s ease;
-    }
-
-    a:hover {
-      background: white;
-      color: black;
-      box-shadow: inset 0 0 0 4px silver, 0 0 0 1px silver;
-    }
-
-    ol,
-    ul {
-      list-style-type: none;
+      font-size: 14px;
       padding: 0;
-      font-size: .85em;
+      margin: 0;
+    }
+    .resume-template {
+      font-family: "Calibri", sans-serif;
+      font-size: 12px;
       line-height: 1.5;
+      background: #fff;
+      padding: 20px;
     }
-
-    li {
-      margin-bottom: 1em;
+    .main img {
+      height: 150px;
+      width: 150px;
     }
-
-    .two-col section:first-child h2 {
-      margin-right: 2%;
+    .text-right {
+      text-align: right;
     }
-
-    .two-col ol strong {
+    .inline-block {
+      display: inline-block;
+    }
+    table {
+      padding: 15px;
+      width: 100%;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+    .w-10 {
+      width: 10%;
+    }
+    .w-20 {
+      width: 20%;
+    }
+    .w-30 {
+      width: 30%;
+    }
+    .w-40 {
+      width: 40%;
+    }
+    .w-50 {
+      width: 50%;
+    }
+    .w-60 {
+      width: 60%;
+    }
+    .w-70 {
+      width: 70%;
+    }
+    .w-80 {
+      width: 80%;
+    }
+    .w-90 {
+      width: 90%;
+    }
+    .w-100 {
+      width: 100%;
+    }
+    .intro {
+      padding: 0 20px;
+    }
+    .intro h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .intro p {
       display: block;
+      margin-top: 15px;
+      margin-bottom: 15px;
     }
-
-
-    /* example iPhone type design tweaking for single columns */
-
-    @media only screen and (max-width: 768px) {
-      /* A fun CSS hack to convert list of skills to comma separated paragraph.   */
-      .two-col ul li {display: inline;}
-      .two-col ul li:after {content: ","}
-      .two-col ul li:last-child:after {content: "."}
-
-
-      .two-col ol li {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: .2em;
-      }
-
-      .two-col li {
-        font-size: .85em;
-      }
-
-      h1 {
-        text-align: center;
-        font-size: 3em;
-        margin-bottom: 0;
-      }
-      h3 {
-        display: block;
-        text-align: center;
-      }
-      h3 strong {
-        display: block;
-        margin-top: .5em;
-      }
-      a {
-        display: inline-block;
-        width: 48%;
-        margin-top: 24px;
-        margin-bottom: 0;
-      }
-      a:nth-of-type(1) {
-        margin-right: 1%;
-      }
-      a:nth-of-type(2) {
-        margin-left: 1%;
-      }
-      h2 {
-        background-color: transparent;
-        color: silver;
-        font-weight: 300;
-        font-size: 2em;
-        letter-spacing: 0;
-        text-align: center;
-        margin-bottom: 0;
-      }
+    .section-header {
+      border-bottom: solid 3px #666666;
+      margin-bottom: 20px;
     }
-
+    .section {
+      margin-top: 20px;
+    }
+    .section th {
+      text-align: left;
+      padding: 10px;
+    }
+    .section td {
+      padding: 10px;
+    }
+    .list li {
+      list-style-type: disc;
+      margin-bottom: 10px;
+    }
   }
   </style>

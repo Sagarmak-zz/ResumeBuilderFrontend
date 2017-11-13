@@ -6,9 +6,9 @@
           <Sidebar :resume="resume"></Sidebar>
         </div>
         <div class="column resume-template1">
-          <!-- <Resume></Resume> -->
-          <!-- <ResumeTemplate :resume="resume"></ResumeTemplate> -->
+          <!-- <Resume1 :resume="resume"></Resume1> -->
           <!-- <Resume2></Resume2> -->
+          <!-- <Resume3></Resume3> -->
         </div>
       </div>
     </div>
@@ -17,9 +17,9 @@
 
 <script>
 import Sidebar from '@/components/Sidebar';
-import Resume from '@/components/Resume1';
-import ResumeTemplate from '@/components/ResumeTemplate1';
+import Resume1 from '@/components/Resume1';
 import Resume2 from '@/components/Resume2';
+import Resume3 from '@/components/Resume3';
 export default {
   name: 'dashboard',
   data() {
@@ -74,9 +74,9 @@ export default {
 
   components: {
     Sidebar,
-    Resume,
-    ResumeTemplate,
-    Resume2
+    Resume1,
+    Resume2,
+    Resume3
   }
 
 }

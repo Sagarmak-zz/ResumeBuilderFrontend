@@ -4,7 +4,7 @@ import Login from '@/container/Login'
 import Home from '@/container/Home'
 import Landing from '@/container/Home/Landing';
 import Dashboard from '@/container/Home/Dashboard';
-import ViewTemplates from '@/container/Home/ViewTemplates';
+import SelectTemplates from '@/container/Home/SelectTemplates';
 import Auth from '@/packages/auth/Auth.js';
 
 Vue.use(Router)
@@ -37,8 +37,8 @@ let router = new Router({
         },
         {
           path: '/select-templates',
-          name: 'ViewTemplates',
-          component: ViewTemplates,
+          name: 'SelectTemplates',
+          component: SelectTemplates,
           meta: { requiresAuth: true },
         },
       ]

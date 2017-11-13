@@ -1,432 +1,283 @@
 <template lang="html">
-	<div class="resume2">
-
-		<div class="mainDetails">
-
-			<div id="name">
-				<h1>Joe Bloggs</h1>
-				<h2>Job Title</h2>
-			</div>
-
-			<div id="contactDetails">
-				<ul>
-					<li>e: <a href="mailto:joe@bloggs.com" target="_blank">joe@bloggs.com</a></li>
-					<li>w: <a href="http://www.bloggs.com">www.bloggs.com</a></li>
-					<li>m: 01234567890</li>
-				</ul>
-			</div>
-		</div>
-
-		<div id="mainArea">
-			<div class="personalProfile">
-				<div class="sectionTitle">
-					<h1>Personal Profile</h1>
-				</div>
-
-				<div class="sectionContent">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-				</div>
-			</div>
-
-
-			<div class="workExperience">
-				<div class="sectionTitle">
-					<h1>Work Experience</h1>
-				</div>
-
-				<div class="sectionContent">
-					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">April 2011 - Present</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-					</article>
-
-					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">Janruary 2007 - March 2011</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-					</article>
-
-					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">October 2004 - December 2006</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-					</article>
-				</div>
-			</div>
-
-
-			<div class="keySkills">
-				<div class="sectionTitle">
-					<h1>Key Skills</h1>
-				</div>
-
-				<div class="sectionContent">
-					<ul class="keySkills">
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-					</ul>
-				</div>
-			</div>
-
-
-			<div class="education">
-				<div class="sectionTitle">
-					<h1>Education</h1>
-				</div>
-
-				<div class="sectionContent">
-					<article>
-						<h2>College/University</h2>
-						<p class="subDetails">Qualification</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-					</article>
-
-					<article>
-						<h2>College/University</h2>
-						<p class="subDetails">Qualification</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-					</article>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</template>
-
-<script>
-export default {
-	name: 'resume2'
-}
-</script>
-
-<style lang="scss">
-.resume2 {
-
-	article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-		display:block;
-	}
-
-	p {
-		font-size: 1em;
-		line-height: 1.4em;
-		margin-bottom: 20px;
-		color: #444;
-	}
-
-	#cv {
-		// width: 90%;
-		max-width: 800px;
-		background: #f3f3f3;
-		// margin: 30px auto;
-	}
-
-	.mainDetails {
-		padding: 25px 35px;
-		border-bottom: 2px solid #cf8a05;
-		background: #ededed;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	#name h1 {
-		font-size: 2.5em;
-		font-weight: 700;
-		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-		margin-bottom: -6px;
-	}
-
-	#name h2 {
-		font-size: 2em;
-		margin-left: 2px;
-		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-	}
-
-	#mainArea {
-		padding: 0 40px;
-		margin-top: .5rem;
-	}
-
-	.personalProfile {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		border-bottom: solid 1px #ddd;
-		.sectionTitle {
-			flex: 1;
-			align-self: flex-start;
-		}
-		.sectionContent {
-			flex: 3;
-			margin-left: 1rem;
-		}
-	}
-
-	.workExperience {
-		display: flex;
-		justify-content: space-between;;
-		align-items: center;
-		padding-top: .5rem;
-		border-bottom: solid 1px #ddd;
-		.sectionTitle {
-			flex: 1;
-			align-self: flex-start;
-		}
-		.sectionContent {
-			flex: 3;
-			margin-left: 1rem;
-		}
-	}
-
-	div.keySkills {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding-top: .5rem;
-		border-bottom: solid 1px #ddd;
-		.sectionTitle {
-			flex: 1;
-		}
-		.sectionContent {
-			flex: 3;
-			flex-wrap: wrap;
-			margin-left: 1rem;
-		}
-	}
-
-	.education {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		.sectionTitle {
-			flex: 1;
-			align-self: flex-start;
-		}
-		.sectionContent {
-			flex: 3;
-			flex-wrap: wrap;
-			margin-left: 1rem;
-		}
-	}
-
-	#contactDetails ul {
-		list-style-type: none;
-		font-size: 0.9em;
-		margin-top: 2px;
-	}
-
-	#contactDetails ul li {
-		margin-bottom: 3px;
-		color: #444;
-	}
-
-	#contactDetails ul li a, a[href^=tel] {
-		color: #444;
-		text-decoration: none;
-		-webkit-transition: all .3s ease-in;
-		-moz-transition: all .3s ease-in;
-		-o-transition: all .3s ease-in;
-		-ms-transition: all .3s ease-in;
-		transition: all .3s ease-in;
-	}
-
-	#contactDetails ul li a:hover {
-		color: #cf8a05;
-	}
-
-
-	section {
-		border-top: 1px solid #dedede;
-		padding: 20px 0 0;
-	}
-
-	section:first-child {
-		border-top: 0;
-	}
-
-	section:last-child {
-		padding: 20px 0 10px;
-	}
-
-	.sectionTitle h1 {
-		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-		font-style: italic;
-		font-size: 1.5em;
-		color: #cf8a05;
-	}
-
-	.sectionContent h2 {
-		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-		font-size: 1.5em;
-		margin-bottom: -2px;
-	}
-
-	.subDetails {
-		font-size: 0.8em;
-		font-style: italic;
-		margin-bottom: 3px;
-	}
-
-	.keySkills {
-		list-style-type: none;
-		-moz-column-count:3;
-		-webkit-column-count:3;
-		column-count:3;
-		margin-bottom: 20px;
-		font-size: 1em;
-		color: #444;
-	}
-
-	.keySkills ul li {
-		margin-bottom: 3px;
-	}
-
-	@media all and (min-width: 602px) and (max-width: 800px) {
-		#headshot {
-			display: none;
-		}
-
-		.keySkills {
-			-moz-column-count:2;
-			-webkit-column-count:2;
-			column-count:2;
-		}
-	}
-
-	@media all and (max-width: 601px) {
-		#cv {
-			width: 95%;
-			margin: 10px auto;
-			min-width: 280px;
-		}
-
-		#headshot {
-			display: none;
-		}
-
-		#name, #contactDetails {
-			float: none;
-			width: 100%;
-			text-align: center;
-		}
-
-		.sectionTitle, .sectionContent {
-			float: none;
-			width: 100%;
-		}
-
-		.sectionTitle {
-			margin-left: -2px;
-			font-size: 1.25em;
-		}
-
-		.keySkills {
-			-moz-column-count:2;
-			-webkit-column-count:2;
-			column-count:2;
-		}
-	}
-
-	@media all and (max-width: 480px) {
-		.mainDetails {
-			padding: 15px 15px;
-		}
-
-		section {
-			padding: 15px 0 0;
-		}
-
-		#mainArea {
-			padding: 0 25px;
-		}
-
-
-		.keySkills {
-			-moz-column-count:1;
-			-webkit-column-count:1;
-			column-count:1;
-		}
-
-		#name h1 {
-			line-height: .8em;
-			margin-bottom: 4px;
-		}
-	}
-
-	@media print {
-		#cv {
-			width: 100%;
-		}
-	}
-
-	@-webkit-keyframes reset {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-
-	@-webkit-keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		40% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-
-	@-moz-keyframes reset {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-
-	@-moz-keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		40% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-
-	@keyframes reset {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-
-	@keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		40% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-}
-</style>
+  <div class="resume1">
+    <article>
+
+      <header>
+        <!-- force flexbox to keep name on a single line -->
+        <h1>Abe&nbsp;Lincoln</h1>
+        <p>
+          1441 Monument Avenue<br/> Springfield, IL 62702<br/>
+          <a href="tel:1-217-782-2717">217.782.2717</a>
+          <a href="http://www.alplm.org">website</a>
+          <a href="http://www.alplm.org">website</a>
+
+        </p>
+      </header>
+
+      <div class="one-col">
+        <section>
+          <h2>EXPERIENCE</h2>
+
+          <h3><strong>16th U.S. PRESIDENT</strong> Washington, DC 1861-1865</h3>
+          <ul>
+            <p>Served as the first Republican Party president and built the Republican Party into a powerful national organization.
+              Defended and preserved the unity of the United States by defeating the secessionist Confederacy in the Civil War, and instituted a formal Reconstruction Plan to reunite the nation after the war.
+              Supervised all aspects of the war effort and selected top generals (including Ulysses S. Grant) to lead military campaigns.
+              Issued the Emancipation Proclamation in 1863, freeing slaves within the Confederacy. Endorsed the 13th Amendment to the Constitution, which totally abolished slavery.
+              Delivered the Gettysburg Address, the most famous speech in American history.</p>
+              <li>Signed landmark legislation, including the National Banking Act, legislation that protected American industry, and a bill that chartered the first transcontinental railroad.</li>
+              <li>Supported the Federal Homestead Law (1862), which allowed poor people in the east to acquire land in the west.</li>
+            </ul>
+
+            <h3><strong>ILLINOIS STATE REPRESENTATIVE</strong> Vandalia - Springfield, IL 1834-1842</h3>
+            <ul>
+              <li>Led the Long Nine group of seven legislators and two senators in moving the state capital from Vandalia to Springfield.</li>
+              <li>Helped pass a bill to build better roads and construct a system of canals and railroads making Illinois a more progressive and accessible state.
+              </li>
+            </ul>
+
+            <h3><strong>ATTORNEY AT LAW</strong> Vandalia - Springfield, IL 1836-1861</h3>
+            <ul>
+              <li>Prepared cases for federal courts, the Illinois Supreme Court and the state’s Eighth Judicial Circuit. Admitted to practice in United States Circuit Court in 1839.</li>
+              <li>Joined the Republican Party in 1856 and gained national attention by challenging Stephen A. Douglas to a series of debates in 1858.</li>
+            </ul>
+
+            <h3><strong>POSTMASTER</strong> New Salem, IL 1833-1836</h3>
+            <ul>
+              <li>Worked diligently to serve and please customers.</li>
+              <li>Routinely walked several miles to deliver mail when I know that someone is waiting for an important letter.</li>
+            </ul>
+          </section>
+
+          <div class="two-col">
+            <section>
+              <h2>EDUCATION</h2>
+              <ol>
+                <li>Honorary Doctor of Laws <strong>Princeton University <em>1864</em></strong></li>
+                <li>Honorary Degree <strong>Columbia <em>1861</em></strong></li>
+                <li>Knox College's First Honorary Doctorate <strong>Knox College <em>1860</em></strong></li>
+              </ol>
+            </section>
+            <section>
+              <h2>SKILLS</h2>
+              <ul>
+                <li>Accomplished storyteller</li>
+                <li>Excellent writing ability</li>
+                <li>Works well with people</li>
+                <li>Moderate abolitionist</li>
+                <li>Only US president to own a patent, granted in 1849 for device to lift boats over shoals</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <script>
+  export default {
+    name: 'resume1',
+  }
+  </script>
+
+  <style lang="scss">
+  .resume1 {
+
+    @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
+
+    * {
+      box-model: border-box;
+    }
+
+    article {
+      background-color: white;  
+    }
+
+
+    /* simple use of flex-box to create layout from <div> "grouping" tags. The key is to remember that your CSS layout solution has everything to do with the decisions you make in the HTML  */
+    article,
+    .two-col {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    article {
+      padding: 5%;
+    }
+
+    header {
+      padding: 0 3%;
+      border-right: 1px solid silver;
+      margin-right: 3%;
+    }
+
+    .two-col section {
+      flex: 1;
+      /*better than declaring width if you require equal columns*/
+    }
+
+
+    /* example layout mediaquery */
+    @media only screen and (max-width: 768px) {
+      article,
+      .two-col {
+        flex-direction: column;
+      }
+      header {
+        border-right: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+
+    /**********
+    CSS Type & Design - "The simple stuff"
+    ************/
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Raleway';
+      margin-top: 0;
+      font-weight: 300;
+    }
+
+    h1 {
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: .9em;
+      letter-spacing: .5em;
+      font-weight: 600;
+      padding: 5px 10px;
+      color: #cdcdcd;
+      background-color: #ededed;
+    }
+
+    h3 {
+      padding-right: .5em;
+      font-weight: 600;
+      font-size: .8em;
+      /*  flexbox is handy here too  */
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    h3 strong {
+      font-size: 1.5em
+    }
+
+    p,
+    li {
+      font-family: Georgia;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      font-family: 'Raleway';
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      /* links can be made into decorative buttons*/
+      display: block;
+      text-decoration: none;
+      background-color: #333;
+      color: white;
+      margin: 50px 0;
+      padding: 20px 0;
+      box-shadow: inset 0 0 0 4px white, 0 0 0 1px gray;
+      transition: all .5s ease;
+    }
+
+    a:hover {
+      background: white;
+      color: black;
+      box-shadow: inset 0 0 0 4px silver, 0 0 0 1px silver;
+    }
+
+    ol,
+    ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: .85em;
+      line-height: 1.5;
+    }
+
+    li {
+      margin-bottom: 1em;
+    }
+
+    .two-col section:first-child h2 {
+      margin-right: 2%;
+    }
+
+    .two-col ol strong {
+      display: block;
+    }
+
+
+    /* example iPhone type design tweaking for single columns */
+
+    @media only screen and (max-width: 768px) {
+      /* A fun CSS hack to convert list of skills to comma separated paragraph.   */
+      .two-col ul li {display: inline;}
+      .two-col ul li:after {content: ","}
+      .two-col ul li:last-child:after {content: "."}
+
+
+      .two-col ol li {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: .2em;
+      }
+
+      .two-col li {
+        font-size: .85em;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 3em;
+        margin-bottom: 0;
+      }
+      h3 {
+        display: block;
+        text-align: center;
+      }
+      h3 strong {
+        display: block;
+        margin-top: .5em;
+      }
+      a {
+        display: inline-block;
+        width: 48%;
+        margin-top: 24px;
+        margin-bottom: 0;
+      }
+      a:nth-of-type(1) {
+        margin-right: 1%;
+      }
+      a:nth-of-type(2) {
+        margin-left: 1%;
+      }
+      h2 {
+        background-color: transparent;
+        color: silver;
+        font-weight: 300;
+        font-size: 2em;
+        letter-spacing: 0;
+        text-align: center;
+        margin-bottom: 0;
+      }
+    }
+
+  }
+  </style>
