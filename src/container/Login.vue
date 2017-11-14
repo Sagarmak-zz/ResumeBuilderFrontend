@@ -15,7 +15,7 @@
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input class="input" type="email" placeholder="Email input">
+              <input v-model="loginEmail" class="input" type="email" placeholder="Email input">
             </div>
           </div>
 
@@ -23,7 +23,7 @@
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input class="input" type="password" placeholder="********">
+              <input v-model="loginPassword" class="input" type="password" placeholder="********">
             </div>
           </div>
 
@@ -36,7 +36,7 @@
         <div class="field login-footer">
 
           <div class="control" v-if="!login">
-            <button class="button is-primary" @click="redirect()">Login</button>
+            <button class="button is-primary" @click="redirectLogin()">Login</button>
           </div>
           <div class="control" v-if=" login">
             <button class="button is-info" @click="redirect()">Sign Up</button>
@@ -54,11 +54,14 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'Login',
 
   data () {
     return {
+      loginEmail: '',
+      loginPassword: '',
       login: false
     }
   },
@@ -71,8 +74,19 @@ export default {
   },
 
   methods: {
-    redirect() {
-      this.$router.push({ name: 'Landing' });
+    redirectLogin() {
+      // this.$router.push({ name: 'Landing' });
+      // console.log(axios);
+      // axios.post('http://af064d2c.ngrok.io/login', {
+      //   email: '',
+      //   password: ''
+      // })
+      // .then(response => {
+      //   console.log(response);
+      // })
+      // .catch(error => {
+      //   console.log(error);
+      // })
     }
   }
 }

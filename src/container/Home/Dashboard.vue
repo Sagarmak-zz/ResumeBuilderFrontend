@@ -9,7 +9,7 @@
           <!-- <Resume1 :resume="resume"></Resume1> -->
           <!-- <Resume2></Resume2>s -->
           <!-- <Resume3></Resume3> -->
-          <!-- <Resume4></Resume4> -->
+          <Resume4></Resume4>
         </div>
       </div>
     </div>

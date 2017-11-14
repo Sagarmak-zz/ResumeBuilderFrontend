@@ -83,12 +83,21 @@
 
 <script>
 import ViewTemplates from '@/components/ViewTemplates';
+import api from '@/api/main';
+import HTTP from '@/packages/http';
 export default {
   name: 'landing',
   created() {
     // this.$bus.$on('close', () => {
     //   this.showViewtemplate = false;
     //   console.log('called');
+    // })
+    // api.dummyGET()
+    // .then(response => {
+    //   console.log(response);
+    // })
+    // .catch(error => {
+    //   console.log(error);
     // })
   },
   data() {
