@@ -6,7 +6,7 @@
           <sidebar :resume="resume"></sidebar>
         </div>
         <div class="column is-8">
-          <resume-template1 :resume="resume"></resume-template1>
+          <resume-template3 :resume="resume"></resume-template3>
         </div>
       </div>
     </div>
@@ -17,6 +17,7 @@
   import Sidebar from "@/components/Sidebar";
   import ResumeTemplate1 from "@/resume-templates/ResumeTemplate1";
   import ResumeTemplate2 from "@/resume-templates/ResumeTemplate2";
+  import ResumeTemplate3 from "@/resume-templates/ResumeTemplate3";
 
   export default {
     name: "home",
@@ -24,6 +25,7 @@
       Sidebar,
       ResumeTemplate1,
       ResumeTemplate2,
+      ResumeTemplate3
     },
     data() {
       return {
@@ -34,6 +36,13 @@
             email: "anil@gmail.com",
             dob: "1/1/1995",
             address: "123/1, Gandhinagar"
+          },
+
+          da1: {
+              expertise: "Web Developement",
+              programming_languages: "Javascript, Java",
+              tools: "Postman, Git, Vue, Bulma",
+              technical_electives: "Cloud computing"
           },
 
           degree: [
@@ -66,11 +75,23 @@
 
           skill: [
             {
-              expertise: "Web Developement",
-              programming_languages: "Javascript, Java",
-              tools: "Postman, Git, Vue, Bulma",
-              technical_electives: "Cloud computing"
-             }
+              name: 'none',
+            },
+            {
+              name: 'not now',
+            },
+            {
+              name: 'not now',
+            },
+            {
+              name: 'not now',
+            },
+            {
+              name: 'not now',
+            },
+            {
+              name: 'not now',
+            }
           ],
 
           internship: [
@@ -168,6 +189,9 @@
           ],
 
           hobby: [
+            {
+              name: "TV Series"
+            },
             {
               name: "TV Series"
             }

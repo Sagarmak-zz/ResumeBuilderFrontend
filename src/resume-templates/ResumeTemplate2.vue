@@ -55,12 +55,8 @@
                       <section>
                         <h2>SKILLS</h2>
 
-                        <ul>
-                          <li>Accomplished storyteller</li>
-                          <li>Excellent writing ability</li>
-                          <li>Works well with people</li>
-                          <li>Moderate abolitionist</li>
-                          <li>Only US president to own a patent, Only US president to own a patent Only US president to own a patent</li>
+                        <ul v-for="(item,i) in resume.skill" :key="i" >
+                          <li>{{ item.name }}</li>
                         </ul>
 
                       </section>
@@ -85,7 +81,6 @@
 * {
   box-model: border-box;
 }
-
 
 /* simple use of flex-box to create layout from <div> "grouping" tags. The key is to remember that your CSS layout solution has everything to do with the decisions you make in the HTML  */
 
@@ -169,10 +164,6 @@ h3 strong {
 
 p,li {
   font-family: Georgia;
-}
-
-p {
-
 }
 
 

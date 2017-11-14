@@ -89,32 +89,56 @@
 
 						<collapse-item title="SKILLS">
 
+								<div class="field" v-for="(skill,i) in resume.skill" :key="i">
+
+									<label class="label">{{ resume.skill[i].name }}</label>
+									<div class="control">
+										<input class="input is-primary" type="text"
+										placeholder="Text input" v-model="resume.skill[i].name">
+									</div>
+									<a class="button is-danger" @click="removeSkill(i)">
+										<span class="icon">
+											<i class="fa fa-minus-circle"></i>
+										</span>
+									</a>
+
+								</div>
+
+								<a class="button is-info" @click="addSkill()">
+									<span class="icon">
+											<i class="fa fa-plus"></i>
+									</span>
+										<span>Add</span>
+								</a>
+
+
+
 								<div class="field">
 									<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill[0].expertise">
+										placeholder="Text input" v-model="resume.da1.expertise">
 									</div>
 								</div>
 														<div class="field">
 									<label class="label">PROGRAMMING LANGUAGE(S)</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill[0].programming_languages">
+										placeholder="Text input" v-model="resume.da1.programming_languages">
 									</div>
 								</div>
 														<div class="field">
 									<label class="label">TOOLS AND TECHNOLOGIES</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill[0].tools">
+										placeholder="Text input" v-model="resume.da1.tools">
 									</div>
 								</div>
 														<div class="field">
 									<label class="label">TECHNICAL ELECTIVES</label>
 									<div class="control">
 										<input class="input is-primary" type="text"
-										placeholder="Text input" v-model="resume.skill[0].technical_electives">
+										placeholder="Text input" v-model="resume.da1.technical_electives">
 									</div>
 								</div>
 
@@ -301,7 +325,7 @@
 
 							</collapse-item>
 
-												<collapse-item title="INTERESTS AND HOBBIES">
+							<collapse-item title="INTERESTS AND HOBBIES">
 
 								<div class="field" v-for="(hobby,i) in resume.hobby" :key="i">
 
@@ -385,6 +409,14 @@ export default {
 
     removeInternship: function(i){
       this.resume.internship.splice(i,1);
+	},
+
+	addSkill: function(){
+      this.resume.skill.push({});
+    },
+
+    removeSkill: function(i){
+      this.resume.skill.splice(i,1);
     },
 
     addDegree: function(){
@@ -396,78 +428,6 @@ export default {
     }
 
   },
-
-  // data() {
-  //     return {
-  //       resume: {
-
-  //         info: {
-  //           name: 'Local Dummy',
-  //           email: 'dummy@email.com',
-  //           dob: '1/1/1995',
-  //           address: '123/1, Gandhinagar'
-  //         },
-
-  //         degree: [
-  //           {
-  //             name: 'MSc IT',
-  //             institute: 'DAIICT',
-  //             year: '2018',
-  //             score: '8.0'
-  //           }
-  //         ],
-
-  //         skill: {
-  //             expertise: 'Web Developement',
-  //             programming_languages: 'Javascript',
-  //             tools: 'Postman',
-  //             technical_electives: 'Cloud'
-  //         },
-
-  //         internship: [
-  //           {
-  //             name: 'Road Inspector',
-  //             description: 'Cross platform application',
-  //             start: '1/7/2017',
-  //             end: '1/9/2017',
-  //             team_size: '5',
-  //             guide: 'Lavguru'
-  //           }
-  //         ],
-
-  //         project: [
-  //           {
-  //             name: 'Road Inspector',
-  //             description: 'Cross platform application',
-  //             start: '1/7/2017',
-  //             end: '1/9/2017',
-  //             team_size: '5',
-  //             guide: 'Lavguru'
-  //           }
-  //         ],
-
-  //         position: [
-  //           {
-  //             name: 'Proect Leader'
-  //           }
-  //         ],
-
-  //         award: [
-  //           {
-  //             name: 'Nope'
-  //           }
-  //         ],
-
-  //         hobby: [
-  //           {
-  //             name: 'TV Series'
-  //           }
-  //         ]
-  //   	},
-
-	// 	}
-	// }
-
 
 }
 
