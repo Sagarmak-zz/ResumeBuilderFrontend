@@ -30,16 +30,39 @@
         </div>
 
         <div class="signup-form" v-if="login">
-
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input v-model="signupName" class="input" type="text" placeholder="Name">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input v-model="signupEmail" class="input" type="email" placeholder="Email input">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input v-model="signupPassword" class="input" type="password" placeholder="********">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Confirm Password</label>
+            <div class="control">
+              <input v-model="signupConfirmPassword" class="input" type="password" placeholder="********">
+            </div>
+          </div>
         </div>
 
         <div class="field login-footer">
 
           <div class="control" v-if="!login">
-            <button class="button is-primary" @click="loginProcess()">Login</button>
+            <button class="button is-primary" @keyup.enter="loginProcess(loginEmail, loginPassword)" @click="loginProcess(loginEmail, loginPassword)">Login</button>
           </div>
           <div class="control" v-if=" login">
-            <button class="button is-info" @click="redirect()">Sign Up</button>
+            <button class="button is-info" @click="signupProcess()">Sign Up</button>
           </div>
           <div class="forgot-password" v-if="!login">
             <button class="button is-dark is-outlined">Forgot Password</button>
@@ -48,9 +71,6 @@
         </div>
 
       </div>
-      <pre>
-        {{$data}}
-      </pre>
     </div>
   </div>
 </template>
@@ -62,23 +82,24 @@ export default {
 
   data () {
     return {
-      loginEmail: 'sagar@gmail.com',
-      loginPassword: '123456',
-      login: false
+      loginEmail: '',
+      loginPassword: '',
+      login: false,
+      signupName: '',
+      signupEmail: '',
+      signupPassword: '',
+      signupConfirmPassword: '',
     }
   },
 
   created() {
-    // window.axios.get('https://jsonplaceholder.typicode.com/posts')
-    // .then((response) => {
-    //   console.log(response.data);
-    // })
+
   },
 
   methods: {
-    loginProcess() {
+    loginProcess(email, password) {
       //1 login
-      api.login(this.loginEmail, this.loginPassword)
+      api.login(email, password)
       .then(response => {
         //2 saveToken
         this.saveToken(response.data.token);
@@ -90,7 +111,7 @@ export default {
     saveToken(token) {
       // console.log(token);
       if(token) {
-        console.log(this.$auth.setToken(token));
+        this.$auth.setToken(token);
         //3 redirect
         this.redirectAfterLogin();
       }
@@ -100,7 +121,23 @@ export default {
     },
     redirectAfterLogin() {
       this.$router.push({ name: 'Landing' });
-    }
+    },
+
+    signupProcess() {
+      api.register(this.signupName, this.signupEmail, this.signupPassword, this.signupConfirmPassword)
+        .then(response => {
+          // console.log(response);
+          if(response.data.message == "User created successfully") {
+            this.loginProcess(this.signupEmail, this.signupPassword);
+          }
+          else {
+            console.log('Error in User Creation!');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
   }
 }
 </script>
@@ -144,6 +181,10 @@ export default {
   }
 
   .login-form {
+    padding: 1rem;
+  }
+
+  .signup-form {
     padding: 1rem;
   }
 

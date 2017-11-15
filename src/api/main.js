@@ -10,7 +10,17 @@ export default {
       password: password
     });
   },
+
   //register or signup
+  register(name, email, password, password_confirmation) {
+    return HTTP.post('/register', {
+      name: name,
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation
+    });
+  },
+
   //etc
   dummyGET() {
     return HTTP.get('https://jsonplaceholder.typicode.com/posts');
