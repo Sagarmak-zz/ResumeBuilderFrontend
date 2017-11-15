@@ -84,7 +84,6 @@
 <script>
 import ViewTemplates from '@/components/ViewTemplates';
 import api from '@/api/main';
-import HTTP from '@/packages/http';
 export default {
   name: 'landing',
   created() {

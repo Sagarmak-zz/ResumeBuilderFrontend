@@ -36,7 +36,7 @@
         <div class="field login-footer">
 
           <div class="control" v-if="!login">
-            <button class="button is-primary" @click="redirectLogin()">Login</button>
+            <button class="button is-primary" @click="loginProcess()">Login</button>
           </div>
           <div class="control" v-if=" login">
             <button class="button is-info" @click="redirect()">Sign Up</button>
@@ -48,20 +48,22 @@
         </div>
 
       </div>
-
+      <pre>
+        {{$data}}
+      </pre>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import api from '@/api/main';
 export default {
   name: 'Login',
 
   data () {
     return {
-      loginEmail: '',
-      loginPassword: '',
+      loginEmail: 'sagar@gmail.com',
+      loginPassword: '123456',
       login: false
     }
   },
@@ -74,19 +76,30 @@ export default {
   },
 
   methods: {
-    redirectLogin() {
-      // this.$router.push({ name: 'Landing' });
-      // console.log(axios);
-      // axios.post('http://af064d2c.ngrok.io/login', {
-      //   email: '',
-      //   password: ''
-      // })
-      // .then(response => {
-      //   console.log(response);
-      // })
-      // .catch(error => {
-      //   console.log(error);
-      // })
+    loginProcess() {
+      //1 login
+      api.login(this.loginEmail, this.loginPassword)
+      .then(response => {
+        //2 saveToken
+        this.saveToken(response.data.token);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    },
+    saveToken(token) {
+      // console.log(token);
+      if(token) {
+        console.log(this.$auth.setToken(token));
+        //3 redirect
+        this.redirectAfterLogin();
+      }
+      else {
+        //error
+      }
+    },
+    redirectAfterLogin() {
+      this.$router.push({ name: 'Landing' });
     }
   }
 }
