@@ -1,14 +1,13 @@
 <template lang="html">
   <div class="view-templates-page">
 
-    <div class="">
       <span class="title is-2"> Choose your Template...</span>
       <div class="columns is-multiline">
         <div class="column is-one-third" v-for="i in 5" :key="5">
           <div class="card">
             <div class="card-content">
               <figure class="image is-square">
-                <img src="../../assets/resume/resume3.jpg">
+                <img src="../../../static/resume/resume3.jpg">
               </figure>
             </div>
             <footer class="card-footer">
@@ -26,8 +25,6 @@
           </div>
         </div>
       </div>
-
-    </div>
 
   </div>
 </template>

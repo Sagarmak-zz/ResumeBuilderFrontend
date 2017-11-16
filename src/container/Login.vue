@@ -106,6 +106,10 @@ export default {
       })
       .catch(error => {
         console.log(error);
+        if(error.response.data[0] == "invalid_email_or_password") {
+          console.log("Invalid Email or Password");
+        }
+        console.log(error.response.statusText);
       })
     },
     saveToken(token) {
