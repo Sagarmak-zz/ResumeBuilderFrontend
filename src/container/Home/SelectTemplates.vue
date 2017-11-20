@@ -1,25 +1,27 @@
 <template lang="html">
   <div class="view-templates-page">
 
-      <span class="title is-2"> Choose your Template...</span>
-      <div class="columns is-multiline">
-        <div class="column is-one-third" v-for="resume in resumes">
-          <div class="card">
-            <div class="card-content">
-              <figure class="image is-square">
-                <img src="../../../static/resume/resume3.jpg">
-              </figure>
-            </div>
-            <footer class="card-footer">
-              <a class="card-footer-item">
-                <span>
-                  Select
-                </span>
-              </a>
-            </footer>
+    <span class="title is-2"> Choose your Template...</span>
+    <div class="columns is-multiline">
+      <div class="column is-one-third" v-for="resume in resumes">
+
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-square">
+              <img src="../../../static/resume/resume3.jpg">
+            </figure>
+          </div>
+
+          <div class="card-footer">
+            <router-link :to="{ name: 'Dashboard', params: { resume_id: resume.id } }" class="media-content">
+              <p><span>Name:</span> <span class="title is-4">{{resume.name}}</span></p>
+              <p><span>Desc:</span> <span class="subtitle is-6">{{resume.description}}</span></p>
+            </router-link>
           </div>
         </div>
+
       </div>
+    </div>
 
   </div>
 </template>
@@ -42,14 +44,8 @@ export default {
     selectTemplate() {
       api.selectTemplate()
       .then(response => {
-        // console.log(response.data[0][i]);
-        // console.log(response.data[0][0].id);
-        // console.log(response.data[0][0].name);
-        // console.log(response.data[0][0].description);
-        console.log(response.data);
-        // console.log(response.data[0]);
+        console.log('userTemplates', response.data);
         this.resumes = response.data;
-        // console.log(this.resumes);
       })
       .catch(error => {
         console.log(error);

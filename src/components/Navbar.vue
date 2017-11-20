@@ -24,6 +24,7 @@
                   <span class="icon">
                     <i class="fa fa-download"></i>
                   </span>
+                  <span>{{this.name}}</span>
                   <span>Logout</span>
                 </a>
               </p>
@@ -43,7 +44,6 @@ export default {
   name: 'navbar',
 
   created() {
-    console.log('Navbar: ', this.name, this.email);
   },
 
   props: ['name', 'email'],

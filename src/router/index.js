@@ -30,7 +30,7 @@ let router = new Router({
           meta: { requiresAuth: true },
         },
         {
-          path: '/dashboard',
+          path: '/dashboard/:resume_id',
           name: 'Dashboard',
           component: Dashboard,
           meta: { requiresAuth: true },

@@ -3,7 +3,7 @@
 
     <div class="columns is-multiline">
 
-      <div class="column is-one-third">
+      <div class="column is-one-third" v-for="resume in userResumes">
         <div class="card">
           <div class="card-content">
             <figure class="image is-square">
@@ -12,14 +12,14 @@
           </div>
           <footer class="card-footer">
             <p class="card-footer-item">
-              <span>
+              <router-link :to="{ name: 'Dashboard', params: { resume_id: resume.id } }">
                 Edit
-              </span>
+              </router-link>
             </p>
             <p class="card-footer-item">
-              <span>
+              <a @click="deleteResume(resume.id)">
                 Delete
-              </span>
+              </a>
             </p>
           </footer>
         </div>
@@ -52,21 +52,28 @@ export default {
   data() {
     return {
       showViewtemplate: false,
+      userResumes: []
     }
   },
   methods: {
+
     redirect() {
       this.$router.push({ name: 'SelectTemplates' });
     },
+
     userTemplates() {
       api.userTemplates()
       .then(response => {
-        console.log("UserTemplates", response);
+        this.userResumes = response.data;
       })
       .catch(error => {
         console.log(error);
         console.log(error.response.status, error.response.statusText);
       });
+    },
+
+    deleteResume(resume_id) {
+      console.log('Delete this Resume', resume_id);
     }
   },
   components: {

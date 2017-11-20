@@ -24,8 +24,15 @@ import Resume3 from '@/components/Resume3';
 import Resume4 from '@/components/Resume4';
 export default {
   name: 'dashboard',
+
+  created() {
+    this.resume_id = this.$route.params.resume_id;
+    // console.log(this.resume_id);
+  },
+
   data() {
     return {
+      resume_id: null,
       resume: {
         info: {
           name: "Local Dummy",
@@ -89,10 +96,10 @@ export default {
 .dashboard {
 
   .resume-template1 {
-      // background-color: white;
-      margin-top: .7rem;
-      border: solid 1px #ddd;
-      min-height: 85vh;
+    // background-color: white;
+    margin-top: .7rem;
+    border: solid 1px #ddd;
+    min-height: 85vh;
   }
 
 }
