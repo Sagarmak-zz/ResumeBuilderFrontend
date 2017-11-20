@@ -3,7 +3,7 @@
 
       <span class="title is-2"> Choose your Template...</span>
       <div class="columns is-multiline">
-        <div class="column is-one-third" v-for="i in 5" :key="5">
+        <div class="column is-one-third" v-for="resume in resumes">
           <div class="card">
             <div class="card-content">
               <figure class="image is-square">
@@ -11,16 +11,11 @@
               </figure>
             </div>
             <footer class="card-footer">
-              <p class="card-footer-item">
+              <a class="card-footer-item">
                 <span>
-                  View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                  Select
                 </span>
-              </p>
-              <p class="card-footer-item">
-                <span>
-                  Share on <a href="#">Facebook</a>
-                </span>
-              </p>
+              </a>
             </footer>
           </div>
         </div>
@@ -30,13 +25,37 @@
 </template>
 
 <script>
+import api from '@/api/main';
 export default {
   name: 'view-templates-page',
+  created() {
+    this.selectTemplate();
+  },
+
   data() {
     return {
-
+      resumes: ''
     }
   },
+
+  methods: {
+    selectTemplate() {
+      api.selectTemplate()
+      .then(response => {
+        // console.log(response.data[0][i]);
+        // console.log(response.data[0][0].id);
+        // console.log(response.data[0][0].name);
+        // console.log(response.data[0][0].description);
+        console.log(response.data);
+        // console.log(response.data[0]);
+        this.resumes = response.data;
+        // console.log(this.resumes);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }
+  }
 }
 </script>
 

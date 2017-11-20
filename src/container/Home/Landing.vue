@@ -47,17 +47,7 @@ import api from '@/api/main';
 export default {
   name: 'landing',
   created() {
-    // this.$bus.$on('close', () => {
-    //   this.showViewtemplate = false;
-    //   console.log('called');
-    // })
-    // api.dummyGET()
-    // .then(response => {
-    //   console.log(response);
-    // })
-    // .catch(error => {
-    //   console.log(error);
-    // })
+    this.userTemplates();
   },
   data() {
     return {
@@ -67,6 +57,16 @@ export default {
   methods: {
     redirect() {
       this.$router.push({ name: 'SelectTemplates' });
+    },
+    userTemplates() {
+      api.userTemplates()
+      .then(response => {
+        console.log("UserTemplates", response);
+      })
+      .catch(error => {
+        console.log(error);
+        console.log(error.response.status, error.response.statusText);
+      });
     }
   },
   components: {

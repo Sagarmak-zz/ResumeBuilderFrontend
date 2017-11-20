@@ -8,7 +8,7 @@ let axiosInstance = axios.create({
 });
 
 // Add a request interceptor
-axios.interceptors.request.use(function (config) {
+axiosInstance.interceptors.request.use(function (config) {
   console.log(config);
   if(Auth.isAuthenticated()) {
     //always for request, use config of axios (read documentation)
@@ -22,7 +22,7 @@ axios.interceptors.request.use(function (config) {
 });
 
 // Add a response interceptor
-axios.interceptors.response.use(function (response) {
+axiosInstance.interceptors.response.use(function (response) {
   // Do something with response data
   return response;
 }, function (error) {

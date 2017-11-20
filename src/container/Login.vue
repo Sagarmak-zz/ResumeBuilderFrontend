@@ -106,10 +106,24 @@ export default {
       })
       .catch(error => {
         console.log(error);
-        if(error.response.data[0] == "invalid_email_or_password") {
-          console.log("Invalid Email or Password");
+        if(error == "Error: Network Error") {
+          this.$toasted.error(error, {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000
+          });
         }
-        console.log(error.response.statusText);
+        else {
+          console.log(error.response.statusText);
+          this.$toasted.error(error.response.statusText, {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000
+          });
+        }
+        // if(error.response.data[0] == "invalid_email_or_password") {
+        //   console.log("Invalid Email or Password");
+        // }
       })
     },
     saveToken(token) {
@@ -198,6 +212,22 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  @media all and (max-width: 500px) {
+
+    .box {
+      max-width: 350px;
+      .title-head {
+        display: flex;
+        flex-direction: column;
+        .title {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
   }
 
 }

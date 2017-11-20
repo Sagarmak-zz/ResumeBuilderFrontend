@@ -10,7 +10,8 @@ Vue.prototype.$Auth = new Vue();
 Vue.config.productionTip = false
 import axios from 'axios';
 import Config from './config';
-
+import Toasted from 'vue-toasted';
+Vue.use(Toasted);
 // Make Auth methods available globally
 Object.defineProperties(Vue.prototype, {
   $auth: {

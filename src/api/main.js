@@ -21,6 +21,21 @@ export default {
     });
   },
 
+  //home
+  userProfile() {
+    return HTTP.get('/userProfile');
+  },
+
+  //home
+  userTemplates() {
+    return HTTP.get('/userTemplates');
+  },
+
+  //selectTemplate
+  selectTemplate() {
+    return HTTP.get('/templates');
+  },
+
   //etc
   dummyGET() {
     return HTTP.get('https://jsonplaceholder.typicode.com/posts');

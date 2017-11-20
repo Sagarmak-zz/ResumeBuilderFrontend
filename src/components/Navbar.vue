@@ -42,6 +42,12 @@
 export default {
   name: 'navbar',
 
+  created() {
+    console.log('Navbar: ', this.name, this.email);
+  },
+
+  props: ['name', 'email'],
+
   methods: {
     logout() {
       this.$bus.$emit('logout');
