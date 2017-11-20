@@ -327,6 +327,12 @@
 
 </collapse-item>
 
+<div class="buttons">
+	<a class="button is-primary">Save</a>
+	<a class="button is-link">Download</a>
+</div>
+
+
 </collapse>
 
 </div>
@@ -483,6 +489,14 @@ export default {
 	}
 	.field {
 		margin-bottom: 0;
+	}
+	.buttons {
+		display: flex;
+		margin-top: 1rem;
+		a {
+			flex: 1;
+			border-radius: 0;
+		}
 	}
 }
 </style>

@@ -98,6 +98,7 @@ export default {
 
   methods: {
     loginProcess(email, password) {
+      console.log("Email: ", email);
       //1 login
       api.login(email, password)
       .then(response => {

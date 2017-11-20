@@ -14,8 +14,8 @@
 
           <div class="card-footer">
             <router-link :to="{ name: 'Dashboard', params: { resume_id: resume.id } }" class="media-content">
-              <p><span>Name:</span> <span class="title is-4">{{resume.name}}</span></p>
-              <p><span>Desc:</span> <span class="subtitle is-6">{{resume.description}}</span></p>
+              <p><span class="title is-4">{{resume.name}}</span></p>
+              <p><span class="subtitle is-6">{{resume.description}}</span></p>
             </router-link>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default {
     selectTemplate() {
       api.selectTemplate()
       .then(response => {
-        console.log('userTemplates', response.data);
+        // console.log('userTemplates', response.data);
         this.resumes = response.data;
       })
       .catch(error => {
@@ -80,8 +80,14 @@ export default {
     // margin-bottom: 1rem;
   }
   .column.is-one-third {
-    border: solid 1px #ccc;
+    border: solid 1px #aaa;
     margin-bottom: 1rem;
+    // background-color: white;
+    padding: 0;
+  }
+  .media-content {
+    margin-left: 8%;
+    padding: 10px 0;
   }
 }
 </style>

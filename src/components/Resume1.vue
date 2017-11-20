@@ -216,6 +216,9 @@
       padding: 0;
       margin: 0;
     }
+    .resume1 {
+      background-color: white;
+    }
     .resume-template {
       font-family: "Calibri", sans-serif;
       font-size: 12px;

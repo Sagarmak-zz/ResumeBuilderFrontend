@@ -2,15 +2,23 @@
   <div class="dashboard">
     <div class="">
       <div class="columns">
+
         <div class="column is-4">
           <Sidebar :resume="resume"></Sidebar>
         </div>
+
         <div class="column resume-template1">
-          <Resume1 :resume="resume"></Resume1>
-          <!-- <Resume2></Resume2> -->
-          <!-- <Resume3></Resume3> -->
-          <Resume4></Resume4>
+          <div v-if="resumeId==0">
+            <Resume1 :resume="resume"></Resume1>
+          </div>
+          <div v-else-if="resumeId==1">
+            <Resume2></Resume2>
+          </div>
+          <div v-else="resumeId==2">
+            <Resume3></Resume3>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -26,13 +34,12 @@ export default {
   name: 'dashboard',
 
   created() {
-    this.resume_id = this.$route.params.resume_id;
-    // console.log(this.resume_id);
+    this.resumeId = this.$route.params.resume_id;
   },
 
   data() {
     return {
-      resume_id: null,
+      resumeId: null,
       resume: {
         info: {
           name: "Local Dummy",

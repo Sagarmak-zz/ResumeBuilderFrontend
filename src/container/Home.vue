@@ -12,6 +12,8 @@
 <script>
 import Navbar from '@/components/Navbar';
 import api from '@/api/main';
+import jwt_decode from 'jwt-decode';
+import Auth from '@/packages/auth/Auth';
 export default {
   name: 'navbar',
 
@@ -24,6 +26,8 @@ export default {
 
   mounted() {
     this.userProfile();
+    // var decoded = jwt_decode(Auth.getToken());
+    // console.log("Decode", decoded);
   },
 
   created() {
@@ -37,8 +41,8 @@ export default {
     userProfile() {
       api.userProfile()
       .then(response => {
-        this.name = response.data.name;
-        this.email = response.data.email;
+        this.name = response.data.user.name;
+        this.email = response.data.user.email;
         this.$toasted.info('Welcome ' + this.name + '!', {
           theme: 'bubble',
           position: 'top-center',
