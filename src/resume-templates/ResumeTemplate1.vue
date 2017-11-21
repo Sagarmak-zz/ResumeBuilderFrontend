@@ -3,9 +3,9 @@
         <div class="resume-template">
             <table class="main">
                 <tr>
-                    <td class="w-20">
+                    <!-- <td class="w-20"> -->
                         <!-- <img src="../assets/daiict-logo.jpg"> -->
-                    </td>
+                    <!-- </td> -->
                     <td class="intro w-80">
                         <h1>{{ resume.info.name }}</h1>
                         <p>

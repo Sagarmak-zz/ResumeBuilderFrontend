@@ -6,7 +6,8 @@
           <sidebar :resume="resume"></sidebar>
         </div>
         <div class="column is-8">
-          <resume-template3 :resume="resume"></resume-template3>
+          <resume-template2 :resume="resume"></resume-template2>
+          <!-- <resume-template4></resume-template4> -->
         </div>
       </div>
     </div>
@@ -18,6 +19,8 @@
   import ResumeTemplate1 from "@/resume-templates/ResumeTemplate1";
   import ResumeTemplate2 from "@/resume-templates/ResumeTemplate2";
   import ResumeTemplate3 from "@/resume-templates/ResumeTemplate3";
+  import ResumeTemplate4 from "@/resume-templates/ResumeTemplate4";
+
 
   export default {
     name: "home",
@@ -25,143 +28,108 @@
       Sidebar,
       ResumeTemplate1,
       ResumeTemplate2,
-      ResumeTemplate3
+      ResumeTemplate3,
+      ResumeTemplate4
     },
     data() {
       return {
         resume: {
 
           info: {
-            name: "Anil Kumar Tudu",
-            email: "anil@gmail.com",
-            dob: "1/1/1995",
-            address: "123/1, Gandhinagar"
+            name: "John Doe",
+            email: "john@gmail.com",
+            dob: "01/01/1990",
+            address: "123, Sector 2, Gandhinagar",
+            profession: "Web Developer",
+            phone: "9999988888"
           },
 
           da1: {
-              expertise: "Web Developement",
+              expertise: "Frontend Web Developemet",
               programming_languages: "Javascript, Java",
-              tools: "Postman, Git, Vue, Bulma",
+              tools: "Postman, Git, VueJS, Bulma",
               technical_electives: "Cloud computing"
           },
 
           degree: [
             {
               name: "MSc IT",
-              institute: "DAIICT",
+              institute: "Dhirubhai Ambani Institute of Information and Communication Technology",
               year: "2018",
               score: "7.0"
             },
             {
-              name: "MSc IT",
-              institute: "DAIICT",
-              year: "2018",
-              score: "7.0"
+              name: "BCA",
+              institute: "GLS Institute of Computer Technology",
+              year: "2016",
+              score: "7.5"
             },
             {
-              name: "MSc IT",
-              institute: "DAIICT",
-              year: "2018",
-              score: "7.0"
+              name: "Higher Secondary",
+              institute: "Delhi Public School, Gandhinagar",
+              year: "2012",
+              score: "60"
             },
             {
-              name: "MSc IT",
-              institute: "DAIICT",
-              year: "2018",
-              score: "7.0"
+              name: "Secondary",
+              institute: "Delhi Public School, Gandhinagar",
+              year: "2010",
+              score: "70"
             }
 
           ],
 
           skill: [
             {
-              name: 'none',
+              name: 'UX & UI Design',
             },
             {
-              name: 'not now',
+              name: 'Search Engine Optimization (SEO)',
             },
             {
-              name: 'not now',
-            },
-            {
-              name: 'not now',
-            },
-            {
-              name: 'not now',
-            },
-            {
-              name: 'not now',
+              name: '3D Animation & Agile Methodologies',
             }
           ],
 
           internship: [
             {
-              name: "Road Inspector",
-              description: "Cross platform mobile application",
+              name: "ABC Company, Ahmedabad",
+              description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
               start: "1/7/2017",
               end: "1/9/2017",
-              team_size: "5",
-              guide: "Lavguru"
+              team_size: "1",
+              guide: "John Wick"
             },
             {
-              name: "Road Inspector",
-              description: "Cross platform mobile application",
-              start: "1/7/2017",
-              end: "1/9/2017",
-              team_size: "5",
-              guide: "Lavguru"
-            },
-            {
-              name: "Road Inspector",
-              description: "Cross platform mobile application",
-              start: "1/7/2017",
-              end: "1/9/2017",
-              team_size: "5",
-              guide: "Lavguru"
-            },
-            {
-              name: "Road Inspector",
-              description: "Cross platform mobile application",
-              start: "1/7/2017",
-              end: "1/9/2017",
-              team_size: "5",
-              guide: "Lavguru"
+              name: "XVZ Company, Ahemdabad",
+              description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
+              start: "1/12/2016",
+              end: "1/2/2017",
+              team_size: "2",
+              guide: "Jason Bourne"
             }
-
           ],
 
           project: [
             {
-              name: "Road Inspector",
-              description: "Cross platform mobile application",
+              name: "ABC Company, Ahmedabad",
+              description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
               start: "1/7/2017",
               end: "1/9/2017",
-              team_size: "5",
-              guide: "Lavguru"
+              team_size: "1",
+              guide: "John Wick"
             },
             {
-              name: "Road Inspector",
-              description: "Cross platform mobile application",
-              start: "1/7/2017",
-              end: "1/9/2017",
-              team_size: "5",
-              guide: "Lavguru"
-            },
-            {
-              name: "Road Inspector",
-              description: "Cross platform mobile application",
-              start: "1/7/2017",
-              end: "1/9/2017",
-              team_size: "5",
-              guide: "Lavguru"
+              name: "XVZ Company, Ahmedabad",
+              description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
+              start: "1/12/2016",
+              end: "1/2/2017",
+              team_size: "2",
+              guide: "Jason Bourne"
             }
-
           ],
 
           position: [
-            {
-              name: "Project Leader"
-            },
             {
               name: "Project Leader"
             },
@@ -175,25 +143,22 @@
 
           award: [
             {
-              name: "Nope"
+              name: "Developed an online training platform that resulted in an increase of 50+ employees enrolling in company development courses per year."
             },
             {
-              name: "Nope"
-            },
-            {
-              name: "Nope"
-            },
-            {
-              name: "Nope"
+              name: "Launched a company-wide digitized filing system that led to an increase in efficiency for all departments by 20% on average."
             }
           ],
 
           hobby: [
             {
-              name: "TV Series"
+              name: "TV Series, Movies"
             },
             {
-              name: "TV Series"
+              name: "Badminton"
+            },
+            {
+              name: "Following IT blogs and tech news"
             }
           ]
 

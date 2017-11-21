@@ -78,7 +78,7 @@
 
 								</collapse-item>
 
-								<a class="button is-info" @click="addDegree()">
+								<a class="btn button is-info" @click="addDegree()">
 									<span class="icon">
 												<i class="fa fa-plus"></i>
 										</span>
@@ -89,10 +89,10 @@
 
 						<collapse-item title="SKILLS">
 
-								<div class="field" v-for="(skill,i) in resume.skill" :key="i">
+								<div class="parentInput field" v-for="(skill,i) in resume.skill" :key="i">
 
-									<label class="label">{{ resume.skill[i].name }}</label>
-									<div class="control">
+									<!-- <label class="label">{{ resume.skill[i].name }}</label> -->
+									<div class="childInput control">
 										<input class="input is-primary" type="text"
 										placeholder="Text input" v-model="resume.skill[i].name">
 									</div>
@@ -104,7 +104,7 @@
 
 								</div>
 
-								<a class="button is-info" @click="addSkill()">
+								<a class="btn2 button is-info" @click="addSkill()">
 									<span class="icon">
 											<i class="fa fa-plus"></i>
 									</span>
@@ -192,7 +192,7 @@
 									</div>
 								</div>
 
-								<a class="button is-danger" @click="removeInternship(i)">
+								<a class="btn button is-danger" @click="removeInternship(i)">
 										<span class="icon">
 											<i class="fa fa-minus-circle"></i>
 										</span>
@@ -200,7 +200,7 @@
 
 								</collapse-item>
 
-								<a class="button is-info" @click="addInternship()">
+								<a class="btn button is-info" @click="addInternship()">
 									<span class="icon">
 												<i class="fa fa-plus"></i>
 										</span>
@@ -264,7 +264,7 @@
 
 								</collapse-item>
 
-								<a class="button is-info" @click="addProject()">
+								<a class="btn button is-info" @click="addProject()">
 									<span class="icon">
 												<i class="fa fa-plus"></i>
 										</span>
@@ -275,10 +275,10 @@
 
 						<collapse-item title="POSITION OF RESPONSIBILITY">
 
-								<div class="field" v-for="(position,i) in resume.position" :key="i">
+								<div class="parentInput field" v-for="(position,i) in resume.position" :key="i">
 
-									<label class="label">{{ resume.position[i].name }}</label>
-									<div class="control">
+									<!-- <label class="label">{{ resume.position[i].name }}</label> -->
+									<div class="childInput control">
 										<input class="input is-primary" type="text"
 										placeholder="Text input" v-model="resume.position[i].name">
 									</div>
@@ -301,10 +301,10 @@
 
 												<collapse-item title="AWARDS AND ACHIEVEMENTS">
 
-								<div class="field" v-for="(award,i) in resume.award" :key="i">
+								<div class="parentInput field" v-for="(award,i) in resume.award" :key="i">
 
-									<label class="label">{{ resume.award[i].name }}</label>
-									<div class="control">
+									<!-- <label class="label">{{ resume.award[i].name }}</label> -->
+									<div class="childInput control">
 										<input class="input is-primary" type="text"
 										placeholder="Text input" v-model="resume.award[i].name">
 									</div>
@@ -327,10 +327,10 @@
 
 							<collapse-item title="INTERESTS AND HOBBIES">
 
-								<div class="field" v-for="(hobby,i) in resume.hobby" :key="i">
+								<div class="parentInput field" v-for="(hobby,i) in resume.hobby" :key="i">
 
-									<label class="label">{{ resume.hobby[i].name }}</label>
-									<div class="control">
+									<!-- <label class="label">{{ resume.hobby[i].name }}</label> -->
+									<div class="childInput control">
 										<input class="input is-primary" type="text"
 										placeholder="Text input" v-model="resume.hobby[i].name">
 									</div>
@@ -434,7 +434,21 @@ export default {
 </script>
 
 <style>
-	.box{
-		height: 100vh;
+
+	.parentInput {
+		display: flex;
+	}
+
+	.childInput {
+		flex: 2;
+		margin-right: 3px;
+	}
+
+	.btn {
+		margin-top: 10px;
+	}
+
+	.btn2 {
+		margin-bottom: 10px;
 	}
 </style>

@@ -1,69 +1,63 @@
 <template>
+  <div id="wrap">
         <article>
 
-                  <header>
-                    <!-- force flexbox to keep name on a single line -->
-                    <h1>{{ resume.info.name }}</h1>
-                    <p>resume.info.profession</p>
-                    <p>resume.info.phone</p>
-                    <p>{{ resume.info.dob }}</p>
-                    <p>{{ resume.info.email }}</p>
-                    <p>{{ resume.info.address }}</p>
+                <header>
+                  <!-- force flexbox to keep name on a single line -->
+                  <h1><strong>{{ resume.info.name }}</strong></h1>
+                  <p>{{ resume.info.profession }}</p>
+                  <p>{{ resume.info.dob }}</p>
+                  <p>{{ resume.info.email }}</p>
+                  <p>{{ resume.info.address }}</p>
 
-                  </header>
+                </header>
 
-                  <div class="one-col">
+                <div class="one-col">
 
                     <section>
                       <h2>EXPERIENCE</h2>
-
-                      <ul v-for="(item,i) in resume.internship" :key="i">
-                        <h3><strong>{{ item.name }}</strong>{{ item.start }} - {{ item.end }}</h3>
-                        <li>{{ item.description }}</li>
-                      </ul>
-
+                        <ul v-for="(item,i) in resume.internship" :key="i">
+                          <h3><strong>{{ item.name }}</strong>{{ item.start }} - {{ item.end }}</h3>
+                          <li>{{ item.description }}</li>
+                        </ul>
                     </section>
 
                     <section>
                       <h2>POSITION OF RESPONSIBILITY</h2>
-
-                      <ul v-for="(item,i) in resume.position" :key="i">
-                        <h3><strong>{{ item.name }}</strong></h3>
-                      </ul>
-
+                        <ul v-for="(item,i) in resume.position" :key="i">
+                          <li>{{ item.name }}</li>
+                        </ul>
                     </section>
 
                     <section>
                       <h2>ACHIEVEMENTS</h2>
-
-                      <ul v-for="(item,i) in resume.award" :key="i">
-                        <h3><strong>{{ item.name }}</strong></h3>
-                      </ul>
-
+                        <ul v-for="(item,i) in resume.award" :key="i">
+                          <li>{{ item.name }}</li>
+                        </ul>
                     </section>
 
                     <div class="two-col">
-                      <section>
-                        <h2>EDUCATION</h2>
+                        <section>
+                            <h2>EDUCATION</h2>
 
-                        <ol v-for="(item,i) in resume.degree" :key="i">
-                          <li> {{ item.name }} <strong> {{ item.institute }} </strong></li>
-                        </ol>
+                            <ol v-for="(item,i) in resume.degree" :key="i">
+                              <li><strong>{{ item.name }}</strong> {{ item.institute }} </li>
+                            </ol>
+                        </section>
 
-                      </section>
+                        <section>
+                            <h2>SKILLS</h2>
 
-                      <section>
-                        <h2>SKILLS</h2>
-
-                        <ul v-for="(item,i) in resume.skill" :key="i" >
-                          <li>{{ item.name }}</li>
-                        </ul>
-
-                      </section>
+                            <ul v-for="(item,i) in resume.skill" :key="i" >
+                              <li>{{ item.name }}</li>
+                            </ul>
+                        </section>
                     </div>
-                  </div>
+
+                </div>
+
         </article>
-</html>
+  </div>
 </template>
 
 <script>
@@ -76,13 +70,18 @@
 
 <style scoped>
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
-
-* {
-  box-model: border-box;
+#wrap {
+      position: fixed;
+      top: 60px;
+      bottom: 0;
+      max-width: 60%;
+      overflow-y: scroll;
 }
 
-/* simple use of flex-box to create layout from <div> "grouping" tags. The key is to remember that your CSS layout solution has everything to do with the decisions you make in the HTML  */
+/* {
+  box-model: border-box;
+} */
+
 
 article, .two-col {
   display: flex;
@@ -90,15 +89,15 @@ article, .two-col {
   justify-content: space-between;
 }
 
-article {
-  padding: 5%;
-}
-
 header {
   flex: 1;
   padding: 0 3%;
   border-right: 1px solid silver;
   margin-right: 3%;
+}
+
+section {
+  margin-bottom: 40px;
 }
 
 .one-col {
@@ -109,11 +108,14 @@ header {
 flex: 1;
 }
 
+.two-col h2 {
+  margin-top: 0px;
+}
+
 
 /* example layout mediaquery */
 @media only screen and (max-width: 768px) {
-  article,
-  .two-col {
+  article, .two-col {
     flex-direction: column;
   }
   header {
@@ -123,28 +125,26 @@ flex: 1;
   }
 }
 
-
 /**********
 CSS Type & Design - "The simple stuff"
-************/
+**********/
 
 h1,h2,h3 {
-  font-family: 'Raleway';
   margin-top: 10px;
   font-weight: 300;
 }
 
 h1 {
-  font-weight: 300;
+  font-size: 1.2em;
   text-transform: uppercase;
 }
 
 h2 {
   font-size: .9em;
-  letter-spacing: .5em;
-  font-weight: 600;
+  letter-spacing: .3em;
+  font-weight: 700;
   padding: 5px 10px;
-  color: #cdcdcd;
+  color: 	#A9A9A9;
   background-color: #ededed;
 }
 
@@ -159,13 +159,14 @@ h3 {
 }
 
 h3 strong {
-  font-size: 1.5em
+  font-size: 1.3em
 }
 
 p,li {
   font-family: Georgia;
+  margin-top: 5px;
+  padding: 0px 3px;
 }
-
 
 ol,ul {
   list-style-type: none;
@@ -175,7 +176,7 @@ ol,ul {
 }
 
 li {
-  margin-bottom: 1em;
+  margin-bottom: 0.7em;
 }
 
 .two-col section:first-child h2 {
@@ -186,11 +187,12 @@ li {
   display: block;
 }
 
-
 /* example iPhone type design tweaking for single columns */
 
-@media only screen and (max-width: 768px) {
-  /* A fun CSS hack to convert list of skills to comma separated paragraph.   */
+/*
+  @media only screen and (max-width: 768px) {
+   A fun CSS hack to convert list of skills to comma separated paragraph.
+
   .two-col ul li {display: inline;}
   .two-col ul li:after {content: ","}
   .two-col ul li:last-child:after {content: "."}
@@ -211,10 +213,12 @@ li {
     font-size: 3em;
     margin-bottom: 0;
   }
+
   h3 {
     display: block;
     text-align: center;
   }
+
   h3 strong {
     display: block;
     margin-top: .5em;
@@ -229,6 +233,6 @@ li {
     text-align: center;
     margin-bottom: 0;
   }
-}
+} */
 
 </style>
