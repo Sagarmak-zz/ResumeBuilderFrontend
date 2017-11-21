@@ -4,7 +4,7 @@
     <nav class="navbar is-primary">
 
       <div class="navbar-brand">
-        <a class="navbar-item" @click="redirect()">
+        <a class="navbar-item" @click="redirectHome">
           <span class="title">ResumeBuilder</span>
         </a>
 
@@ -18,21 +18,27 @@
       <div id="navMenuTransparentExample" class="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="field is-grouped">
+            <p class="control">
+              <a class="button is-primary is-outlined is-inverted" @click="redirectProfile">
+                <span class="icon">
+                  <i class="fa fa-user"></i>
+                </span>
+                <span>{{name}}</span>
+              </a>
+            </p>
+            <!-- <div class="field is-grouped">
               <p class="control">
                 <a class="button is-primary is-outlined is-inverted" @click="logout()">
                   <span class="icon">
-                    <i class="fa fa-download"></i>
+                    <i class="fa fa-sign-out"></i>
                   </span>
-                  <span>{{this.name}}</span>
                   <span>Logout</span>
                 </a>
               </p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
-
 
     </nav>
 
@@ -52,8 +58,11 @@ export default {
     logout() {
       this.$bus.$emit('logout');
     },
-    redirect() {
+    redirectHome() {
       this.$router.push({ name: 'Landing' });
+    },
+    redirectProfile() {
+      this.$router.push({ name: 'Profile' });
     }
   }
 }

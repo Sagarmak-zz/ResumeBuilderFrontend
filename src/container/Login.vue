@@ -6,16 +6,16 @@
       <div class="box inside-box">
         <div class="title-head">
           <span class="title is-1">ResumeBuilder</span>
-          <button class="button is-info" v-if="!login" @click="login=true">Signup</button>
-          <button class="button is-primary" v-if="login" @click="login=false">Login</button>
+          <button class="button is-info" v-show="login" @click="login=false">Signup</button>
+          <button class="button is-primary" v-show="!login" @click="login=true">Login</button>
         </div>
 
-        <div class="login-form" v-if="!login">
+        <div class="login-form" v-show="login">
 
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input name="loginEmail" type="email" v-model="loginEmail" data-vv-delay="1000"
+              <input name="loginEmail" v-model="loginEmail" type="email" data-vv-delay="1000"
               :class="{'input': true, 'is-danger': errors.has('loginEmail') }"
               placeholder="Email input" v-validate="'required|email'">
             </div>
@@ -28,9 +28,9 @@
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input name="loginPassword" type="password" v-model="loginPassword" data-vv-delay="1000"
+              <input name="loginPassword" v-model="loginPassword" type="password" data-vv-delay="1000"
               :class="{'input': true, 'is-danger': errors.has('loginPassword') }"
-              placeholder="********" v-validate="'required|alpha_dash'">
+              placeholder="********" v-validate="'required'" @keyup.enter="loginValidate">
             </div>
             <span v-show="errors.has('loginPassword')" class="help is-danger">
               {{ errors.first('loginPassword') }}
@@ -39,13 +39,13 @@
 
         </div>
 
-        <div class="signup-form" v-if="login">
+        <div class="signup-form" v-show="!login">
           <div class="field">
             <label class="label">Name</label>
             <div class="control">
-              <input name="signupName" type="text" v-model="signupName" data-vv-delay="1000"
+              <input name="signupName" v-model="signupName" type="text" data-vv-delay="1000"
               :class="{'input': true, 'is-danger': errors.has('signupName') }"
-              v-validate="'required|alpha_spaces'" placeholder="Name">
+              v-validate="'required'" placeholder="Name">
             </div>
             <span v-show="errors.has('signupName')" class="help is-danger">
               {{ errors.first('signupName') }}
@@ -54,7 +54,7 @@
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input name="signupEmail" type="email" v-model="signupEmail" data-vv-delay="1000"
+              <input name="signupEmail" v-model="signupEmail" type="email" data-vv-delay="1000"
               :class="{'input': true, 'is-danger': errors.has('signupEmail') }"
               placeholder="Email input" v-validate="'required|email'">
             </div>
@@ -77,7 +77,7 @@
             <label class="label">Confirm Password</label>
             <div class="control">
               <input name="signupConfirmPassword" v-model="signupConfirmPassword" type="password"
-              :class="{'input': true, 'is-danger': errors.has('signupConfirmPassword') }"
+              :class="{'input': true, 'is-danger': errors.has('signupConfirmPassword') }" @keyup.enter="signupValidate"
               v-validate="'required|confirmed:signupPassword'" placeholder="********" data-vv-delay="1000">
             </div>
             <span v-show="errors.has('signupConfirmPassword')" class="help is-danger">
@@ -88,15 +88,15 @@
 
         <div class="field login-footer">
 
-          <div class="control" v-if="!login">
-            <button class="button is-primary" @keyup.enter="loginValidate" @click="loginValidate">
+          <div class="control" v-show="login">
+            <button class="button is-primary" @click="loginValidate">
               Login
             </button>
           </div>
-          <div class="control" v-if=" login">
+          <div class="control" v-show="!login">
             <button class="button is-info" @click="signupValidate">Sign Up</button>
           </div>
-          <div class="forgot-password" v-if="!login">
+          <div class="forgot-password" v-show="login">
             <button class="button is-dark is-outlined">Forgot Password</button>
           </div>
 
@@ -114,9 +114,10 @@ export default {
 
   data () {
     return {
+      login: true,
+      signUpInsert: false,
       loginEmail: '',
       loginPassword: '',
-      login: false,
       signupName: '',
       signupEmail: '',
       signupPassword: '',
@@ -155,11 +156,30 @@ export default {
       api.login(email, password)
       .then(response => {
         this.saveToken(response.data.token);
+        if(this.signUpInsert) {
+          api.insert()
+          .then(response => {
+            console.log("insert", response);
+          })
+          .catch(error => {
+            console.log("insert", error.response);
+          })
+        }
+        else {
+
+        }
       })
       .catch(error => {
         console.log(error);
         if(error == "Error: Network Error") {
           this.$toasted.error(error, {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000
+          });
+        }
+        else if (error.response.data[0]) {
+          this.$toasted.error(error.response.data[0], {
             theme: "outline",
             position: "bottom-center",
             duration : 3000
@@ -220,7 +240,9 @@ export default {
       api.register(this.signupName, this.signupEmail, this.signupPassword, this.signupConfirmPassword)
       .then(response => {
         console.log(response);
-        if(response.data == "registration successfully!!!...") {
+        if(response.data == "registration done...") {
+          // login
+          this.signUpInsert = true;
           this.loginProcess(this.signupEmail, this.signupPassword);
         }
         else {
@@ -228,7 +250,12 @@ export default {
         }
       })
       .catch(error => {
-        console.log(error);
+        console.log(error.response);
+        this.$toasted.error(error.response.statusText, {
+          theme: "outline",
+          position: "bottom-center",
+          duration : 3000
+        });
       })
     },
   }

@@ -33,6 +33,11 @@ export default {
   created() {
     this.$bus.$on('logout', () => {
       this.$auth.destroyToken();
+      this.$toasted.success('Successfully Logged Out!', {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000,
+          });
       this.redirect();
     });
   },
@@ -41,6 +46,7 @@ export default {
     userProfile() {
       api.userProfile()
       .then(response => {
+        // console.log(response.data.user);
         this.name = response.data.user.name;
         this.email = response.data.user.email;
         this.$toasted.info('Welcome ' + this.name + '!', {

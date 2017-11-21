@@ -4,7 +4,7 @@
       <div class="columns">
 
         <div class="column is-4">
-          <Sidebar :resume="resume"></Sidebar>
+          <Sidebar :resumeId="resumeId" :resume="resume"></Sidebar>
         </div>
 
         <div class="column resume-template1">

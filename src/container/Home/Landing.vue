@@ -64,7 +64,18 @@ export default {
     userTemplates() {
       api.userTemplates()
       .then(response => {
-        this.userResumes = response.data;
+        // console.log("userTemplates", response);
+        if(response.data == "No templates") {
+          this.$toasted.show('Please select a template to continue!', {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000,
+            icon: 'add_circle'
+          });
+        }
+        else {
+          this.userResumes = response.data;
+        }
       })
       .catch(error => {
         console.log(error);

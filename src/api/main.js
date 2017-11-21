@@ -21,6 +21,14 @@ export default {
     });
   },
 
+   //one time user data creation
+   insert() {
+     return HTTP.post('/insert', {
+       
+     });
+   },
+
+
   //home
   userProfile() {
     return HTTP.get('/userProfile');

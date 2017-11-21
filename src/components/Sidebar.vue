@@ -89,56 +89,62 @@
 
 		<collapse-item title="SKILLS">
 
-			<div class="parentInput field" v-for="(skill,i) in resume.skill" :key="i">
+			<div v-if="resumeId==0">
 
-				<div class="childInput control">
-					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.skill[i].name">
-				</div>
-				<a class="button is-danger" @click="removeSkill(i)">
-					<span class="icon">
-						<i class="fa fa-minus-circle"></i>
-					</span>
-				</a>
+					<div class="field">
+						<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
+						<div class="control">
+							<input class="input is-primary" type="text"
+							placeholder="Text input" v-model="resume.da1.expertise">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">PROGRAMMING LANGUAGE(S)</label>
+						<div class="control">
+							<input class="input is-primary" type="text"
+							placeholder="Text input" v-model="resume.da1.programming_languages">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">TOOLS AND TECHNOLOGIES</label>
+						<div class="control">
+							<input class="input is-primary" type="text"
+							placeholder="Text input" v-model="resume.da1.tools">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">TECHNICAL ELECTIVES</label>
+						<div class="control">
+							<input class="input is-primary" type="text"
+							placeholder="Text input" v-model="resume.da1.technical_electives">
+						</div>
+					</div>
 
 			</div>
 
-			<a class="button is-info" @click="addSkill()">
-				<span class="icon">
-					<i class="fa fa-plus"></i>
-				</span>
-				<span>Add</span>
-			</a>
+			<div v-else>
 
+					<div class="parentInput field" v-for="(skill,i) in resume.skill" :key="i">
 
+						<div class="childInput control">
+							<input class="input is-primary" type="text"
+							placeholder="Text input" v-model="resume.skill[i].name">
+						</div>
+						<a class="button is-danger" @click="removeSkill(i)">
+							<span class="icon">
+								<i class="fa fa-minus-circle"></i>
+							</span>
+						</a>
 
-			<div class="field">
-				<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
-				<div class="control">
-					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.da1.expertise">
-				</div>
-			</div>
-			<div class="field">
-				<label class="label">PROGRAMMING LANGUAGE(S)</label>
-				<div class="control">
-					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.da1.programming_languages">
-				</div>
-			</div>
-			<div class="field">
-				<label class="label">TOOLS AND TECHNOLOGIES</label>
-				<div class="control">
-					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.da1.tools">
-				</div>
-			</div>
-			<div class="field">
-				<label class="label">TECHNICAL ELECTIVES</label>
-				<div class="control">
-					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.da1.technical_electives">
-				</div>
+					</div>
+
+					<a class="button is-info" @click="addSkill()">
+						<span class="icon">
+							<i class="fa fa-plus"></i>
+						</span>
+						<span>Add</span>
+					</a>
+
 			</div>
 
 		</collapse-item>
@@ -359,7 +365,7 @@ import { Collapse, Item as CollapseItem } from 'vue-bulma-collapse'
 export default {
 	name: 'sidebar',
 
-	props: ['resume'],
+	props: ['resume','resumeId'],
 
 	components: {
 		Collapse,
