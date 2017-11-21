@@ -12,6 +12,8 @@ import axios from 'axios';
 import Config from './config';
 import Toasted from 'vue-toasted';
 Vue.use(Toasted);
+import VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
 // Make Auth methods available globally
 Object.defineProperties(Vue.prototype, {
   $auth: {

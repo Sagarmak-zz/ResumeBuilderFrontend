@@ -15,16 +15,26 @@
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input v-model="loginEmail" class="input" type="email" placeholder="Email input">
+              <input name="loginEmail" type="email" v-model="loginEmail" data-vv-delay="1000"
+              :class="{'input': true, 'is-danger': errors.has('loginEmail') }"
+              placeholder="Email input" v-validate="'required|email'">
             </div>
+            <span v-show="errors.has('loginEmail')" class="help is-danger">
+              {{ errors.first('loginEmail') }}
+            </span>
           </div>
 
 
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input v-model="loginPassword" class="input" type="password" placeholder="********">
+              <input name="loginPassword" type="password" v-model="loginPassword" data-vv-delay="1000"
+              :class="{'input': true, 'is-danger': errors.has('loginPassword') }"
+              placeholder="********" v-validate="'required|alpha_dash'">
             </div>
+            <span v-show="errors.has('loginPassword')" class="help is-danger">
+              {{ errors.first('loginPassword') }}
+            </span>
           </div>
 
         </div>
@@ -33,36 +43,58 @@
           <div class="field">
             <label class="label">Name</label>
             <div class="control">
-              <input v-model="signupName" class="input" type="text" placeholder="Name">
+              <input name="signupName" type="text" v-model="signupName" data-vv-delay="1000"
+              :class="{'input': true, 'is-danger': errors.has('signupName') }"
+              v-validate="'required|alpha_spaces'" placeholder="Name">
             </div>
+            <span v-show="errors.has('signupName')" class="help is-danger">
+              {{ errors.first('signupName') }}
+            </span>
           </div>
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input v-model="signupEmail" class="input" type="email" placeholder="Email input">
+              <input name="signupEmail" type="email" v-model="signupEmail" data-vv-delay="1000"
+              :class="{'input': true, 'is-danger': errors.has('signupEmail') }"
+              placeholder="Email input" v-validate="'required|email'">
             </div>
+            <span v-show="errors.has('signupEmail')" class="help is-danger">
+              {{ errors.first('signupEmail') }}
+            </span>
           </div>
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input v-model="signupPassword" class="input" type="password" placeholder="********">
+              <input name="signupPassword" v-model="signupPassword" type="password" data-vv-delay="1000"
+              :class="{'input': true, 'is-danger': errors.has('signupPassword') }"
+              v-validate="'required|min:8'" placeholder="********">
             </div>
+            <span v-show="errors.has('signupPassword')" class="help is-danger">
+              {{ errors.first('signupPassword') }}
+            </span>
           </div>
           <div class="field">
             <label class="label">Confirm Password</label>
             <div class="control">
-              <input v-model="signupConfirmPassword" class="input" type="password" placeholder="********">
+              <input name="signupConfirmPassword" v-model="signupConfirmPassword" type="password"
+              :class="{'input': true, 'is-danger': errors.has('signupConfirmPassword') }"
+              v-validate="'required|confirmed:signupPassword'" placeholder="********" data-vv-delay="1000">
             </div>
+            <span v-show="errors.has('signupConfirmPassword')" class="help is-danger">
+              {{ errors.first('signupConfirmPassword') }}
+            </span>
           </div>
         </div>
 
         <div class="field login-footer">
 
           <div class="control" v-if="!login">
-            <button class="button is-primary" @keyup.enter="loginProcess(loginEmail, loginPassword)" @click="loginProcess(loginEmail, loginPassword)">Login</button>
+            <button class="button is-primary" @keyup.enter="loginValidate" @click="loginValidate">
+              Login
+            </button>
           </div>
           <div class="control" v-if=" login">
-            <button class="button is-info" @click="signupProcess()">Sign Up</button>
+            <button class="button is-info" @click="signupValidate">Sign Up</button>
           </div>
           <div class="forgot-password" v-if="!login">
             <button class="button is-dark is-outlined">Forgot Password</button>
@@ -97,12 +129,31 @@ export default {
   },
 
   methods: {
+    loginValidate() {
+      this.$validator.validateAll({
+        //checks for login email and password
+        'loginEmail': this.loginEmail,
+        'loginPassword': this.loginPassword,
+      })
+      .then((result) => {
+        // console.log(result);  //true or false
+        if (result) {
+          //go ahead.
+          this.loginProcess(this.loginEmail, this.loginPassword);
+        }
+        else {
+          this.$toasted.error('Please fill in the necessary details!', {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000
+          });
+        }
+      });
+    },
+
     loginProcess(email, password) {
-      console.log("Email: ", email);
-      //1 login
       api.login(email, password)
       .then(response => {
-        //2 saveToken
         this.saveToken(response.data.token);
       })
       .catch(error => {
@@ -122,11 +173,9 @@ export default {
             duration : 3000
           });
         }
-        // if(error.response.data[0] == "invalid_email_or_password") {
-        //   console.log("Invalid Email or Password");
-        // }
       })
     },
+
     saveToken(token) {
       // console.log(token);
       if(token) {
@@ -138,24 +187,49 @@ export default {
         //error
       }
     },
+
     redirectAfterLogin() {
       this.$router.push({ name: 'Landing' });
     },
 
+    signupValidate() {
+      this.$validator.validateAll({
+        //checks for signup email and password
+        'signupName': this.signupName,
+        'signupEmail': this.signupEmail,
+        'signupPassword': this.signupPassword,
+        'signupConfirmPassword': this.signupConfirmPassword,
+      })
+      .then((result) => {
+        // console.log(result);  //true or false
+        if (result) {
+          //go ahead.
+          this.signupProcess();
+        }
+        else {
+          this.$toasted.error('Please fill in the necessary details!', {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000
+          });
+        }
+      });
+    },
+
     signupProcess() {
       api.register(this.signupName, this.signupEmail, this.signupPassword, this.signupConfirmPassword)
-        .then(response => {
-          // console.log(response);
-          if(response.data.message == "User created successfully") {
-            this.loginProcess(this.signupEmail, this.signupPassword);
-          }
-          else {
-            console.log('Error in User Creation!');
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        })
+      .then(response => {
+        console.log(response);
+        if(response.data == "registration successfully!!!...") {
+          this.loginProcess(this.signupEmail, this.signupPassword);
+        }
+        else {
+          console.log('Error in User Creation!');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
     },
   }
 }

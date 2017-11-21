@@ -1,223 +1,215 @@
 <template lang="html">
   <div class="resume-render-wrapper">
-    <div class="resume1">
+    <div class="resume-template">
       <table class="main">
         <tr>
-          <!-- <td class="w-20">
-          <img src="../assets/daiict-logo.jpg">
-        </td> -->
-        <td class="intro w-80">
-          <h1>{{ resume.info.name }}</h1>
-          <p>
-            <b>Dhirubhai Ambani Institute of Information and Communication Technology</b>
-          </p>
-          <p>
-            <span class="w-60 inline-block">
-              <b>Email:</b> {{ resume.info.email }}
-            </span>
-            <span class="w-40 text-right">
-              <b>DOB:</b> {{ resume.info.dob }}
-            </span>
-          </p>
-          <p>
-            <b>Address:</b> {{ resume.info.address }}
-          </p>
-        </td>
-      </tr>
-    </table>
-    <table class="w-100 section" v-if="true">
-      <tr>
-        <td colspan="4" class="section-header">
-          <h3>EDUCATION</h3>
-        </td>
-      </tr>
-      <tr>
-        <th colspan="1">Degree</th>
-        <th colspan="1">University/Institute</th>
-        <th colspan="1">Year</th>
-        <th colspan="1">CPI/Aggregate</th>
-      </tr>
-      <tr v-for="item in resume.degree">
-        <td>
-          <b>{{ item.name }}</b>
-        </td>
-        <td>
-          {{ item.institute }}
-        </td>
-        <td>
-          {{ item.year }}
-        </td>
-        <td>
-          {{ item.score }}
-        </td>
-      </tr>
-    </table>
-    <table class="w-100 section">
-      <tr>
-        <td colspan="2" class="section-header">
-          <h3>SKILLS</h3>
-        </td>
-      </tr>
-      <tr v-if="true">
-        <td class="w-30">
-          <b>Expertise Area/Area(s) of
-            Interest</b>
+          <td class="intro w-80">
+            <h1>{{ resume.info.name }}</h1>
+            <p>
+              <b>Dhirubhai Ambani Institute of Information and Communication Technology</b>
+            </p>
+            <p>
+              <span class="w-60 inline-block">
+                <b>Email:</b> {{ resume.info.email }}
+              </span>
+              <span class="w-40 text-right">
+                <b>DOB:</b> {{ resume.info.dob }}
+              </span>
+            </p>
+            <p>
+              <b>Address:</b> {{ resume.info.address }}
+            </p>
           </td>
-          <td class="w-70">
-            {{ resume.skill.expertise }}
+        </tr>
+      </table>
+      <table class="w-100 section" v-if="true">
+        <tr>
+          <td colspan="4" class="section-header">
+            <h3>EDUCATION</h3>
+          </td>
+        </tr>
+        <tr>
+          <th colspan="1">Degree</th>
+          <th colspan="1">University/Institute</th>
+          <th colspan="1">Year</th>
+          <th colspan="1">CPI/Aggregate</th>
+        </tr>
+        <tr v-for="item in resume.degree">
+          <td>
+            <b>{{ item.name }}</b>
+          </td>
+          <td>
+            {{ item.institute }}
+          </td>
+          <td>
+            {{ item.year }}
+          </td>
+          <td>
+            {{ item.score }}
+          </td>
+        </tr>
+      </table>
+      <table class="w-100 section">
+        <tr>
+          <td colspan="2" class="section-header">
+            <h3>SKILLS</h3>
           </td>
         </tr>
         <tr v-if="true">
           <td class="w-30">
-            <b>Programming Language(s)</b>
-          </td>
-          <td class="w-70">
-            {{ resume.skill.programming_languages }}
-          </td>
-        </tr>
-        <tr v-if="true">
-          <td class="w-30">
-            <b>Tools and
-              Technologies</b>
+            <b>Expertise Area/Area(s) of
+              Interest</b>
             </td>
             <td class="w-70">
-              {{ resume.skill.tools }}
+              {{ resume.da1.expertise }}
             </td>
           </tr>
           <tr v-if="true">
             <td class="w-30">
-              <b>Technical Electives</b>
+              <b>Programming Language(s)</b>
             </td>
             <td class="w-70">
-              {{ resume.skill.technical_electives }}
+              {{ resume.da1.programming_languages }}
             </td>
           </tr>
-        </table>
-        <!-- <div class="page-break"></div> -->
-        <table class="w-100 section" v-if="true">
-          <tr>
-            <td colspan="3" class="section-header">
-              <h3>PROFESSIONAL EXPERIENCE/INTERNSHIPS</h3>
-            </td>
-          </tr>
-          <tr v-for="item in resume.internship">
-            <td class="w-80" valign="top">
-              <p>
-                <b>{{ item.name }}</b>
-              </p>
-              <p>
-                {{ item.description }}
-                <p v-if="true">
-                  <i>Guide: {{ item.guide }}</i>
+          <tr v-if="true">
+            <td class="w-30">
+              <b>Tools and
+                Technologies</b>
+              </td>
+              <td class="w-70">
+                {{ resume.da1.tools }}
+              </td>
+            </tr>
+            <tr v-if="true">
+              <td class="w-30">
+                <b>Technical Electives</b>
+              </td>
+              <td class="w-70">
+                {{ resume.da1.technical_electives }}
+              </td>
+            </tr>
+          </table>
+          <div class="page-break"></div>
+          <table class="w-100 section" v-if="true">
+            <tr>
+              <td colspan="3" class="section-header">
+                <h3>PROFESSIONAL EXPERIENCE/INTERNSHIPS</h3>
+              </td>
+            </tr>
+            <tr v-for="item in resume.internship">
+              <td class="w-80" valign="top">
+                <p>
+                  <b>{{ item.name }}</b>
                 </p>
-              </p>
-            </td>
-            <td class="w-20" valign="top">
-              <p>({{ item.start }} - {{ item.end }})</p>
-              <p v-show="true">Team Size - {{ item.team_size }}</p>
-            </td>
-          </tr>
-        </table>
-        <table class="w-100 section" v-if="true">
-          <tr>
-            <td colspan="2" class="section-header">
-              <h3>PROJECTS</h3>
-            </td>
-          </tr>
-          <tr v-for="item in resume.project">
-            <td class="w-80" valign="top">
-              <p>
-                <b>{{ item.name }}</b>
-              </p>
-              <p>
-                {{ item.description }}
-                <p v-if="true">
-                  <i>Guide: {{ item.guide }}</i>
+                <p>
+                  {{ item.description }}
+                  <p v-if="true">
+                    <i>Guide: {{ item.guide }}</i>
+                  </p>
                 </p>
-              </p>
-            </td>
-            <td class="w-20" valign="top">
-              <p>({{ item.start }} - {{ item.end }})</p>
-              <p v-show="true">Team Size - {{ item.team_size }}</p>
-            </td>
-          </tr>
-        </table>
-        <table class="w-100 section" v-if="true">
-          <tr>
-            <td colspan="2" class="section-header">
-              <h3>POSITION OF RESPONSIBILITY</h3>
-            </td>
-          </tr>
-          <tr>
-            <td valign="top">
-              <ul class="list">
-                <li v-for="item in resume.position">
-                  {{ item.name }}
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-        <table class="w-100 section" v-if="true">
-          <tr>
-            <td colspan="2" class="section-header">
-              <h3>AWARDS AND ACHIEVEMENTS</h3>
-            </td>
-          </tr>
-          <tr>
-            <td valign="top">
-              <ul class="list">
-                <li v-for="item in resume.award">
-                  {{ item.name }}
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-        <table class="w-100 section" v-if="true">
-          <tr>
-            <td colspan="2" class="section-header">
-              <h3>INTERESTS AND HOBBIES</h3>
-            </td>
-          </tr>
-          <tr>
-            <td valign="top">
-              <ul class="list">
-                <li v-for="item in resume.hobby">
-                  {{ item.name }}
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </table>
+              </td>
+              <td class="w-20" valign="top">
+                <p>({{ item.start }} - {{ item.end }})</p>
+                <p v-show="true">Team Size - {{ item.team_size }}</p>
+              </td>
+            </tr>
+          </table>
+          <table class="w-100 section" v-if="true">
+            <tr>
+              <td colspan="2" class="section-header">
+                <h3>PROJECTS</h3>
+              </td>
+            </tr>
+            <tr v-for="item in resume.project">
+              <td class="w-80" valign="top">
+                <p>
+                  <b>{{ item.name }}</b>
+                </p>
+                <p>
+                  {{ item.description }}
+                  <p v-if="true">
+                    <i>Guide: {{ item.guide }}</i>
+                  </p>
+                </p>
+              </td>
+              <td class="w-20" valign="top">
+                <p>({{ item.start }} - {{ item.end }})</p>
+                <p v-show="true">Team Size - {{ item.team_size }}</p>
+              </td>
+            </tr>
+          </table>
+          <table class="w-100 section" v-if="true">
+            <tr>
+              <td colspan="2" class="section-header">
+                <h3>POSITION OF RESPONSIBILITY</h3>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <ul class="list">
+                  <li v-for="item in resume.position">
+                    {{ item.name }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <table class="w-100 section" v-if="true">
+            <tr>
+              <td colspan="2" class="section-header">
+                <h3>AWARDS AND ACHIEVEMENTS</h3>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <ul class="list">
+                  <li v-for="item in resume.award">
+                    {{ item.name }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <table class="w-100 section" v-if="true">
+            <tr>
+              <td colspan="2" class="section-header">
+                <h3>INTERESTS AND HOBBIES</h3>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <ul class="list">
+                  <li v-for="item in resume.hobby">
+                    {{ item.name }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
-  </template>
+    </template>
 
 
-  <script>
-  export default {
-    name: 'resume1',
-    props: ['resume'],
-  }
-  </script>
+    <script>
+    export default {
+      name: 'resume-template1',
+      props: ['resume'],
+    }
+    </script>
 
 
-  <style lang="scss">
-  .resume-render-wrapper {
-    // position: relative;
-    top: 70px;
-    bottom: 0;
-    max-width: 60%;
-    overflow-y: scroll;
-    display: inline;
+    <style scoped lang="scss">
+    .resume-render-wrapper {
+      max-width: 60%;
+      overflow-y: scroll;
+      display: inline;
+    }
     * {
       font-size: 14px;
       padding: 0;
       margin: 0;
-    }
-    .resume1 {
-      background-color: white;
     }
     .resume-template {
       font-family: "Calibri", sans-serif;
@@ -305,5 +297,4 @@
       list-style-type: disc;
       margin-bottom: 10px;
     }
-  }
-  </style>
+    </style>

@@ -89,32 +89,55 @@
 
 		<collapse-item title="SKILLS">
 
+			<div class="parentInput field" v-for="(skill,i) in resume.skill" :key="i">
+
+				<div class="childInput control">
+					<input class="input is-primary" type="text"
+					placeholder="Text input" v-model="resume.skill[i].name">
+				</div>
+				<a class="button is-danger" @click="removeSkill(i)">
+					<span class="icon">
+						<i class="fa fa-minus-circle"></i>
+					</span>
+				</a>
+
+			</div>
+
+			<a class="button is-info" @click="addSkill()">
+				<span class="icon">
+					<i class="fa fa-plus"></i>
+				</span>
+				<span>Add</span>
+			</a>
+
+
+
 			<div class="field">
 				<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
 				<div class="control">
 					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.skill.expertise">
+					placeholder="Text input" v-model="resume.da1.expertise">
 				</div>
 			</div>
 			<div class="field">
 				<label class="label">PROGRAMMING LANGUAGE(S)</label>
 				<div class="control">
 					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.skill.programming_languages">
+					placeholder="Text input" v-model="resume.da1.programming_languages">
 				</div>
 			</div>
 			<div class="field">
 				<label class="label">TOOLS AND TECHNOLOGIES</label>
 				<div class="control">
 					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.skill.tools">
+					placeholder="Text input" v-model="resume.da1.tools">
 				</div>
 			</div>
 			<div class="field">
 				<label class="label">TECHNICAL ELECTIVES</label>
 				<div class="control">
 					<input class="input is-primary" type="text"
-					placeholder="Text input" v-model="resume.skill.technical_electives">
+					placeholder="Text input" v-model="resume.da1.technical_electives">
 				</div>
 			</div>
 
@@ -251,10 +274,9 @@
 
 <collapse-item title="POSITION OF RESPONSIBILITY">
 
-	<div class="field" v-for="(position,i) in resume.position" :key="i">
+	<div class="parentInput field" v-for="(position,i) in resume.position" :key="i">
 
-		<label class="label">{{ resume.position[i].name }}</label>
-		<div class="control">
+		<div class="childInput control">
 			<input class="input is-primary" type="text"
 			placeholder="Text input" v-model="resume.position[i].name">
 		</div>
@@ -277,10 +299,9 @@
 
 <collapse-item title="AWARDS AND ACHIEVEMENTS">
 
-	<div class="field" v-for="(award,i) in resume.award" :key="i">
+	<div class="parentInput field" v-for="(award,i) in resume.award" :key="i">
 
-		<label class="label">{{ resume.award[i].name }}</label>
-		<div class="control">
+		<div class="childInput control">
 			<input class="input is-primary" type="text"
 			placeholder="Text input" v-model="resume.award[i].name">
 		</div>
@@ -303,10 +324,9 @@
 
 <collapse-item title="INTERESTS AND HOBBIES">
 
-	<div class="field" v-for="(hobby,i) in resume.hobby" :key="i">
+	<div class="parentInput field" v-for="(hobby,i) in resume.hobby" :key="i">
 
-		<label class="label">{{ resume.hobby[i].name }}</label>
-		<div class="control">
+		<div class="childInput control">
 			<input class="input is-primary" type="text"
 			placeholder="Text input" v-model="resume.hobby[i].name">
 		</div>
@@ -326,12 +346,6 @@
 	</a>
 
 </collapse-item>
-
-<div class="buttons">
-	<a class="button is-primary">Save</a>
-	<a class="button is-link">Download</a>
-</div>
-
 
 </collapse>
 
@@ -393,6 +407,14 @@ export default {
 			this.resume.internship.splice(i,1);
 		},
 
+		addSkill: function(){
+			this.resume.skill.push({});
+		},
+
+		removeSkill: function(i){
+			this.resume.skill.splice(i,1);
+		},
+
 		addDegree: function(){
 			this.resume.degree.push({});
 		},
@@ -403,100 +425,18 @@ export default {
 
 	},
 
-	// data() {
-	//     return {
-	//       resume: {
-
-	//         info: {
-	//           name: 'Local Dummy',
-	//           email: 'dummy@email.com',
-	//           dob: '1/1/1995',
-	//           address: '123/1, Gandhinagar'
-	//         },
-
-	//         degree: [
-	//           {
-	//             name: 'MSc IT',
-	//             institute: 'DAIICT',
-	//             year: '2018',
-	//             score: '8.0'
-	//           }
-	//         ],
-
-	//         skill: {
-	//             expertise: 'Web Developement',
-	//             programming_languages: 'Javascript',
-	//             tools: 'Postman',
-	//             technical_electives: 'Cloud'
-	//         },
-
-	//         internship: [
-	//           {
-	//             name: 'Road Inspector',
-	//             description: 'Cross platform application',
-	//             start: '1/7/2017',
-	//             end: '1/9/2017',
-	//             team_size: '5',
-	//             guide: 'Lavguru'
-	//           }
-	//         ],
-
-	//         project: [
-	//           {
-	//             name: 'Road Inspector',
-	//             description: 'Cross platform application',
-	//             start: '1/7/2017',
-	//             end: '1/9/2017',
-	//             team_size: '5',
-	//             guide: 'Lavguru'
-	//           }
-	//         ],
-
-	//         position: [
-	//           {
-	//             name: 'Proect Leader'
-	//           }
-	//         ],
-
-	//         award: [
-	//           {
-	//             name: 'Nope'
-	//           }
-	//         ],
-
-	//         hobby: [
-	//           {
-	//             name: 'TV Series'
-	//           }
-	//         ]
-	//   	},
-
-	// 	}
-	// }
-
-
 }
 
 </script>
 
-<style lang="scss">
-.sidebar {
-	a.button.is-info {
-		margin-top: 0.5rem;
-	}
-	.button.is-danger {
-		margin-top: 0.5rem;
-	}
-	.field {
-		margin-bottom: 0;
-	}
-	.buttons {
-		display: flex;
-		margin-top: 1rem;
-		a {
-			flex: 1;
-			border-radius: 0;
-		}
-	}
+<style>
+
+.parentInput {
+	display: flex;
+}
+
+.childInput {
+	flex: 2;
+	margin-right: 3px;
 }
 </style>

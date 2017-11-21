@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "bulma": "^0.6.0",
+    "vee-validate": "^2.0.0-rc.23",
     "vue": "^2.5.2",
     "vue-bulma-collapse": "^1.0.3",
     "vue-router": "^3.0.1",

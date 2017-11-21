@@ -12,10 +12,10 @@
             <Resume1 :resume="resume"></Resume1>
           </div>
           <div v-else-if="resumeId==1">
-            <Resume2></Resume2>
+            <Resume2 :resume="resume"></Resume2>
           </div>
           <div v-else="resumeId==2">
-            <Resume3></Resume3>
+            <Resume3 :resume="resume"></Resume3>
           </div>
         </div>
 
@@ -38,55 +38,139 @@ export default {
   },
 
   data() {
-    return {
-      resumeId: null,
-      resume: {
-        info: {
-          name: "Local Dummy",
-          email: "dummy@email.com",
-          dob: "1/1/1995",
-          address: "123/1, Gandhinagar"
-        },
-        degree: [{
-          name: "MSc IT",
-          institute: "DAIICT",
-          year: "2018",
-          score: "8.0"
-        }],
-        skill: {
-          expertise: "Web Developement",
-          programming_languages: "Javascript",
-          tools: "Postman",
-          technical_electives: "Cloud"
-        },
-        internship: [{
-          name: "Road Inspector",
-          description: "Cross platform application",
-          start: "1/7/2017",
-          end: "1/9/2017",
-          team_size: "5",
-          guide: "Lavguru"
-        }],
-        project: [{
-          name: "Road Inspector",
-          description: "Cross platform application",
-          start: "1/7/2017",
-          end: "1/9/2017",
-          team_size: "5",
-          guide: "Lavguru"
-        }],
-        position: [{
-          name: "Project Leader"
-        }],
-        award: [{
-          name: "Nope"
-        }],
-        hobby: [{
-          name: "TV Series"
-        }]
-      }
-    };
-  },
+      return {
+        resume: {
+
+          info: {
+            name: "John Doe",
+            email: "john@gmail.com",
+            dob: "01/01/1990",
+            address: "123, Sector 2, Gandhinagar",
+            profession: "Web Developer",
+            phone: "9999988888"
+          },
+
+          da1: {
+              expertise: "Frontend Web Developemet",
+              programming_languages: "Javascript, Java",
+              tools: "Postman, Git, VueJS, Bulma",
+              technical_electives: "Cloud computing"
+          },
+
+          degree: [
+            {
+              name: "MSc IT",
+              institute: "Dhirubhai Ambani Institute of Information and Communication Technology",
+              year: "2018",
+              score: "7.0"
+            },
+            {
+              name: "BCA",
+              institute: "GLS Institute of Computer Technology",
+              year: "2016",
+              score: "7.5"
+            },
+            {
+              name: "Higher Secondary",
+              institute: "Delhi Public School, Gandhinagar",
+              year: "2012",
+              score: "60"
+            },
+            {
+              name: "Secondary",
+              institute: "Delhi Public School, Gandhinagar",
+              year: "2010",
+              score: "70"
+            }
+
+          ],
+
+          skill: [
+            {
+              name: 'UX & UI Design',
+            },
+            {
+              name: 'Search Engine Optimization (SEO)',
+            },
+            {
+              name: '3D Animation & Agile Methodologies',
+            }
+          ],
+
+          internship: [
+            {
+              name: "ABC Company, Ahmedabad",
+              description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
+              start: "1/7/2017",
+              end: "1/9/2017",
+              team_size: "1",
+              guide: "John Wick"
+            },
+            {
+              name: "XVZ Company, Ahemdabad",
+              description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
+              start: "1/12/2016",
+              end: "1/2/2017",
+              team_size: "2",
+              guide: "Jason Bourne"
+            }
+          ],
+
+          project: [
+            {
+              name: "ABC Company, Ahmedabad",
+              description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
+              start: "1/7/2017",
+              end: "1/9/2017",
+              team_size: "1",
+              guide: "John Wick"
+            },
+            {
+              name: "XVZ Company, Ahmedabad",
+              description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
+              start: "1/12/2016",
+              end: "1/2/2017",
+              team_size: "2",
+              guide: "Jason Bourne"
+            }
+          ],
+
+          position: [
+            {
+              name: "Project Leader"
+            },
+            {
+              name: "Project Leader"
+            },
+            {
+              name: "Project Leader"
+            }
+          ],
+
+          award: [
+            {
+              name: "Developed an online training platform that resulted in an increase of 50+ employees enrolling in company development courses per year."
+            },
+            {
+              name: "Launched a company-wide digitized filing system that led to an increase in efficiency for all departments by 20% on average."
+            }
+          ],
+
+          hobby: [
+            {
+              name: "TV Series, Movies"
+            },
+            {
+              name: "Badminton"
+            },
+            {
+              name: "Following IT blogs and tech news"
+            }
+          ]
+
+        }
+      };
+    },
 
   components: {
     Sidebar,
@@ -107,6 +191,7 @@ export default {
     margin-top: .7rem;
     border: solid 1px #ddd;
     min-height: 85vh;
+    padding: 0;
   }
 
 }

@@ -5,7 +5,6 @@ export default {
 
   //login
   login(email, password) {
-    console.log("API", email);
     return HTTP.post('/login', {
       email: email,
       password: password

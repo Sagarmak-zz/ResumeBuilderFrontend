@@ -1,32 +1,37 @@
 <template lang="html">
-	<div class="resume3">
+	<div class="resume">
 
 		<div class="mainDetails">
-
 			<div id="name">
-				<h1>Joe Bloggs</h1>
-				<h2>Job Title</h2>
+				<h1>{{ resume.info.name }}</h1>
+				<h2>{{ resume.info.profession }}</h2>
 			</div>
 
 			<div id="contactDetails">
 				<ul>
-					<li>e: <a href="mailto:joe@bloggs.com" target="_blank">joe@bloggs.com</a></li>
-					<li>w: <a href="http://www.bloggs.com">www.bloggs.com</a></li>
-					<li>m: 01234567890</li>
+					<li>dob: {{ resume.info.dob }}</li>
+					<li>email: {{ resume.info.email }}</li>
+					<li>mob: {{ resume.info.phone }}  </li>
 				</ul>
 			</div>
 		</div>
 
-		<div id="mainArea">
-			<div class="personalProfile">
+		<div id="mainArea"></div>
+
+			<div class="education">
 				<div class="sectionTitle">
-					<h1>Personal Profile</h1>
+					<h1>Education</h1>
 				</div>
 
 				<div class="sectionContent">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-				</div>
-			</div>
+					<article v-for="item in resume.degree">
+						<h2>{{ item.name }}
+                        <p>{{ item.year }}</p>
+						</h2>
+						<p>{{ item.institute }}</p>
+					</article>
+			    </div>
+		    </div>
 
 
 			<div class="workExperience">
@@ -35,22 +40,11 @@
 				</div>
 
 				<div class="sectionContent">
-					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">April 2011 - Present</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-					</article>
-
-					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">Janruary 2007 - March 2011</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-					</article>
-
-					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">October 2004 - December 2006</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
+					<article v-for="item in resume.internship">
+						<h2>{{ item.name }}
+							<p>{{ item.start }} - {{ item.end }}</p>
+						</h2>
+						<p>{{ item.description }}</p>
 					</article>
 				</div>
 			</div>
@@ -62,159 +56,130 @@
 				</div>
 
 				<div class="sectionContent">
-					<ul class="keySkills">
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
+					<ul>
+						<li v-for="(item,i) in resume.skill" :key="i">{{ item.name }}</li>
 					</ul>
 				</div>
 			</div>
 
-
-			<div class="education">
+			<div class="keySkills">
 				<div class="sectionTitle">
-					<h1>Education</h1>
+					<h1>Achievements</h1>
 				</div>
 
 				<div class="sectionContent">
-					<article>
-						<h2>College/University</h2>
-						<p class="subDetails">Qualification</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-					</article>
-
-					<article>
-						<h2>College/University</h2>
-						<p class="subDetails">Qualification</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-					</article>
+					<ul>
+						<li v-for="(item,i) in resume.award" :key="i">{{ item.name }}</li>
+					</ul>
 				</div>
 			</div>
+
 
 		</div>
 	</div>
 </template>
 
 <script>
-export default {
-	name: 'resume3'
-}
+    export default {
+        name: 'resume-template3',
+        props: ['resume'],
+    }
 </script>
 
 <style lang="scss">
-.resume3 {
 
-	article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-		display:block;
+.resume {
+
+      // position: fixed;
+      // top: 60px;
+      // bottom: 0;
+      // max-width: 60%;
+      // overflow-y: scroll;
+			background-color: white;
+
+	h2 {
+		display: flex;
+		justify-content: space-between;
+
+		p {
+			font-size: 0.6em;
+		}
 	}
 
-	p {
-		font-size: 1em;
-		line-height: 1.4em;
-		margin-bottom: 20px;
+	p, li {
+		font-size: 0.9em;
 		color: #444;
-	}
-
-	#cv {
-		// width: 90%;
-		max-width: 800px;
-		background: #f3f3f3;
-		// margin: 30px auto;
+		padding: 0px 1px;
 	}
 
 	.mainDetails {
-		padding: 25px 35px;
-		border-bottom: 2px solid #cf8a05;
-		background: #ededed;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		padding: 25px 35px;
+		border-bottom: 2px solid #cf8a05;
+		background: #ededed;
 	}
 
 	#name h1 {
-		font-size: 2.5em;
+		font-size: 2em;
 		font-weight: 700;
 		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 		margin-bottom: -6px;
 	}
 
 	#name h2 {
-		font-size: 2em;
+		font-size: 1.2em;
 		margin-left: 2px;
 		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-	}
-
-	#mainArea {
-		padding: 0 40px;
-		margin-top: .5rem;
-	}
-
-	.personalProfile {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		border-bottom: solid 1px #ddd;
-		.sectionTitle {
-			flex: 1;
-			align-self: flex-start;
-		}
-		.sectionContent {
-			flex: 3;
-			margin-left: 1rem;
-		}
-	}
-
-	.workExperience {
-		display: flex;
-		justify-content: space-between;;
-		align-items: center;
-		padding-top: .5rem;
-		border-bottom: solid 1px #ddd;
-		.sectionTitle {
-			flex: 1;
-			align-self: flex-start;
-		}
-		.sectionContent {
-			flex: 3;
-			margin-left: 1rem;
-		}
-	}
-
-	div.keySkills {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding-top: .5rem;
-		border-bottom: solid 1px #ddd;
-		.sectionTitle {
-			flex: 1;
-		}
-		.sectionContent {
-			flex: 3;
-			flex-wrap: wrap;
-			margin-left: 1rem;
-		}
 	}
 
 	.education {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		.sectionTitle {
-			flex: 1;
-			align-self: flex-start;
-		}
-		.sectionContent {
-			flex: 3;
-			flex-wrap: wrap;
-			margin-left: 1rem;
+
+		padding: 20px;
+		padding-bottom: 60px;
+		border-bottom: solid 1px #ddd;
+	}
+
+	.workExperience {
+		display: flex;
+		justify-content: space-between;;
+		align-items: center;
+
+		padding: 20px;
+		padding-bottom: 60px;
+		border-bottom: solid 1px #ddd;
+	}
+
+	.keySkills {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		padding: 20px;
+		padding-bottom: 60px;
+		border-bottom: solid 1px #ddd;
+
+		ul {
+			list-style-type: disc;
 		}
 	}
+
+	.sectionTitle {
+			flex: 1;
+            align-self: flex-start;
+	}
+
+	.sectionContent {
+			flex: 3;
+			// flex-wrap: wrap;
+			margin-left: 1rem;
+	}
+
 
 	#contactDetails ul {
 		list-style-type: none;
@@ -227,7 +192,7 @@ export default {
 		color: #444;
 	}
 
-	#contactDetails ul li a, a[href^=tel] {
+	#contactDetails ul li {
 		color: #444;
 		text-decoration: none;
 		-webkit-transition: all .3s ease-in;
@@ -237,196 +202,161 @@ export default {
 		transition: all .3s ease-in;
 	}
 
-	#contactDetails ul li a:hover {
-		color: #cf8a05;
-	}
-
-
-	section {
-		border-top: 1px solid #dedede;
-		padding: 20px 0 0;
-	}
-
-	section:first-child {
-		border-top: 0;
-	}
-
-	section:last-child {
-		padding: 20px 0 10px;
-	}
-
 	.sectionTitle h1 {
 		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-		font-style: italic;
 		font-size: 1.5em;
-		color: #cf8a05;
 	}
 
 	.sectionContent h2 {
 		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-		font-size: 1.5em;
-		margin-bottom: -2px;
+		font-size: 1.2em;
+		margin-bottom: -4px;
 	}
 
-	.subDetails {
-		font-size: 0.8em;
-		font-style: italic;
-		margin-bottom: 3px;
+	.sectionContent article {
+		margin-bottom: 10px;
 	}
 
-	.keySkills {
-		list-style-type: none;
-		-moz-column-count:3;
-		-webkit-column-count:3;
-		column-count:3;
-		margin-bottom: 20px;
-		font-size: 1em;
-		color: #444;
-	}
 
-	.keySkills ul li {
-		margin-bottom: 3px;
-	}
+	// @media all and (min-width: 602px) and (max-width: 800px) {
+	// 	#headshot {
+	// 		display: none;
+	// 	}
 
-	@media all and (min-width: 602px) and (max-width: 800px) {
-		#headshot {
-			display: none;
-		}
+	// 	.keySkills {
+	// 		-moz-column-count:2;
+	// 		-webkit-column-count:2;
+	// 		column-count:2;
+	// 	}
+	// }
 
-		.keySkills {
-			-moz-column-count:2;
-			-webkit-column-count:2;
-			column-count:2;
-		}
-	}
+	// @media all and (max-width: 601px) {
+	// 	#cv {
+	// 		width: 95%;
+	// 		margin: 10px auto;
+	// 		min-width: 280px;
+	// 	}
 
-	@media all and (max-width: 601px) {
-		#cv {
-			width: 95%;
-			margin: 10px auto;
-			min-width: 280px;
-		}
+	// 	#headshot {
+	// 		display: none;
+	// 	}
 
-		#headshot {
-			display: none;
-		}
+	// 	#name, #contactDetails {
+	// 		float: none;
+	// 		width: 100%;
+	// 		text-align: center;
+	// 	}
 
-		#name, #contactDetails {
-			float: none;
-			width: 100%;
-			text-align: center;
-		}
+	// 	.sectionTitle, .sectionContent {
+	// 		float: none;
+	// 		width: 100%;
+	// 	}
 
-		.sectionTitle, .sectionContent {
-			float: none;
-			width: 100%;
-		}
+	// 	.sectionTitle {
+	// 		margin-left: -2px;
+	// 		font-size: 1.25em;
+	// 	}
 
-		.sectionTitle {
-			margin-left: -2px;
-			font-size: 1.25em;
-		}
+	// 	.keySkills {
+	// 		-moz-column-count:2;
+	// 		-webkit-column-count:2;
+	// 		column-count:2;
+	// 	}
+	// }
 
-		.keySkills {
-			-moz-column-count:2;
-			-webkit-column-count:2;
-			column-count:2;
-		}
-	}
+	// @media all and (max-width: 480px) {
+	// 	.mainDetails {
+	// 		padding: 15px 15px;
+	// 	}
 
-	@media all and (max-width: 480px) {
-		.mainDetails {
-			padding: 15px 15px;
-		}
+	// 	section {
+	// 		padding: 15px 0 0;
+	// 	}
 
-		section {
-			padding: 15px 0 0;
-		}
-
-		#mainArea {
-			padding: 0 25px;
-		}
+	// 	#mainArea {
+	// 		padding: 0 25px;
+	// 	}
 
 
-		.keySkills {
-			-moz-column-count:1;
-			-webkit-column-count:1;
-			column-count:1;
-		}
+	// 	.keySkills {
+	// 		-moz-column-count:1;
+	// 		-webkit-column-count:1;
+	// 		column-count:1;
+	// 	}
 
-		#name h1 {
-			line-height: .8em;
-			margin-bottom: 4px;
-		}
-	}
+	// 	#name h1 {
+	// 		line-height: .8em;
+	// 		margin-bottom: 4px;
+	// 	}
+	// }
 
-	@media print {
-		#cv {
-			width: 100%;
-		}
-	}
+	// @media print {
+	// 	#cv {
+	// 		width: 100%;
+	// 	}
+	// }
 
-	@-webkit-keyframes reset {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
+	// @-webkit-keyframes reset {
+	// 	0% {
+	// 		opacity: 0;
+	// 	}
+	// 	100% {
+	// 		opacity: 0;
+	// 	}
+	// }
 
-	@-webkit-keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		40% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
+	// @-webkit-keyframes fade-in {
+	// 	0% {
+	// 		opacity: 0;
+	// 	}
+	// 	40% {
+	// 		opacity: 0;
+	// 	}
+	// 	100% {
+	// 		opacity: 1;
+	// 	}
+	// }
 
-	@-moz-keyframes reset {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
+	// @-moz-keyframes reset {
+	// 	0% {
+	// 		opacity: 0;
+	// 	}
+	// 	100% {
+	// 		opacity: 0;
+	// 	}
+	// }
 
-	@-moz-keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		40% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
+	// @-moz-keyframes fade-in {
+	// 	0% {
+	// 		opacity: 0;
+	// 	}
+	// 	40% {
+	// 		opacity: 0;
+	// 	}
+	// 	100% {
+	// 		opacity: 1;
+	// 	}
+	// }
 
-	@keyframes reset {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
+	// @keyframes reset {
+	// 	0% {
+	// 		opacity: 0;
+	// 	}
+	// 	100% {
+	// 		opacity: 0;
+	// 	}
+	// }
 
-	@keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		40% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
+	// @keyframes fade-in {
+	// 	0% {
+	// 		opacity: 0;
+	// 	}
+	// 	40% {
+	// 		opacity: 0;
+	// 	}
+	// 	100% {
+	// 		opacity: 1;
+	// 	}
+	// }
 }
 </style>
