@@ -59,7 +59,7 @@ export default {
       .catch(error => {
         console.log(error);
         console.log(error.response.status, error.response.statusText);
-        this.$toasted.error(error.response.status + '-' + error.response.statusText, {
+        this.$toasted.error("Please Logout and Come back again to continue!", {
           theme: 'bubble',
           position: 'bottom-center',
           duration: 3000,

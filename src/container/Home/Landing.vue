@@ -3,11 +3,11 @@
 
     <div class="columns is-multiline">
 
-      <div class="column is-one-third" v-for="resume in userResumes">
+      <div class="column is-one-third" v-for="resume,i in userResumes">
         <div class="card">
           <div class="card-content">
             <figure class="image is-square">
-              <img src="../../../static/resume/resume3.jpg">
+              <img :src=getImage(i)>
             </figure>
           </div>
           <footer class="card-footer">
@@ -64,7 +64,7 @@ export default {
     userTemplates() {
       api.userTemplates()
       .then(response => {
-        // console.log("userTemplates", response);
+        console.log("userTemplates", response);
         if(response.data == "No templates") {
           this.$toasted.show('Please select a template to continue!', {
             theme: "outline",
@@ -85,6 +85,10 @@ export default {
 
     deleteResume(resume_id) {
       console.log('Delete this Resume', resume_id);
+    },
+
+    getImage(i) {
+      return '../../../static/resume/DA' + i + '.png';
     }
   },
   components: {

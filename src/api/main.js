@@ -24,7 +24,7 @@ export default {
    //one time user data creation
    insert() {
      return HTTP.post('/insert', {
-       
+
      });
    },
 
@@ -42,6 +42,11 @@ export default {
   //selectTemplate
   selectTemplate() {
     return HTTP.get('/templates');
+  },
+
+  //dashboard
+  display() {
+    return HTTP.get('/display');
   },
 
   //etc

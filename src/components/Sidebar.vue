@@ -95,28 +95,28 @@
 						<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
 						<div class="control">
 							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da1.expertise">
+							placeholder="Text input" v-model="resume.da.expertise">
 						</div>
 					</div>
 					<div class="field">
 						<label class="label">PROGRAMMING LANGUAGE(S)</label>
 						<div class="control">
 							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da1.programming_languages">
+							placeholder="Text input" v-model="resume.da.programming_languages">
 						</div>
 					</div>
 					<div class="field">
 						<label class="label">TOOLS AND TECHNOLOGIES</label>
 						<div class="control">
 							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da1.tools">
+							placeholder="Text input" v-model="resume.da.tools">
 						</div>
 					</div>
 					<div class="field">
 						<label class="label">TECHNICAL ELECTIVES</label>
 						<div class="control">
 							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da1.technical_electives">
+							placeholder="Text input" v-model="resume.da.technical_electives">
 						</div>
 					</div>
 
@@ -354,6 +354,10 @@
 </collapse-item>
 
 </collapse>
+
+<pre>
+	{{resume}}
+</pre>
 
 </div>
 </template>

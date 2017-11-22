@@ -3,12 +3,13 @@
 
     <span class="title is-2"> Choose your Template...</span>
     <div class="columns is-multiline">
-      <div class="column is-one-third" v-for="resume in resumes">
+      <div class="column is-one-third" v-for="resume,i in resumes">
 
         <div class="card">
           <div class="card-image">
             <figure class="image is-square">
-              <img src="../../../static/resume/resume3.jpg">
+              <!-- <img src="../../../static/resume/DA0.png"> -->
+              <img :src="getImage(i)">
             </figure>
           </div>
 
@@ -41,6 +42,7 @@ export default {
   },
 
   methods: {
+
     selectTemplate() {
       api.selectTemplate()
       .then(response => {
@@ -50,6 +52,10 @@ export default {
       .catch(error => {
         console.log(error);
       })
+    },
+
+    getImage(i) {
+      return '../../../static/resume/DA' + i + '.png';
     }
   }
 }
@@ -82,8 +88,7 @@ export default {
   .column.is-one-third {
     border: solid 1px #aaa;
     margin-bottom: 1rem;
-    // background-color: white;
-    padding: 0;
+    background-color: white;
   }
   .media-content {
     margin-left: 8%;

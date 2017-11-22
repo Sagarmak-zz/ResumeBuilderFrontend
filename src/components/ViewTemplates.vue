@@ -16,7 +16,7 @@
             <div class="column is-half card" v-for="i in 6" :key="i">
               <div class="card-content">
                 <figure class="image is-square">
-                  <img src="../../static/resume/resume1.png">
+                  <!-- <img :src=getImage(i)> -->
                 </figure>
               </div>
               <footer class="card-footer">
@@ -49,6 +49,11 @@
 export default {
   name: 'view-template',
   methods: {
+    getImage(i) {
+      return '../../../static/resume/DA' + i + '.png';
+              // ../../../static/resume/DA0.png
+    }
+
     // close() {
     //   this.$bus.$emit('close');
     //   console.log('Close called inside ViewTemplate');

@@ -9,12 +9,15 @@
 
         <div class="column resume-template1">
           <div v-if="resumeId==0">
-            <Resume1 :resume="resume"></Resume1>
+            <Resume0 :resume="resume"></Resume0>
           </div>
           <div v-else-if="resumeId==1">
-            <Resume2 :resume="resume"></Resume2>
+            <Resume1 :resume="resume"></Resume1>
           </div>
           <div v-else="resumeId==2">
+            <Resume2 :resume="resume"></Resume2>
+          </div>
+          <div v-else="resumeId==3">
             <Resume3 :resume="resume"></Resume3>
           </div>
         </div>
@@ -26,21 +29,36 @@
 
 <script>
 import Sidebar from '@/components/Sidebar';
+import Resume0 from '@/components/Resume0';
 import Resume1 from '@/components/Resume1';
 import Resume2 from '@/components/Resume2';
 import Resume3 from '@/components/Resume3';
-import Resume4 from '@/components/Resume4';
+import api from '@/api/main';
+
 export default {
   name: 'dashboard',
 
   created() {
     this.resumeId = this.$route.params.resume_id;
+    this.display();
+  },
+
+  methods: {
+    display() {
+      api.display()
+      .then(response => {
+        this.resume = response.data[0].data.resume;
+        console.log("Display", this.resume);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }
   },
 
   data() {
       return {
         resume: {
-
           info: {
             name: "John Doe",
             email: "john@gmail.com",
@@ -50,7 +68,7 @@ export default {
             phone: "9999988888"
           },
 
-          da1: {
+          da: {
               expertise: "Frontend Web Developemet",
               programming_languages: "Javascript, Java",
               tools: "Postman, Git, VueJS, Bulma",
@@ -174,10 +192,10 @@ export default {
 
   components: {
     Sidebar,
+    Resume0,
     Resume1,
     Resume2,
-    Resume3,
-    Resume4
+    Resume3
   }
 
 }
