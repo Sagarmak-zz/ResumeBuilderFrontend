@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="home">
     <!-- navbar -->
-    <Navbar :name="name" :email="email"></Navbar>
+    <Navbar :name="name" :email="email" class="nodisplay"></Navbar>
     <!-- router-view -->
     <div class="container is-widescreen">
       <router-view></router-view>
@@ -34,10 +34,10 @@ export default {
     this.$bus.$on('logout', () => {
       this.$auth.destroyToken();
       this.$toasted.success('Successfully Logged Out!', {
-            theme: "outline",
-            position: "bottom-center",
-            duration : 3000,
-          });
+        theme: "outline",
+        position: "bottom-center",
+        duration : 3000,
+      });
       this.redirect();
     });
   },
@@ -52,7 +52,7 @@ export default {
         this.$toasted.info('Welcome ' + this.name + '!', {
           theme: 'bubble',
           position: 'top-center',
-          duration: 3000,
+          duration: 800,
           icon: 'perm_identity'
         })
       })
@@ -88,6 +88,15 @@ export default {
   .container {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+
+}
+@media print {
+  .nodisplay {
+    display: none;
+  }
+  .container {
+    margin: 0;
   }
 }
 </style>

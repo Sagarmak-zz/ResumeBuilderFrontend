@@ -3,8 +3,8 @@
     <div class="">
       <div class="columns">
 
-        <div class="column is-4">
-          <Sidebar :resumeId="resumeId" :resume="resume"></Sidebar>
+        <div class="column is-4 nodisplay">
+          <Sidebar :data="$data" :resumeId="resumeId" :resume="resume" :template="template"></Sidebar>
         </div>
 
         <div class="column resume-template1">
@@ -14,10 +14,10 @@
           <div v-else-if="resumeId==1">
             <Resume1 :resume="resume"></Resume1>
           </div>
-          <div v-else="resumeId==2">
+          <div v-else-if="resumeId==2">
             <Resume2 :resume="resume"></Resume2>
           </div>
-          <div v-else="resumeId==3">
+          <div v-else-if="resumeId==3">
             <Resume3 :resume="resume"></Resume3>
           </div>
         </div>
@@ -41,6 +41,27 @@ export default {
   created() {
     this.resumeId = this.$route.params.resume_id;
     this.display();
+    this.userTemplates();
+    // save Button
+    this.$bus.$on('save', () => {
+      let counter = 0;
+      // console.log("Template:", this.template);
+      for (var i = 0; i < this.template.length; i++) {
+        if(this.template[i].id == this.resumeId) {
+          // console.log(this.resumeId, ' already present');
+          //do not insert
+          counter++;
+        }
+      }
+      if(counter == 0) {
+        // console.log(this.resumeId, ' not present.');
+        //insert it
+        this.template.push({id: this.resumeId});
+      }
+      //update
+      // console.log("Template:", this.template);
+      this.update();
+    })
   },
 
   methods: {
@@ -48,147 +69,189 @@ export default {
       api.display()
       .then(response => {
         this.resume = response.data[0].data.resume;
-        console.log("Display", this.resume);
+        // console.log("Display", this.resume);
       })
       .catch(error => {
         console.log(error);
+      })
+    },
+
+    userTemplates() {
+      api.userTemplates()
+      .then(response => {
+        // console.log("userTemplatesDashboard", response.data);
+        if(response.data == "No templates") {
+          //do nothing
+        }
+        else if (response.data == "user data not found") {
+          //do nothing
+        }
+        else {
+          this.template = response.data;
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        console.log(error.response.status, error.response.statusText);
+      });
+    },
+
+    update() {
+      api.update(this.$data)
+      .then(response => {
+        if(response.data == "update successful") {
+          this.$toasted.success('Updation Successful!', {
+            theme: "outline",
+            position: "top-center",
+            duration : 3000,
+          });
+        }
+        else {
+
+        }
+      })
+      .catch(error => {
+        console.log(error.response);
       })
     }
   },
 
   data() {
-      return {
-        resume: {
-          info: {
-            name: "John Doe",
-            email: "john@gmail.com",
-            dob: "01/01/1990",
-            address: "123, Sector 2, Gandhinagar",
-            profession: "Web Developer",
-            phone: "9999988888"
+    return {
+      resume: {
+        info: {
+          name: "John Doe",
+          email: "john@gmail.com",
+          dob: "01/01/1990",
+          address: "123, Sector 2, Gandhinagar",
+          profession: "Web Developer",
+          phone: "9999988888"
+        },
+
+        da: {
+          expertise: "Frontend Web Developemet",
+          programming_languages: "Javascript, Java",
+          tools: "Postman, Git, VueJS, Bulma",
+          technical_electives: "Cloud computing"
+        },
+
+        degree: [
+          {
+            name: "MSc IT",
+            institute: "Dhirubhai Ambani Institute of Information and Communication Technology",
+            year: "2018",
+            score: "7.0"
           },
-
-          da: {
-              expertise: "Frontend Web Developemet",
-              programming_languages: "Javascript, Java",
-              tools: "Postman, Git, VueJS, Bulma",
-              technical_electives: "Cloud computing"
+          {
+            name: "BCA",
+            institute: "GLS Institute of Computer Technology",
+            year: "2016",
+            score: "7.5"
           },
+          {
+            name: "Higher Secondary",
+            institute: "Delhi Public School, Gandhinagar",
+            year: "2012",
+            score: "60"
+          },
+          {
+            name: "Secondary",
+            institute: "Delhi Public School, Gandhinagar",
+            year: "2010",
+            score: "70"
+          }
 
-          degree: [
-            {
-              name: "MSc IT",
-              institute: "Dhirubhai Ambani Institute of Information and Communication Technology",
-              year: "2018",
-              score: "7.0"
-            },
-            {
-              name: "BCA",
-              institute: "GLS Institute of Computer Technology",
-              year: "2016",
-              score: "7.5"
-            },
-            {
-              name: "Higher Secondary",
-              institute: "Delhi Public School, Gandhinagar",
-              year: "2012",
-              score: "60"
-            },
-            {
-              name: "Secondary",
-              institute: "Delhi Public School, Gandhinagar",
-              year: "2010",
-              score: "70"
-            }
+        ],
 
-          ],
+        skill: [
+          {
+            name: 'UX & UI Design',
+          },
+          {
+            name: 'Search Engine Optimization (SEO)',
+          },
+          {
+            name: '3D Animation & Agile Methodologies',
+          }
+        ],
 
-          skill: [
-            {
-              name: 'UX & UI Design',
-            },
-            {
-              name: 'Search Engine Optimization (SEO)',
-            },
-            {
-              name: '3D Animation & Agile Methodologies',
-            }
-          ],
+        internship: [
+          {
+            name: "ABC Company, Ahmedabad",
+            description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
+            start: "1/7/2017",
+            end: "1/9/2017",
+            team_size: "1",
+            guide: "John Wick"
+          },
+          {
+            name: "XVZ Company, Ahemdabad",
+            description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
+            start: "1/12/2016",
+            end: "1/2/2017",
+            team_size: "2",
+            guide: "Jason Bourne"
+          }
+        ],
 
-          internship: [
-            {
-              name: "ABC Company, Ahmedabad",
-              description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
-              start: "1/7/2017",
-              end: "1/9/2017",
-              team_size: "1",
-              guide: "John Wick"
-            },
-            {
-              name: "XVZ Company, Ahemdabad",
-              description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
-              start: "1/12/2016",
-              end: "1/2/2017",
-              team_size: "2",
-              guide: "Jason Bourne"
-            }
-          ],
+        project: [
+          {
+            name: "ABC Company, Ahmedabad",
+            description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
+            start: "1/7/2017",
+            end: "1/9/2017",
+            team_size: "1",
+            guide: "John Wick"
+          },
+          {
+            name: "XVZ Company, Ahmedabad",
+            description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
+            start: "1/12/2016",
+            end: "1/2/2017",
+            team_size: "2",
+            guide: "Jason Bourne"
+          }
+        ],
 
-          project: [
-            {
-              name: "ABC Company, Ahmedabad",
-              description: "Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint).",
-              start: "1/7/2017",
-              end: "1/9/2017",
-              team_size: "1",
-              guide: "John Wick"
-            },
-            {
-              name: "XVZ Company, Ahmedabad",
-              description: "Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.",
-              start: "1/12/2016",
-              end: "1/2/2017",
-              team_size: "2",
-              guide: "Jason Bourne"
-            }
-          ],
+        position: [
+          {
+            name: "Project Leader"
+          },
+          {
+            name: "Project Leader"
+          },
+          {
+            name: "Project Leader"
+          }
+        ],
 
-          position: [
-            {
-              name: "Project Leader"
-            },
-            {
-              name: "Project Leader"
-            },
-            {
-              name: "Project Leader"
-            }
-          ],
+        award: [
+          {
+            name: "Developed an online training platform that resulted in an increase of 50+ employees enrolling in company development courses per year."
+          },
+          {
+            name: "Launched a company-wide digitized filing system that led to an increase in efficiency for all departments by 20% on average."
+          }
+        ],
 
-          award: [
-            {
-              name: "Developed an online training platform that resulted in an increase of 50+ employees enrolling in company development courses per year."
-            },
-            {
-              name: "Launched a company-wide digitized filing system that led to an increase in efficiency for all departments by 20% on average."
-            }
-          ],
+        hobby: [
+          {
+            name: "TV Series, Movies"
+          },
+          {
+            name: "Badminton"
+          },
+          {
+            name: "Following IT blogs and tech news"
+          }
+        ]
 
-          hobby: [
-            {
-              name: "TV Series, Movies"
-            },
-            {
-              name: "Badminton"
-            },
-            {
-              name: "Following IT blogs and tech news"
-            }
-          ]
+      },
+      template: [
 
-        }
-      };
-    },
+      ]
+    };
+  },
 
   components: {
     Sidebar,
@@ -211,6 +274,14 @@ export default {
     min-height: 85vh;
     padding: 0;
   }
+
+
+  @media print {
+    .nodisplay {
+      display: none;
+    }
+  }
+
 
 }
 </style>

@@ -64,8 +64,17 @@ export default {
     userTemplates() {
       api.userTemplates()
       .then(response => {
-        console.log("userTemplates", response);
+        // console.log("userTemplates", response);
+
         if(response.data == "No templates") {
+          this.$toasted.show('Please select a template to continue!', {
+            theme: "outline",
+            position: "bottom-center",
+            duration : 3000,
+            icon: 'add_circle'
+          });
+        }
+        else if(response.data == "user data not found") {
           this.$toasted.show('Please select a template to continue!', {
             theme: "outline",
             position: "bottom-center",

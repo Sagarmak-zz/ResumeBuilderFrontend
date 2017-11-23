@@ -14,6 +14,10 @@ import Toasted from 'vue-toasted';
 Vue.use(Toasted);
 import VeeValidate from 'vee-validate';
 Vue.use(VeeValidate);
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+Vue.use(VueAwesomeSwiper);
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 // Make Auth methods available globally
 Object.defineProperties(Vue.prototype, {
   $auth: {

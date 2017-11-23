@@ -90,7 +90,6 @@
               </td>
             </tr>
           </table>
-          <div class="page-break"></div>
           <table class="w-100 section" v-if="true">
             <tr>
               <td colspan="3" class="section-header">
@@ -231,9 +230,6 @@
     table {
       padding: 15px;
       width: 100%;
-    }
-    .page-break {
-      page-break-after: always;
     }
     .w-10 {
       width: 10%;

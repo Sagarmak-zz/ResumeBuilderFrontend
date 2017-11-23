@@ -14,7 +14,7 @@
             <div class="control">
               <input name="signupName" v-model="name" type="text" data-vv-delay="1000"
               :class="{'input': true, 'is-danger': errors.has('signupName') }"
-              v-validate="'required|alpha_spaces'" placeholder="Name" @keyup.enter="changeNameMethod">
+              v-validate="'required'" placeholder="Name" @keyup.enter="changeNameMethod">
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default {
         // console.log(result);  //true or false
         if (result) {
           //go ahead.
-          console.log('Password Changed');
+          this.changePasswordProcess();
         }
         else {
           this.$toasted.error('Please fill in the necessary details!', {
@@ -128,6 +128,16 @@ export default {
           });
         }
       });
+    },
+
+    changePasswordProcess() {
+      api.changePassword(this.email, this.password, this.password_confirmation)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.response);
+      })
     },
 
     logout() {

@@ -9,7 +9,7 @@
           <div class="card-image">
             <figure class="image is-square">
               <!-- <img src="../../../static/resume/DA0.png"> -->
-              <img :src="getImage(i)">
+              <img :src="getImage(i)" placeholder="Resume Image">
             </figure>
           </div>
 

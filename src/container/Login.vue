@@ -126,7 +126,12 @@ export default {
   },
 
   created() {
-
+    if(this.$route.params.data == "login") {
+      this.login = true;
+    }
+    else {
+      this.login = false;
+    }
   },
 
   methods: {

@@ -91,59 +91,59 @@
 
 			<div v-if="resumeId==0">
 
-					<div class="field">
-						<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
-						<div class="control">
-							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da.expertise">
-						</div>
+				<div class="field">
+					<label class="label">EXPERTISE AREA/AREA(S) OF INTEREST</label>
+					<div class="control">
+						<input class="input is-primary" type="text"
+						placeholder="Text input" v-model="resume.da.expertise">
 					</div>
-					<div class="field">
-						<label class="label">PROGRAMMING LANGUAGE(S)</label>
-						<div class="control">
-							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da.programming_languages">
-						</div>
+				</div>
+				<div class="field">
+					<label class="label">PROGRAMMING LANGUAGE(S)</label>
+					<div class="control">
+						<input class="input is-primary" type="text"
+						placeholder="Text input" v-model="resume.da.programming_languages">
 					</div>
-					<div class="field">
-						<label class="label">TOOLS AND TECHNOLOGIES</label>
-						<div class="control">
-							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da.tools">
-						</div>
+				</div>
+				<div class="field">
+					<label class="label">TOOLS AND TECHNOLOGIES</label>
+					<div class="control">
+						<input class="input is-primary" type="text"
+						placeholder="Text input" v-model="resume.da.tools">
 					</div>
-					<div class="field">
-						<label class="label">TECHNICAL ELECTIVES</label>
-						<div class="control">
-							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.da.technical_electives">
-						</div>
+				</div>
+				<div class="field">
+					<label class="label">TECHNICAL ELECTIVES</label>
+					<div class="control">
+						<input class="input is-primary" type="text"
+						placeholder="Text input" v-model="resume.da.technical_electives">
 					</div>
+				</div>
 
 			</div>
 
 			<div v-else>
 
-					<div class="parentInput field" v-for="(skill,i) in resume.skill" :key="i">
+				<div class="parentInput field" v-for="(skill,i) in resume.skill" :key="i">
 
-						<div class="childInput control">
-							<input class="input is-primary" type="text"
-							placeholder="Text input" v-model="resume.skill[i].name">
-						</div>
-						<a class="button is-danger" @click="removeSkill(i)">
-							<span class="icon">
-								<i class="fa fa-minus-circle"></i>
-							</span>
-						</a>
-
+					<div class="childInput control">
+						<input class="input is-primary" type="text"
+						placeholder="Text input" v-model="resume.skill[i].name">
 					</div>
-
-					<a class="button is-info" @click="addSkill()">
+					<a class="button is-danger" @click="removeSkill(i)">
 						<span class="icon">
-							<i class="fa fa-plus"></i>
+							<i class="fa fa-minus-circle"></i>
 						</span>
-						<span>Add</span>
 					</a>
+
+				</div>
+
+				<a class="button is-info" @click="addSkill()">
+					<span class="icon">
+						<i class="fa fa-plus"></i>
+					</span>
+					<span>Add</span>
+				</a>
 
 			</div>
 
@@ -355,9 +355,18 @@
 
 </collapse>
 
+<div class="button-bottom">
+	<div class="button is-primary" @click="clickSave">
+		Save
+	</div>
+	<div class="button is-info" @click="print">
+		Print
+	</div>
+</div>
+<!--
 <pre>
-	{{resume}}
-</pre>
+{{data}}
+</pre> -->
 
 </div>
 </template>
@@ -369,7 +378,7 @@ import { Collapse, Item as CollapseItem } from 'vue-bulma-collapse'
 export default {
 	name: 'sidebar',
 
-	props: ['resume','resumeId'],
+	props: ['data', 'resume','resumeId', 'template'],
 
 	components: {
 		Collapse,
@@ -377,6 +386,15 @@ export default {
 	},
 
 	methods: {
+
+		print() {
+			window.print();
+		},
+
+		clickSave() {
+			this.$bus.$emit('save');
+		},
+
 		addHobby: function(){
 			this.resume.hobby.push({})
 		},
@@ -439,14 +457,29 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
+.sidebar {
 
-.parentInput {
-	display: flex;
-}
+	.button-bottom {
+		margin-top: .7rem;
+		display: flex;
+		justify-content: space-between;
+		div {
+			flex: 1;
+			border-radius: 2px;
+		}
+		.is-primary {
+			margin-right: 0.2rem;
+		}
+	}
 
-.childInput {
-	flex: 2;
-	margin-right: 3px;
+	.parentInput {
+		display: flex;
+	}
+
+	.childInput {
+		flex: 2;
+		margin-right: 3px;
+	}
 }
 </style>

@@ -34,7 +34,7 @@ export default {
     return HTTP.get('/userProfile');
   },
 
-  //home
+  //home, dashboard
   userTemplates() {
     return HTTP.get('/userTemplates');
   },
@@ -47,6 +47,23 @@ export default {
   //dashboard
   display() {
     return HTTP.get('/display');
+  },
+
+  //dashboard
+  update(data) {
+    console.log("API", data);
+    return HTTP.patch('/update', {
+      data: data
+    })
+  },
+
+  //profile
+  changePassword(email, new_password, password_confirmation) {
+    return HTTP.post('/changePassword', {
+      email: email,
+      new_password: new_password,
+      password_confirmation: password_confirmation
+    });
   },
 
   //etc
