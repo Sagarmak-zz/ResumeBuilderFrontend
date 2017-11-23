@@ -42,8 +42,61 @@ export default {
     this.resumeId = this.$route.params.resume_id;
     this.display();
     this.userTemplates();
+    this.userProfile();
+
     // save Button
     this.$bus.$on('save', () => {
+      console.log('Save Called');
+      console.log('Template before', this.template);
+      //if noDisplay, call insert.
+      if(this.noDisplay == true) {
+        console.log('Calling Insert');
+        let counter = 0;
+        // console.log("Data:", this.$data);
+        // console.log("Template Insert:", this.template);
+        this.template.push({id:this.resumeId});
+        console.log("Inside insert", this.template);
+        // for (var i = 0; i < this.template.length; i++) {
+        //   if(this.template[i].id == this.resumeId) {
+        //     // console.log(this.resumeId, ' already present');
+        //     //do not insert
+        //     counter++;
+        //   }
+        // }
+        // if(counter == 0) {
+        //   // console.log(this.resumeId, ' not present.');
+        //   //insert it
+        //   this.template.push({id: this.resumeId});
+        // }
+        api.insert(this.resume, this.template)
+        .then(response => {
+          console.log("Insert: ", response);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+
+      else {
+        // proceed. call update
+        console.log('Calling Update');
+        let counter = 0;
+        // console.log("Template:", this.template);
+        for (var i = 0; i < this.template.length; i++) {
+          if(this.template[i].id == this.resumeId) {
+            // console.log(this.resumeId, ' already present');
+            //do not insert
+            counter++;
+          }
+        }
+        if(counter == 0) {
+          // console.log(this.resumeId, ' not present.');
+          //insert it
+          this.template.push({id: this.resumeId});
+        }
+        this.update();
+      }
+
       let counter = 0;
       // console.log("Template:", this.template);
       for (var i = 0; i < this.template.length; i++) {
@@ -60,7 +113,6 @@ export default {
       }
       //update
       // console.log("Template:", this.template);
-      this.update();
     })
   },
 
@@ -68,7 +120,13 @@ export default {
     display() {
       api.display()
       .then(response => {
-        this.resume = response.data[0].data.resume;
+        console.log("Display", response.data);
+        if(response.data.length == 0) {
+          this.noDisplay = true;
+        }
+        else {
+          this.resume = response.data[0].data.resume;
+        }
         // console.log("Display", this.resume);
       })
       .catch(error => {
@@ -79,7 +137,7 @@ export default {
     userTemplates() {
       api.userTemplates()
       .then(response => {
-        // console.log("userTemplatesDashboard", response.data);
+        console.log("userTemplatesDashboard", response.data);
         if(response.data == "No templates") {
           //do nothing
         }
@@ -113,11 +171,23 @@ export default {
       .catch(error => {
         console.log(error.response);
       })
-    }
+    },
+
+    userProfile() {
+      api.userProfile()
+      .then(response => {
+        this.resume.info.name = response.data.user.name;
+        this.resume.info.email = response.data.user.email;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    },
   },
 
   data() {
     return {
+      noDisplay: false,
       resume: {
         info: {
           name: "John Doe",

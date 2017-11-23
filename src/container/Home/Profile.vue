@@ -57,7 +57,7 @@
                 v-validate="'required|confirmed:password'" placeholder="********" data-vv-delay="1000">
               </div>
             </div>
-            <div class="logout">
+            <div class="logout" @click="logout">
               <span class="icon is-medium">
                 <i class="fa fa-lg fa-sign-out"></i>
               </span>
@@ -101,6 +101,7 @@ export default {
         console.log(error);
       })
     },
+
     changeNameMethod() {
       this.changeName = false;
       this.$toasted.success('Name Updated Successfully', {
@@ -109,6 +110,7 @@ export default {
         duration : 3000
       });
     },
+
     changePasswordMethod() {
       this.$validator.validateAll({
         'password': this.password,
@@ -133,7 +135,14 @@ export default {
     changePasswordProcess() {
       api.changePassword(this.email, this.password, this.password_confirmation)
       .then(response => {
-        console.log(response);
+        if(response.data == "Password Change Sucessfully!!!") {
+          this.changePassword = false;
+          this.$toasted.success('Password Change Sucessfully!', {
+            theme: "outline",
+            position: "top-center",
+            duration : 3000
+          });
+        }
       })
       .catch(error => {
         console.log(error.response);
