@@ -22,9 +22,13 @@ export default {
   },
 
    //one time user data creation
-   insert() {
+   insert(resume, template) {
+     console.log('Api Insert', template);
      return HTTP.post('/insert', {
-
+       data: {
+         resume: resume,
+         template: template
+       }
      });
    },
 
@@ -51,7 +55,7 @@ export default {
 
   //dashboard
   update(data) {
-    console.log("API", data);
+    console.log('Api Update');
     return HTTP.patch('/update', {
       data: data
     })
@@ -64,6 +68,22 @@ export default {
       new_password: new_password,
       password_confirmation: password_confirmation
     });
+  },
+
+  //forgotPassword
+  forgotPassword(email) {
+    return HTTP.post('/sendOtp', {
+      email: email
+    })
+  },
+
+  //forgotPassword
+  updatePassword(email, new_password) {
+    console.log(email, new_password);
+    return HTTP.post('/updatePassword', {
+      email: email,
+      new_password: new_password
+    })
   },
 
   //etc

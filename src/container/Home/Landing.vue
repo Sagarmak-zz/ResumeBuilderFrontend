@@ -7,7 +7,7 @@
         <div class="card">
           <div class="card-content">
             <figure class="image is-square">
-              <img :src=getImage(i)>
+              <img :src=getImage(resume.id)>
             </figure>
           </div>
           <footer class="card-footer">
@@ -48,11 +48,15 @@ export default {
   name: 'landing',
   created() {
     this.userTemplates();
+    this.display();
   },
   data() {
     return {
       showViewtemplate: false,
-      userResumes: []
+      userResumes: [],
+      data: {
+
+      }
     }
   },
   methods: {
@@ -64,8 +68,7 @@ export default {
     userTemplates() {
       api.userTemplates()
       .then(response => {
-        // console.log("userTemplates", response);
-
+        console.log("userTemplates", response);
         if(response.data == "No templates") {
           this.$toasted.show('Please select a template to continue!', {
             theme: "outline",
@@ -87,13 +90,52 @@ export default {
         }
       })
       .catch(error => {
+        console.log("user template error");
         console.log(error);
         console.log(error.response.status, error.response.statusText);
       });
     },
 
     deleteResume(resume_id) {
-      console.log('Delete this Resume', resume_id);
+      for (var i = 0; i < this.data.template.length; i++) {
+        if(this.data.template[i].id == resume_id) {
+          this.data.template.splice(i, 1);
+        }
+      }
+      this.update();
+      this.userTemplates();
+    },
+
+    display() {
+      api.display()
+      .then(response => {
+        console.log("Display: ", response);
+        this.data = response.data[0].data;
+        console.log("Display", this.data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    },
+
+    update() {
+      api.update(this.data)
+      .then(response => {
+        console.log(response);
+        if(response.data == "update successful") {
+          this.$toasted.success('Updation Successful!', {
+            theme: "outline",
+            position: "top-center",
+            duration : 3000,
+          });
+        }
+        else {
+
+        }
+      })
+      .catch(error => {
+        console.log(error.response);
+      })
     },
 
     getImage(i) {

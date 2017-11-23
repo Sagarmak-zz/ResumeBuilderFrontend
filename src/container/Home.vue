@@ -74,7 +74,7 @@ export default {
     },
 
     redirect() {
-      this.$router.push({ name: 'Login' });
+      this.$router.push('/');
     }
   },
   components: {

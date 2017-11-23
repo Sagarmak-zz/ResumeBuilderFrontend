@@ -48,7 +48,7 @@
               v-validate="'required'" placeholder="Name">
             </div>
             <span v-show="errors.has('signupName')" class="help is-danger">
-              {{ errors.first('signupName') }}
+              The Signup Name is required!
             </span>
           </div>
           <div class="field">
@@ -97,9 +97,9 @@
             <button class="button is-info" @click="signupValidate">Sign Up</button>
           </div>
           <div class="forgot-password" v-show="login">
-            <button class="button is-dark is-outlined">Forgot Password</button>
+            <button class="button is-dark is-outlined" @click="forgotPassword = true">Forgot Password</button>
           </div>
-
+          <ForgotPassword v-if="forgotPassword" @close="forgotPassword=false"></ForgotPassword>
         </div>
 
       </div>
@@ -108,6 +108,7 @@
 </template>
 
 <script>
+import ForgotPassword from '@/components/ForgotPassword';
 import api from '@/api/main';
 export default {
   name: 'Login',
@@ -122,6 +123,7 @@ export default {
       signupEmail: '',
       signupPassword: '',
       signupConfirmPassword: '',
+      forgotPassword: false
     }
   },
 
@@ -135,6 +137,7 @@ export default {
   },
 
   methods: {
+
     loginValidate() {
       this.$validator.validateAll({
         //checks for login email and password
@@ -161,18 +164,19 @@ export default {
       api.login(email, password)
       .then(response => {
         this.saveToken(response.data.token);
-        if(this.signUpInsert) {
-          api.insert()
-          .then(response => {
-            console.log("insert", response);
-          })
-          .catch(error => {
-            console.log("insert", error.response);
-          })
-        }
-        else {
-
-        }
+        // console.log("Inside Login: ", this.signUpInsert);
+        // if(this.signUpInsert) {
+        //   api.insert()
+        //   .then(response => {
+        //     console.log("insert", response);
+        //   })
+        //   .catch(error => {
+        //     console.log("insert", error.response);
+        //   })
+        // }
+        // else {
+        //
+        // }
       })
       .catch(error => {
         console.log(error);
@@ -263,6 +267,9 @@ export default {
         });
       })
     },
+  },
+  components: {
+    ForgotPassword
   }
 }
 </script>
