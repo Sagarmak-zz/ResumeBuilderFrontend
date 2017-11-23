@@ -55,7 +55,7 @@ export default {
 
   //dashboard
   update(data) {
-    console.log('Api Update');
+    console.log('Api Update', data);
     return HTTP.patch('/update', {
       data: data
     })

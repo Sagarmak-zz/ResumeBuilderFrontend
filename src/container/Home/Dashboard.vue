@@ -46,8 +46,6 @@ export default {
 
     // save Button
     this.$bus.$on('save', () => {
-      console.log('Save Called');
-      console.log('Template before', this.template);
       //if noDisplay, call insert.
       if(this.noDisplay == true) {
         console.log('Calling Insert');
