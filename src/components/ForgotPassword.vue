@@ -24,9 +24,9 @@
             <div class="field">
               <label class="label">Key</label>
               <div class="control">
-                <input name="confirmKey" v-model="confirmKey" type="email"
+                <input name="confirmKey" v-model="confirmKey" type="number"
                 :class="{'input': true, 'is-danger': errors.has('confirmKey') }"
-                placeholder="Email input" v-validate="'required|confirmed:confirmKey'">
+                placeholder="Key" v-validate="'required'">
               </div>
               <span v-show="errors.has('confirmKey')" class="help is-danger">
                 The Key you entered may be incorrect.
@@ -81,7 +81,8 @@ export default {
       key: null,
       confirmKey: null,
       new_password: '',
-      confirm_password: ''
+      confirm_password: '',
+      valid: true
     }
   },
 
@@ -90,8 +91,18 @@ export default {
       api.forgotPassword(this.forgotPasswordEmail)
       .then(response => {
         console.log("forgotPassword", response);
+
+        if(this.valid == true) {
+          this.$toasted.show("Please wait while we send you the OTP in your provided mail account!", {
+            theme: 'bubble',
+            position: 'bottom-center',
+            duration: 3000,
+          })
+        }
+
         if(response.data == "Please Enter Valid Invalid Email Id.") {
           //toast
+          this.valid = false;
           this.$toasted.error("Please Enter Valid Invalid Email Id.", {
             theme: 'bubble',
             position: 'bottom-center',
@@ -101,13 +112,14 @@ export default {
         else {
           this.key = response.data;
           //toast
-          this.$toasted.show("Please wait while we send you the OTP in your provided mail account!", {
-            theme: 'bubble',
-            position: 'bottom-center',
-            duration: 3000,
-          })
+          // this.$toasted.show("Please wait while we send you the OTP in your provided mail account!", {
+          //   theme: 'bubble',
+          //   position: 'bottom-center',
+          //   duration: 3000,
+          // })
           this.showEmail = false;
         }
+
       })
       .catch(error => {
         console.log("forgotPassword", error);
@@ -115,28 +127,40 @@ export default {
     },
 
     updatePassword() {
-      api.updatePassword(this.forgotPasswordEmail, this.new_password)
-      .then(response => {
-        if(response.data == "Password Change Sucessfully!!!") {
-          this.$toasted.success("Password Change Sucessfully!", {
-            theme: 'bubble',
-            position: 'top-center',
-            duration: 3000,
-          })
-          this.$toasted.success("Please Login again to continue with your new password.", {
-            theme: 'bubble',
-            position: 'top-center',
-            duration: 3000,
-          })
-          this.$bus.$emit('close');
-        }
-        else {
+      if(this.key == this.confirmKey) {
+        console.log('Correct');
+        api.updatePassword(this.forgotPasswordEmail, this.new_password)
+        .then(response => {
+          console.log("updatePassword", response);
+          if(response.data == "Password Change Sucessfully!!!") {
+            this.$toasted.success("Password Change Sucessfully!", {
+              theme: 'bubble',
+              position: 'top-center',
+              duration: 3000,
+            })
+            this.$toasted.success("Please Login again to continue with your new password.", {
+              theme: 'bubble',
+              position: 'top-center',
+              duration: 3000,
+            })
+            this.$bus.$emit('close');
+          }
+          else {
 
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      })
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+      else {
+        this.$toasted.error("The OTP you entered may be incorrect!", {
+          theme: 'bubble',
+          position: 'bottom-center',
+          duration: 3000,
+        })
+      }
+
     }
   }
 }

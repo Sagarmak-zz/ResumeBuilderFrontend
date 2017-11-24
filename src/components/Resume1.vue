@@ -1,81 +1,81 @@
 <template>
   <div id="wrap">
-    <article>
+        <article>
 
-      <header v-if="resume.info">
-        <!-- force flexbox to keep name on a single line -->
-        <h1><strong>{{ resume.info.name }}</strong></h1>
-        <p>{{ resume.info.profession }}</p>
-        <p>{{ resume.info.dob }}</p>
-        <p>{{ resume.info.email }}</p>
-        <p>{{ resume.info.address }}</p>
+                <header>
+                  <!-- force flexbox to keep name on a single line -->
+                  <h1><strong>{{ resume.info.name }}</strong></h1>
+                  <p>{{ resume.info.profession }}</p>
+                  <p>{{ resume.info.dob }}</p>
+                  <p>{{ resume.info.email }}</p>
+                  <p>{{ resume.info.address }}</p>
 
-      </header>
+                </header>
 
-      <div class="one-col">
+                <div class="one-col">
 
-        <section>
-          <h2>EXPERIENCE</h2>
-          <ul v-for="(item,i) in resume.internship" :key="i">
-            <h3><strong>{{ item.name }}</strong>{{ item.start }} - {{ item.end }}</h3>
-            <li>{{ item.description }}</li>
-          </ul>
-        </section>
+                    <section v-if="resume.internship.length">
+                      <h2>EXPERIENCE</h2>
+                        <ul v-for="(item,i) in resume.internship" :key="i">
+                          <h3><strong>{{ item.name }}</strong>{{ item.start }} - {{ item.end }}</h3>
+                          <li>{{ item.description }}</li>
+                        </ul>
+                    </section>
 
-        <section>
-          <h2>POSITION OF RESPONSIBILITY</h2>
-          <ul v-for="(item,i) in resume.position" :key="i">
-            <li>{{ item.name }}</li>
-          </ul>
-        </section>
+                    <section v-if="resume.position.length">
+                      <h2>POSITION OF RESPONSIBILITY</h2>
+                        <ul v-for="(item,i) in resume.position" :key="i">
+                          <li>{{ item.name }}</li>
+                        </ul>
+                    </section>
 
-        <section>
-          <h2>ACHIEVEMENTS</h2>
-          <ul v-for="(item,i) in resume.award" :key="i">
-            <li>{{ item.name }}</li>
-          </ul>
-        </section>
+                    <section v-if="resume.award.length">
+                      <h2>ACHIEVEMENTS</h2>
+                        <ul v-for="(item,i) in resume.award" :key="i">
+                          <li>{{ item.name }}</li>
+                        </ul>
+                    </section>
 
-        <div class="two-col">
-          <section>
-            <h2>EDUCATION</h2>
+                    <div class="two-col">
+                        <section v-if="resume.degree.length">
+                            <h2>EDUCATION</h2>
 
-            <ol v-for="(item,i) in resume.degree" :key="i">
-              <li><strong>{{ item.name }}</strong> {{ item.institute }} </li>
-            </ol>
-          </section>
+                            <ol v-for="(item,i) in resume.degree" :key="i">
+                              <li><strong>{{ item.name }}</strong> {{ item.institute }} </li>
+                            </ol>
+                        </section>
 
-          <section>
-            <h2>SKILLS</h2>
+                        <section v-if="resume.skill.length">
+                            <h2>SKILLS</h2>
 
-            <ul v-for="(item,i) in resume.skill" :key="i" >
-              <li>{{ item.name }}</li>
-            </ul>
-          </section>
-        </div>
+                            <ul v-for="(item,i) in resume.skill" :key="i" >
+                              <li>{{ item.name }}</li>
+                            </ul>
+                        </section>
+                    </div>
 
-      </div>
+                </div>
 
-    </article>
+        </article>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'resume-template2',
-  props: ['resume'],
-}
+    export default {
+        name: 'resume1',
+        props: ['resume'],
+    }
 </script>
 
 
 <style scoped>
 
 #wrap {
-  /*position: fixed;
-  bottom: 0;
-  max-width: 60%;
-  overflow-y: scroll;*/
-  background-color: white;
+      background: white;
+}
+
+* {
+  box-model: border-box;
 }
 
 article, .two-col {
@@ -92,7 +92,7 @@ header {
 }
 
 section {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .one-col {
@@ -100,7 +100,7 @@ section {
 }
 
 .two-col section {
-  flex: 1;
+flex: 1;
 }
 
 .two-col h2 {
@@ -185,49 +185,49 @@ li {
 /* example iPhone type design tweaking for single columns */
 
 /*
-@media only screen and (max-width: 768px) {
-A fun CSS hack to convert list of skills to comma separated paragraph.
+  @media only screen and (max-width: 768px) {
+   A fun CSS hack to convert list of skills to comma separated paragraph.
 
-.two-col ul li {display: inline;}
-.two-col ul li:after {content: ","}
-.two-col ul li:last-child:after {content: "."}
+  .two-col ul li {display: inline;}
+  .two-col ul li:after {content: ","}
+  .two-col ul li:last-child:after {content: "."}
 
 
-.two-col ol li {
-display: flex;
-justify-content: space-between;
-margin-bottom: .2em;
-}
+  .two-col ol li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .2em;
+  }
 
-.two-col li {
-font-size: .85em;
-}
+  .two-col li {
+    font-size: .85em;
+  }
 
-h1 {
-text-align: center;
-font-size: 3em;
-margin-bottom: 0;
-}
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+  }
 
-h3 {
-display: block;
-text-align: center;
-}
+  h3 {
+    display: block;
+    text-align: center;
+  }
 
-h3 strong {
-display: block;
-margin-top: .5em;
-}
+  h3 strong {
+    display: block;
+    margin-top: .5em;
+  }
 
-h2 {
-background-color: transparent;
-color: silver;
-font-weight: 300;
-font-size: 2em;
-letter-spacing: 0;
-text-align: center;
-margin-bottom: 0;
-}
+  h2 {
+    background-color: transparent;
+    color: silver;
+    font-weight: 300;
+    font-size: 2em;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 0;
+  }
 } */
 
 </style>

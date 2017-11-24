@@ -10,13 +10,13 @@
               <i class="fa fa-info-circle"></i>
             </span>
           </div>
-          <div class="field" v-if="changeName">
+          <!-- <div class="field" v-if="changeName">
             <div class="control">
               <input name="signupName" v-model="name" type="text" data-vv-delay="1000"
               :class="{'input': true, 'is-danger': errors.has('signupName') }"
               v-validate="'required'" placeholder="Name" @keyup.enter="changeNameMethod">
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="box b">
           <p class="title is-2">Email:</p>

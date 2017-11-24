@@ -110,8 +110,13 @@ export default {
       api.display()
       .then(response => {
         console.log("Display: ", response);
-        this.data = response.data[0].data;
-        console.log("Display", this.data);
+        if(response.data.length == 0) {
+          //do nothing
+        }
+        else {
+          this.data = response.data[0].data;
+          console.log("Display", this.data);
+        }
       })
       .catch(error => {
         console.log(error);

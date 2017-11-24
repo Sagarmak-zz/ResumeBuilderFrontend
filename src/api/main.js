@@ -23,6 +23,7 @@ export default {
 
    //one time user data creation
    insert(resume, template) {
+     console.log('Api Insert', resume);
      console.log('Api Insert', template);
      return HTTP.post('/insert', {
        data: {
@@ -54,10 +55,14 @@ export default {
   },
 
   //dashboard
-  update(data) {
-    console.log('Api Update', data);
+  update(resume, template) {
+    console.log('Api Update: ', resume);
+    console.log('Api Update: ', template);
     return HTTP.patch('/update', {
-      data: data
+      data: {
+        resume: resume,
+        template: template
+      }
     })
   },
 

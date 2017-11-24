@@ -1,30 +1,36 @@
 <template lang="html">
   <div class="dashboard">
     <div class="">
-      <div class="columns">
+      <!-- <pre>
+      {{resume}}
+    </pre> -->
+    <div class="columns">
 
-        <div class="column is-4 nodisplay">
-          <Sidebar :data="$data" :resumeId="resumeId" :resume="resume" :template="template"></Sidebar>
-        </div>
-
-        <div class="column resume-template1">
-          <div v-if="resumeId==0">
-            <Resume0 :resume="resume"></Resume0>
-          </div>
-          <div v-else-if="resumeId==1">
-            <Resume1 :resume="resume"></Resume1>
-          </div>
-          <div v-else-if="resumeId==2">
-            <Resume2 :resume="resume"></Resume2>
-          </div>
-          <div v-else-if="resumeId==3">
-            <Resume3 :resume="resume"></Resume3>
-          </div>
-        </div>
-
+      <div class="column is-4 nodisplay">
+        <Sidebar :data="$data" :resumeId="resumeId" :resume="resume"></Sidebar>
       </div>
+
+      <div class="column resume-template1">
+        <div v-if="resumeId==0">
+          <Resume0 :resume="resume"></Resume0>
+        </div>
+        <div v-else-if="resumeId==1">
+          <Resume1 :resume="resume"></Resume1>
+        </div>
+        <div v-else-if="resumeId==2">
+          <Resume2 :resume="resume"></Resume2>
+        </div>
+        <div v-else-if="resumeId==3">
+          <Resume3 :resume="resume"></Resume3>
+        </div>
+        <div v-else-if="resumeId==4">
+          <Resume4 :resume="resume"></Resume4>
+        </div>
+      </div>
+
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -33,48 +39,52 @@ import Resume0 from '@/components/Resume0';
 import Resume1 from '@/components/Resume1';
 import Resume2 from '@/components/Resume2';
 import Resume3 from '@/components/Resume3';
+import Resume4 from '@/components/Resume4';
 import api from '@/api/main';
 
 export default {
   name: 'dashboard',
 
   created() {
+    //resumeid
     this.resumeId = this.$route.params.resume_id;
+    //display null-insert, else-update
     this.display();
+    //condition 0,1 no repeation
     this.userTemplates();
+    // name, email
+    // this.callDummy();
     this.userProfile();
 
     // save Button
     this.$bus.$on('save', () => {
       //if noDisplay, call insert.
       if(this.noDisplay == true) {
-        console.log('Calling Insert');
-        let counter = 0;
-        // console.log("Data:", this.$data);
-        // console.log("Template Insert:", this.template);
-        this.template.push({id:this.resumeId});
-        console.log("Inside insert", this.template);
-        // for (var i = 0; i < this.template.length; i++) {
-        //   if(this.template[i].id == this.resumeId) {
-        //     // console.log(this.resumeId, ' already present');
-        //     //do not insert
-        //     counter++;
-        //   }
-        // }
-        // if(counter == 0) {
-        //   // console.log(this.resumeId, ' not present.');
-        //   //insert it
-        //   this.template.push({id: this.resumeId});
-        // }
-        api.insert(this.resume, this.template)
-        .then(response => {
-          console.log("Insert: ", response);
-        })
-        .catch(error => {
-          console.log(error);
-        })
+        if(this.template.length == 0) {
+          console.log('Calling Insert');
+          let counter = 0;
+          // console.log("Data:", this.$data);
+          // console.log("Template Insert:", this.template);
+          this.template.push({id:this.resumeId});
+          // console.log("Inside insert Resume", this.resume);
+          // console.log("Inside insert Template", this.template);
+          // console.log("Insert 1st resume", this.resume.da);
+          api.insert(this.resume, this.template)
+          .then(response => {
+            console.log("Insert: ", response);
+            if(response.data == "success") {
+              this.$toasted.success('Updation Successful!', {
+                theme: "outline",
+                position: "top-center",
+                duration : 3000,
+              });
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          })
+        }
       }
-
       else {
         // proceed. call update
         console.log('Calling Update');
@@ -95,22 +105,6 @@ export default {
         this.update();
       }
 
-      let counter = 0;
-      // console.log("Template:", this.template);
-      for (var i = 0; i < this.template.length; i++) {
-        if(this.template[i].id == this.resumeId) {
-          // console.log(this.resumeId, ' already present');
-          //do not insert
-          counter++;
-        }
-      }
-      if(counter == 0) {
-        // console.log(this.resumeId, ' not present.');
-        //insert it
-        this.template.push({id: this.resumeId});
-      }
-      //update
-      // console.log("Template:", this.template);
     })
   },
 
@@ -124,8 +118,8 @@ export default {
         }
         else {
           this.resume = response.data[0].data.resume;
+          this.template = response.data[0].data.template;
         }
-        // console.log("Display", this.resume);
       })
       .catch(error => {
         console.log(error);
@@ -135,7 +129,7 @@ export default {
     userTemplates() {
       api.userTemplates()
       .then(response => {
-        console.log("userTemplatesDashboard", response.data);
+        // console.log("userTemplatesDashboard", response.data);
         if(response.data == "No templates") {
           //do nothing
         }
@@ -144,6 +138,7 @@ export default {
         }
         else {
           this.template = response.data;
+          // template array
         }
       })
       .catch(error => {
@@ -152,10 +147,19 @@ export default {
       });
     },
 
+    callDummy() {
+      console.log(this.resume);
+      console.log(this.template);
+    },
+
     update() {
-      api.update(this.$data)
+      console.log("Update");
+      console.log(this.template);
+      console.log(this.resume);
+      api.update(this.resume, this.template)
       .then(response => {
         if(response.data == "update successful") {
+          this.display();
           this.$toasted.success('Updation Successful!', {
             theme: "outline",
             position: "top-center",
@@ -188,12 +192,12 @@ export default {
       noDisplay: false,
       resume: {
         info: {
-          name: "John Doe",
-          email: "john@gmail.com",
-          dob: "01/01/1990",
-          address: "123, Sector 2, Gandhinagar",
-          profession: "Web Developer",
-          phone: "9999988888"
+          name: "",
+          email: "",
+          dob: "",
+          address: "",
+          profession: "",
+          phone: ""
         },
 
         da: {
@@ -326,7 +330,8 @@ export default {
     Resume0,
     Resume1,
     Resume2,
-    Resume3
+    Resume3,
+    Resume4
   }
 
 }
@@ -339,7 +344,7 @@ export default {
     // background-color: white;
     margin-top: .7rem;
     border: solid 1px #ddd;
-    min-height: 85vh;
+    min-height: 40vh;
     padding: 0;
   }
 

@@ -18,7 +18,7 @@
 
 		<div id="mainArea"></div>
 
-			<div class="education">
+			<div class="education" v-if="resume.degree.length">
 				<div class="sectionTitle">
 					<h1>Education</h1>
 				</div>
@@ -34,7 +34,7 @@
 		    </div>
 
 
-			<div class="workExperience">
+			<div class="workExperience" v-if="resume.internship.length">
 				<div class="sectionTitle">
 					<h1>Work Experience</h1>
 				</div>
@@ -50,7 +50,7 @@
 			</div>
 
 
-			<div class="keySkills">
+			<div class="keySkills" v-if="resume.skill.length">
 				<div class="sectionTitle">
 					<h1>Key Skills</h1>
 				</div>
@@ -62,7 +62,19 @@
 				</div>
 			</div>
 
-			<div class="keySkills">
+			<div class="keySkills" v-if="resume.position.length">
+				<div class="sectionTitle">
+					<h1>Position</h1>
+				</div>
+
+				<div class="sectionContent">
+					<ul>
+						<li v-for="(item,i) in resume.position" :key="i">{{ item.name }}</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="keySkills" v-if="resume.award.length">
 				<div class="sectionTitle">
 					<h1>Achievements</h1>
 				</div>
@@ -81,7 +93,7 @@
 
 <script>
     export default {
-        name: 'resume-template3',
+        name: 'resume2',
         props: ['resume'],
     }
 </script>
@@ -90,12 +102,7 @@
 
 .resume {
 
-      // position: fixed;
-      // top: 60px;
-      // bottom: 0;
-      // max-width: 60%;
-      // overflow-y: scroll;
-			background-color: white;
+	background: white;
 
 	h2 {
 		display: flex;
@@ -119,7 +126,6 @@
 
 		padding: 25px 35px;
 		border-bottom: 2px solid #cf8a05;
-		background: #ededed;
 	}
 
 	#name h1 {
@@ -176,10 +182,8 @@
 
 	.sectionContent {
 			flex: 3;
-			// flex-wrap: wrap;
 			margin-left: 1rem;
 	}
-
 
 	#contactDetails ul {
 		list-style-type: none;
@@ -205,6 +209,7 @@
 	.sectionTitle h1 {
 		font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 		font-size: 1.5em;
+		color: #cf8a05;
 	}
 
 	.sectionContent h2 {

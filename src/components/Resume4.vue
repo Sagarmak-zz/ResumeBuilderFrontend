@@ -11,28 +11,6 @@
                 </div>
             </div>
 
-            <div class="section row" v-if="resume.hobby.length">
-                <h2 class="col">Interests</h2>
-                <div class="section-text col-right row">
-                    <ul class="skills">
-                        <li v-for="(item,i) in resume.hobby" :key="i">
-                                {{ item.name }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="section row" v-if="resume.skill.length">
-                <h2 class="col">Skills</h2>
-                <div class="section-text col-right row">
-                    <ul class="skills">
-                        <li v-for="(item,i) in resume.skill" :key="i">
-                            {{ item.name }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
             <div class="section row" v-if="resume.degree.length">
                 <h2 class="col">Education</h2>
                 <div class="section-text col-right" v-for="(item,i) in resume.degree" :key="i">
@@ -61,32 +39,38 @@
                 </div>
             </div>
 
-            <div class="section row" v-if="resume.project.length">
-                <h2 class="col">Projects</h2>
-                <div class="section-text col-right" v-for="(item,i) in resume.project" :key="i">
-                    <div class="row">
-                        <div class="col">
-                            <h3>{{ item.name }}</h3>
-                        </div>
-                    </div>
-                    <div class="row subsection">
-                        <div class="emph col">Mentor: {{ item.guide }}</div>
-                        <div class="col-right light">{{ item.start }} - {{ item.end }}</div>
-                    </div>
-                    <div>{{ item.description }}</div>
+            <div class="section row" v-if="resume.hobby.length">
+                <h2 class="col">Interests</h2>
+                <div class="section-text col-right row">
+                    <ul class="skills">
+                        <li v-for="(item,i) in resume.hobby" :key="i">
+                                {{ item.name }}
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-                <div class="section row" v-if="resume.award.length">
-                    <h2 class="col">Achievements</h2>
-                    <div class="section-text col-right row">
-                        <ul class="skills">
-                            <li v-for="(item,i) in resume.award" :key="i">
-                                    {{ item.name }}
-                            </li>
-                        </ul>
-                    </div>
+            <div class="section row" v-if="resume.skill.length">
+                <h2 class="col">Skills</h2>
+                <div class="section-text col-right row">
+                    <ul class="skills">
+                        <li v-for="(item,i) in resume.skill" :key="i">
+                            {{ item.name }}
+                        </li>
+                    </ul>
                 </div>
+            </div>
+
+            <div class="section row" v-if="resume.award.length">
+                <h2 class="col">Achievements</h2>
+                <div class="section-text col-right row">
+                    <ul class="skills">
+                        <li v-for="(item,i) in resume.award" :key="i">
+                                {{ item.name }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             </div>
         </div>
@@ -95,13 +79,12 @@
 
 <script>
     export default {
-        name: 'resume3',
+        name: 'resume4',
         props: ['resume'],
     }
 </script>
 
 <style scoped>
-        /* <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700|Source+Sans+Pro:400,400i" rel="stylesheet"> */
 
 body {
 	display: flex;
@@ -109,7 +92,7 @@ body {
 	padding: 0;
 	background-color: #fff;
 	font-size: 12px;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Verdana', sans-serif;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 
@@ -119,25 +102,21 @@ body {
 }
 
 h1 {
-	font-weight: 300;
-    font-size: 40px;
-    color:#ba0018;
+	font-weight: 500;
+    font-size: 50px;
+    color:dimgrey;
     padding: 30px;
     border-radius:2px;
-    font-family: 'Merriweather', serif;
+    font-family: 'Georgia', serif;
 }
 
 h2 {
-	color: #ba0018;
+	color: dimgrey;
 	width: 150px;
-	font-size: 18px;
+	font-size: 25px;
 	padding-left: 20px;
 	font-weight:400;
-	font-family: 'Merriweather', serif;
-}
-
-h2:first-letter {
-	font-size: 150%;
+	font-family: 'Georgia', serif;
 }
 
 h3 {
@@ -148,48 +127,14 @@ h3 {
 	font-family: 'Merriweather', serif;
 }
 
-h2, h3 {
+h2 {
 	margin-top: 5px
 }
 
-/* a {
-	color: #ba0018;
-    display: inline-block;
-    text-decoration: none;
-    padding:2px 4px;
-    border-radius:2px;
-    margin-right:-2px;
-}
-
-a:hover {
-	background-color:#ba0018;
-	color:#fff;
-}
-
-.key:first-child {
-	margin-left: 0
-}
-
-.key {
-	margin: 0 10px;
-	position: relative;
-	font-size: 12pt;
-}
-
-.key::before {
-	content: '◆';
-	position: absolute;
-	left: -15px;
-	color: #555;
-}
-
-.key:first-child::before {
-	content: ''
-} */
-
 .section {
 	border-bottom: 1px solid #ddd;
-	padding: 10px 0 15px;
+	padding: 15px 0 15px;
+    padding-bottom: 50px;
 }
 
 .section:last-child {
@@ -215,7 +160,7 @@ a:hover {
 .contact-info {
 	font-size: 16px;
     text-align: right;
-    padding: 10px;
+    padding: 20px;
 }
 
 .light {
@@ -271,9 +216,10 @@ ul.skills li:last-child {
 /*
  Page Rules
 */
+
 .page {
 	min-height: 29.7cm;
-	margin: 1cm auto;
+	margin: auto;
 }
 
 @media print {

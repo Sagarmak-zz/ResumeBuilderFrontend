@@ -128,6 +128,9 @@ export default {
   },
 
   created() {
+    this.$bus.$on('close', () => {
+      this.forgotPassword = false;
+    });
     if(this.$route.params.data == "login") {
       this.login = true;
     }
